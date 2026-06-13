@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const studies = (await getCollection('caseStudies'))
+    .filter((s) => !s.data.draft)
+    .sort((a, b) => a.data.order - b.data.order);
+
+  return studies.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: studies[(i + 1) % studies.length] },
+  }));
+}
+
+const { entry, next } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+
+<Base title={`${d.title} — Ryan Moore`} description={d.summary}>
+  <article>
+    <header class="cs-hero">
+      <div class="grid-bg"></div>
+      <div class="wrap wrap--narrow">
+        <a href="/#work" class="cs-back">← All work</a>
+        <div class="work__client" style="margin-bottom: 1.25rem;">{d.client}</div>
+        <h1 class="cs-title serif">{d.title}</h1>
+        <p class="cs-summary">{d.summary}</p>
+
+        <dl class="cs-meta">
+          <div>
+            <dt>Role</dt>
+            <dd>{d.role}</dd>
+          </div>
+          <div>
+            <dt>Timeline</dt>
+            <dd>{d.year}</dd>
+          </div>
+          <div>
+            <dt>Stack</dt>
+            <dd>{d.stack.join(' · ')}</dd>
+          </div>
+        </dl>
+
+        {d.metrics && (
+          <div class="cs-metrics">
+            {d.metrics.map((m) => (
+              <div class="cs-metric">
+                <div class="cs-metric__val serif">{m.value}</div>
+                <div class="cs-metric__lab">{m.label}</div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </header>
+
+    <div class="wrap wrap--narrow">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+
+    {next && next.id !== entry.id && (
+      <a class="cs-next" href={`/work/${next.id}/`}>
+        <div class="wrap wrap--narrow">
+          <div class="cs-next__lab">Next case study →</div>
+          <div class="cs-next__title serif">{next.data.title}</div>
+        </div>
+      </a>
+    )}
+  </article>
+</Base>

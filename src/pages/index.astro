@@ -1,0 +1,364 @@
+---
+import Base from '../layouts/Base.astro';
+import Schematic from '../components/Schematic.astro';
+import { getCollection } from 'astro:content';
+import { site, outcomes, services, projects, background, stack, testimonials, audit } from '../data/site';
+import { TECH_GLYPHS } from '../data/tech-glyphs';
+
+const studies = (await getCollection('caseStudies'))
+  .filter((s) => !s.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
+// only show the testimonials band once a real (non-draft) quote exists
+const quotes = testimonials.filter((t) => !t.draft);
+---
+
+<Base>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero__head">
+      <span class="kicker reveal" style="margin-bottom: 1.5rem; display: inline-flex;">
+        Software engineer — {site.location}
+      </span>
+
+      <h1 class="hero__title serif reveal">
+        I build the <em>systems</em> businesses quietly <span class="u">run on</span>.
+      </h1>
+
+      <p class="hero__lede reveal">
+        I connect the tools a business already uses, so they finally talk to each
+        other — and I build the websites, apps, and automations that run on top.
+        Twenty years of making messy systems behave like one.
+      </p>
+
+      <div class="hero__cta reveal">
+        <a href={`mailto:${site.email}`} class="btn btn--primary">
+          Work with me <span class="arr">↗</span>
+        </a>
+        <a href="#work" class="btn btn--ghost">Selected work</a>
+      </div>
+
+      <div class="hero__status reveal">
+        <span class="led"></span> Available now — taking on a few new projects
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="hero__viz reveal">
+        <Schematic />
+      </div>
+      <ul class="hero__outcomes reveal">
+        {outcomes.map((o) => <li class="hero__outcome">{o}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div>
+          <span class="kicker">01 — Selected work</span>
+          <h2 class="section__title serif">A closer look at <em>a few projects</em>.</h2>
+        </div>
+      </div>
+
+      <div class="work">
+        {studies.map((s, i) => (
+          <a class="work__row reveal" href={`/work/${s.id}/`}>
+            <span class="work__idx">{String(i + 1).padStart(2, '0')}</span>
+            <div class="work__main">
+              <div class="work__client">{s.data.client}</div>
+              <h3 class="work__name serif">{s.data.title}</h3>
+              <p class="work__sum">{s.data.summary}</p>
+              <div class="work__tags">
+                {s.data.tags.map((t) => <span class="tag">{t}</span>)}
+              </div>
+            </div>
+            <div class="work__meta">
+              <span class="work__year">{s.data.year}</span>
+              <span class="work__go" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section section--raise" id="projects">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div>
+          <span class="kicker">02 — More work</span>
+          <h2 class="section__title serif">Smaller jobs, <em>same care</em>.</h2>
+        </div>
+      </div>
+
+      <div class="proj-grid">
+        {projects.map((p, i) => (
+          <article class="proj reveal">
+            <div class="proj__top">
+              <span class="proj__ix">P/{String(i + 1).padStart(2, '0')}</span>
+              <span class="proj__tags">
+                {'status' in p && p.status && (
+                  <span class="proj__status"><span class="led"></span>{p.status}</span>
+                )}
+                <span class="proj__kind">{p.kind}</span>
+              </span>
+            </div>
+            <h3 class="proj__name">{p.name}</h3>
+            <p class="proj__desc">{p.desc}</p>
+            <span class="proj__foot">{p.foot}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div>
+          <span class="kicker">03 — What I do</span>
+          <h2 class="section__title serif">Four kinds of <em>problem I solve</em>.</h2>
+        </div>
+      </div>
+
+      <div class="svc-grid">
+        {services.map((s, i) => (
+          <div class="svc reveal">
+            <div class="svc__no">{String(i + 1).padStart(2, '0')} /</div>
+            <h3 class="svc__title">{s.title}</h3>
+            <p class="svc__body">{s.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKGROUND -->
+  <section class="section section--raise" id="background">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div>
+          <span class="kicker">04 — Experience</span>
+          <h2 class="section__title serif">Twenty years, <em>one focus</em>.</h2>
+          <p class="section__lede">
+            The same engineer travel platforms and hospitals trust with their hardest
+            connection work — now building for businesses like yours.
+          </p>
+        </div>
+      </div>
+
+      <div class="tl">
+        {background.map((b) => (
+          <div class="tl__row reveal">
+            <div class="tl__period">{b.period}</div>
+            <div>
+              <h3 class="tl__role">
+                {'link' in b && b.link ? (
+                  <a href={b.link} target="_blank" rel="noopener">
+                    {b.role} <span class="arr" aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  b.role
+                )}
+              </h3>
+              <p class="tl__detail">{b.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="tech reveal">
+        <span class="kicker kicker--plain tech__kicker">Technology</span>
+        <ul class="stack">
+          {stack.map((t) => (
+            <li class="stack__item" title={t.name}>
+              <svg class="stack__glyph" viewBox={TECH_GLYPHS[t.logo].box} role="img" aria-label={t.name}>
+                <path d={TECH_GLYPHS[t.logo].d} />
+              </svg>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIT — fixed-price entry offer for buyers who can't scope a project yet -->
+  <section class="section" id="audit">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div>
+          <span class="kicker">05 — Where to start</span>
+          <h2 class="section__title serif">Not sure what you need? Start with a <em>systems audit</em>.</h2>
+          <p class="section__lede">
+            One week, one flat fee. I map how information moves through your business,
+            find where it leaks, and hand you a prioritized fix list — useful whether
+            or not we work together afterwards.
+          </p>
+        </div>
+      </div>
+
+      <div class="audit">
+        <ol class="audit__steps">
+          {audit.steps.map((s, i) => (
+            <li class="audit__step reveal">
+              <span class="audit__no">{String(i + 1).padStart(2, '0')} /</span>
+              <h3 class="audit__title">{s.title}</h3>
+              <p class="audit__body">{s.body}</p>
+            </li>
+          ))}
+        </ol>
+
+        <aside class="audit__card reveal">
+          <span class="audit__price serif">{audit.price}</span>
+          <span class="audit__meta">{audit.priceNote} · {audit.duration}</span>
+          <ul class="audit__perks">
+            {audit.perks.map((p) => <li class="audit__perk">{p}</li>)}
+          </ul>
+          <a href="#contact" class="btn btn--primary" data-prefill-audit>
+            Book an audit <span class="arr">↗</span>
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS — renders only when a non-draft quote exists in site.ts -->
+  {quotes.length > 0 && (
+    <section class="section quotes">
+      <div class="wrap wrap--narrow">
+        {quotes.map((t) => (
+          <figure class="quote reveal">
+            <div class="quote__mark" aria-hidden="true">&#8220;</div>
+            <blockquote class="quote__text serif">{t.quote}</blockquote>
+            <figcaption class="quote__cite">
+              {t.name}{t.detail && <span class="quote__detail"> — {t.detail}</span>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="wrap wrap--narrow">
+      <span class="kicker kicker--plain reveal" style="justify-content: center; display: flex;">06 — Contact</span>
+      <h2 class="contact__title serif reveal" style="margin-top: 1.25rem;">
+        Available for the <em>right</em> project.
+      </h2>
+      <p class="contact__lede reveal">
+        A new website, systems that need to talk, busywork worth automating, or a
+        tech problem you want sorted — I am happy to talk it through. I take on
+        only a few projects at a time, so each one gets my full attention.
+      </p>
+
+      <form id="contact-form" class="cform reveal" novalidate>
+        <div class="cform__row">
+          <label>
+            <span class="lab">Name</span>
+            <input type="text" name="name" required autocomplete="name" placeholder="Your name" />
+          </label>
+          <label>
+            <span class="lab">Email</span>
+            <input type="email" name="email" required autocomplete="email" placeholder="you@company.com" />
+          </label>
+        </div>
+        <label>
+          <span class="lab">What do you need?</span>
+          <select name="interest">
+            <option>A project — website, integration, or automation</option>
+            <option>The systems audit</option>
+            <option>Not sure yet — let's talk</option>
+          </select>
+        </label>
+        <label>
+          <span class="lab">Tell me a little about it</span>
+          <textarea name="message" required placeholder="What's not talking to what? What keeps getting typed in twice?"></textarea>
+        </label>
+        <!-- honeypot: real people never see or fill this -->
+        <label class="cform__hp" aria-hidden="true">
+          <span class="lab">Company</span>
+          <input type="text" name="company" tabindex="-1" autocomplete="off" />
+        </label>
+        <button type="submit" class="btn btn--primary cform__send">
+          Send it <span class="arr">↗</span>
+        </button>
+        <p class="cform__status" hidden></p>
+      </form>
+
+      <div class="reveal">
+        <span class="cform__alt">Forms not your thing? </span>
+        <a href={`mailto:${site.email}`} class="contact__mail">{site.email}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Lead intake — posts to the same Make.com webhook Rockit uses; the scenario
+  // routes on `source` so these land separately from HVAC trial leads.
+  const WEBHOOK = 'https://hook.us2.make.com/8krobh69g2sel56hv5eibni99tlkkipf';
+
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = form?.querySelector('.cform__status') as HTMLElement | null;
+  const send = form?.querySelector('.cform__send') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!send || !status) return;
+
+    const fd = new FormData(form);
+    if ((fd.get('company') as string)?.trim()) return; // honeypot — silently drop bots
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const original = send.innerHTML;
+    send.disabled = true;
+    send.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: (fd.get('name') as string).trim(),
+          email: (fd.get('email') as string).trim(),
+          interest: fd.get('interest'),
+          message: (fd.get('message') as string).trim(),
+          source: 'ryantmoore.dev',
+          form_source: 'contact',
+          submitted_at: new Date().toISOString(),
+        }),
+      });
+      if (!res.ok) throw new Error('webhook failed');
+
+      form.reset();
+      send.textContent = 'Got it — talk soon';
+      status.textContent = 'Thanks — I read every one of these myself and will get back to you within a business day.';
+      status.classList.add('cform__status--ok');
+      status.hidden = false;
+    } catch {
+      send.disabled = false;
+      send.innerHTML = original;
+      status.textContent = 'Something went wrong sending that — email me directly instead.';
+      status.classList.remove('cform__status--ok');
+      status.hidden = false;
+    }
+  });
+
+  // "Book an audit" preselects the audit option so the lead arrives labelled.
+  document.querySelectorAll('[data-prefill-audit]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const select = form?.querySelector('select[name="interest"]') as HTMLSelectElement | null;
+      if (select) select.value = 'The systems audit';
+    });
+  });
+</script>

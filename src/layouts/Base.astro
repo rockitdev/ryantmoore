@@ -1,0 +1,104 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${site.name} — ${site.role}`,
+  description = 'Ryan Moore is a software engineer with 20+ years of experience. I build websites and web apps, get business systems talking to each other, and automate everyday work. Available for contract projects.',
+} = Astro.props;
+
+// per-page canonical/OG URL; the share image is a capture of the hero (public/og.png)
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = new URL('/og.png', site.url).href;
+
+const year = '2026';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={ogImage} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..900&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav__in">
+      <a href="/" class="brand" aria-label={`${site.name} — home`}>
+        <span class="brand__mark">RM</span>
+        <span class="brand__name nav__hideable">{site.name}</span>
+      </a>
+      <nav class="nav__links">
+        <a href="/#work" class="nav__link nav__hideable">Work</a>
+        <a href="/#services" class="nav__link nav__hideable">Services</a>
+        <a href="/#background" class="nav__link nav__hideable">Background</a>
+        <a href="/#audit" class="nav__link nav__hideable">Audit</a>
+        <a href="/#contact" class="nav__cta">Get in touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <span class="footer__meta">© {year} {site.name} · {site.location} · Est. {site.since}</span>
+      <div class="footer__links">
+        <a href={`mailto:${site.email}`}>Email</a>
+        <a href={site.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/#work">Work</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    // Nav is transparent over the dark hero, then turns solid once scrolled past it.
+    const nav = document.querySelector('.nav');
+    const hero = document.querySelector('.hero');
+    if (nav && hero) {
+      const sync = () => nav.classList.toggle('nav--ghost', window.scrollY < hero.offsetHeight - 72);
+      sync();
+      window.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync);
+    }
+  </script>
+</body>
+</html>

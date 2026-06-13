@@ -1,0 +1,20 @@
+services:
+  # Hot-reload dev server — docker compose -f docker-compose.dev.yml up -d
+  # Source is bind-mounted, so edits show up live (Vite HMR); no restart needed.
+  # Restart only when package.json changes (re-runs npm install on boot).
+  dev:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      # Bind loopback + LAN explicitly — NOT 0.0.0.0, which would also grab the
+      # Tailscale IP and break `tailscale serve` TLS on this port.
+      - "127.0.0.1:4322:4321" # host port is this site's port — see /home/moore/CLAUDE.md registry
+      - "192.168.1.38:4322:4321" # LAN access (this machine's DHCP address)
+    command: sh -c "npm install && npm run dev -- --host"
+    restart: unless-stopped
+
+volumes:
+  node_modules:
