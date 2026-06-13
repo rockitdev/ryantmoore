@@ -401,7 +401,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .section { padding: clamp(3rem, 5.5vw, 5rem) 0; border-top: 1px solid var(--line); position: relative; }
 .section--raise { background: linear-gradient(180deg, var(--ink-2), var(--ink)); }
 .section__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: clamp(1.75rem, 3vw, 2.75rem); }
-.section__title { font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 760; letter-spacing: -0.035em; margin-top: 0.75rem; max-width: 22ch; }
+.section__title { font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 760; letter-spacing: -0.035em; margin-top: 0.75rem; max-width: 22ch; text-wrap: balance; }
 .section__title em { font-style: normal; color: var(--accent); }
 .section__lede { margin-top: 0.9rem; max-width: 52ch; color: var(--paper-dim); font-size: 1.05rem; line-height: 1.6; }
 
