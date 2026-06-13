@@ -70,13 +70,6 @@ export const audit = {
 
 export const projects = [
   {
-    name: 'A training plan that tracks itself',
-    kind: 'Web app',
-    status: 'Private beta',
-    desc: 'A strength-training app that builds your program, then tracks every workout and set so you always know what to lift next. It installs on your phone and keeps working even with no signal at the gym.',
-    foot: 'React · TypeScript · Symfony · MySQL',
-  },
-  {
     name: 'One language for travel data',
     kind: 'Connecting systems',
     desc: 'Dozens of travel companies each spoke their own digital "language." I built a translator so they could all work through one simple, shared connection.',
