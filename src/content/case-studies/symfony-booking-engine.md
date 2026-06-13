@@ -1,15 +1,15 @@
 ---
 title: A booking engine travelers actually finish
 client: Travel & transport client
-summary: I built a Symfony booking engine for a travel & transport client — the whole path from searching a trip to a paid booking, fast and correct enough that travelers finished it. It won Gold at the HSMAI Adrian Awards.
+summary: I built a Symfony booking engine for a travel & transport client — the whole path from searching a trip to a paid booking, fast and correct enough that travelers finished it.
 year: '2016 — 2017'
 role: Senior Developer
 stack: ['PHP / Symfony', 'MySQL', 'REST', 'Payments']
 tags: ['Booking', 'Web apps', 'Symfony']
 metrics:
-  - { value: 'Gold', label: 'HSMAI Adrian Award' }
   - { value: 'Live', label: 'real-time fares & availability' }
   - { value: 'End-to-end', label: 'search, book, and pay in one flow' }
+  - { value: 'Correct', label: 'holds spots, takes payment, never double-sells' }
 order: 3
 ---
 
@@ -27,4 +27,4 @@ I built a Symfony booking engine for a travel & transport client — the full pa
 
 ## The result
 
-The booking engine launched and went on to win **Gold at the HSMAI Adrian Awards** — the travel industry's benchmark for digital work that actually performs. Behind the award was the part that matters to the business: a booking flow travelers finished, and a system the team could trust with real money.
+The booking engine launched and did the part that matters to the business: a booking flow travelers actually finished, and a system the team could trust with real money — holding spots, taking payment, and never double-selling a seat.

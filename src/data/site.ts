@@ -30,7 +30,7 @@ export const services = [
   },
   {
     title: 'A website you can run yourself',
-    body: 'A site you update yourself — change a price, post an update, swap a photo — without calling a developer every time. I have built this for teams running award-winning sites, and for owners who just want to stop waiting on someone else.',
+    body: 'A site you update yourself — change a price, post an update, swap a photo — without calling a developer every time. I have built this for teams running large, busy sites, and for owners who just want to stop waiting on someone else.',
   },
   {
     title: 'Automation & AI',
@@ -106,7 +106,7 @@ export const background = [
   { period: '2005 — present', role: 'Founder, Rockit Development', link: 'https://www.rockitdevelopment.com', detail: 'My own company. I take on consulting work and build products. Right now my focus is automation for heating and cooling service businesses.' },
   { period: '2022 — present', role: 'Staff Engineer', detail: 'I lead the team building a platform that ties hotel and travel software together. I take on the hardest connection work and help other developers grow.' },
   { period: '2018 — 2022', role: 'Senior Integration Engineer', detail: 'I built the core system that links many travel services and lets them share information through one common connection.' },
-  { period: '2015 — 2018', role: 'Senior Developer / Team Lead', detail: 'I led the design and the team on award-winning booking sites, and set the standards the whole team built by.' },
+  { period: '2015 — 2018', role: 'Senior Developer / Team Lead', detail: 'I led the design and the team on large booking sites, and set the standards the whole team built by.' },
   { period: '2007 — 2015', role: 'Senior Systems Analyst', detail: 'Technical lead at a provincial health authority. I built websites, clinical software, and the data links between large hospital systems.' },
 ];
 

@@ -1,15 +1,15 @@
 ---
-title: An award-winning booking site
+title: A luxury hotel site with live availability
 client: Travel & hospitality client
-summary: I led the build of a luxury hotel booking site and wrote the modules that pulled live, up-to-the-minute room availability straight onto the page. It went on to win a Webby.
+summary: I led the build of a luxury hotel booking site and wrote the modules that pulled live, up-to-the-minute room availability straight onto the page.
 year: '2015 — 2018'
 role: Senior Developer · Team Lead
 stack: ['Drupal', 'PHP', 'SOAP / REST', 'MySQL']
 tags: ['Websites', 'Booking', 'Team Lead']
 metrics:
-  - { value: 'Webby', label: 'a top global web award' }
   - { value: 'Live', label: 'real-time availability on the page' }
   - { value: 'Lead', label: 'led the build, wrote the booking modules' }
+  - { value: 'Handoff', label: 'standards the team built on after launch' }
 order: 2
 ---
 
@@ -27,4 +27,4 @@ I led the development of the booking site on Drupal and wrote the integrated boo
 
 ## The result
 
-The site launched and went on to win a **Webby Award** — the awards widely called "the Oscars of the internet." Just as important, it left behind a codebase and a way of working the team could carry straight into the next client build.
+The site launched with brand content and live booking data each in their own lane — the marketing team could move fast without ever breaking the numbers. Just as important, it left behind a codebase and a way of working the team could carry straight into the next client build.
