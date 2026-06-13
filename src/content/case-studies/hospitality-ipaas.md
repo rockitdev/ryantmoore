@@ -17,13 +17,13 @@ order: 1
 
 ## The problem
 
-The travel business runs on a tangle of booking tools. Each one is built by a different company, and each works a little differently. Any product that sits on top of them all has to deal with that mess — so its own customers never have to.
+The travel business runs on a tangle of booking tools. Each one is built by a different company. Each one works a little differently. Any product that sits on top has to deal with that mess, so its own customers never have to.
 
-When I joined, every connection was built from scratch, one company at a time. The same work got copied again and again. Adding a new partner took weeks, and every quirk leaked into the rest of the app.
+When I joined, every connection was built from scratch, one company at a time. The same work got copied again and again. Adding a new partner took weeks. Every quirk leaked into the rest of the app.
 
 ## What I built
 
-I led the design of a system with one firm rule: **the app never talks to an outside company directly.** Everything passes through a layer in the middle that translates each company's version into one shared format.
+I led the design of a system with one firm rule. The app never talks to an outside company directly. Everything passes through a layer in the middle. It turns each company's version into one shared format.
 
 - **One translator per company** — each connection is kept on its own, so one company's quirks never spill into the rest.
 - **One shared connection** — everything downstream sees the same simple, steady format, no matter what sits behind it.
@@ -31,4 +31,4 @@ I led the design of a system with one firm rule: **the app never talks to an out
 
 ## The result
 
-Adding a new partner went from a weeks-long slog to writing one small translator against a format we already knew. The platform has run live since 2018 and now connects dozens of companies through that single connection.
+Adding a new partner went from a weeks-long slog to one small translator, written against a format we already knew. The platform has run live since 2018. It now connects dozens of companies through that single connection.

@@ -22,7 +22,7 @@ export const outcomes = [
 export const services = [
   {
     title: 'Websites & web apps',
-    body: 'Fast, reliable sites and apps — the kind people use every day without a second thought. I build them to load quickly, hold up under heavy use, and stay easy to change later.',
+    body: 'Fast, reliable sites and apps. The kind people use every day without a second thought. I build them to load fast, hold up under heavy use, and stay easy to change later.',
   },
   {
     title: 'Getting your tools to talk',
@@ -30,7 +30,7 @@ export const services = [
   },
   {
     title: 'A website you can run yourself',
-    body: 'A site you update yourself — change a price, post an update, swap a photo — without calling a developer every time. I have built this for teams running large, busy sites, and for owners who just want to stop waiting on someone else.',
+    body: 'A site you update yourself. Change a price, post an update, swap a photo. No calling a developer every time. I have built this for teams running large, busy sites. And for owners who just want to stop waiting on someone else.',
   },
   {
     title: 'Automation & AI',
@@ -50,7 +50,7 @@ export const audit = {
   steps: [
     {
       title: 'We talk for an hour',
-      body: 'You walk me through how the business actually runs: the tools, the spreadsheets, the things someone retypes every day, the jobs that fall through the cracks.',
+      body: 'You walk me through how the business really runs. The tools, the spreadsheets, the stuff someone retypes every day, the jobs that slip through the cracks.',
     },
     {
       title: 'I map your systems',
@@ -72,7 +72,7 @@ export const projects = [
   {
     name: 'One language for travel data',
     kind: 'Connecting systems',
-    desc: 'Dozens of travel companies each spoke their own digital "language." I built a translator so they could all work through one simple, shared connection.',
+    desc: 'Dozens of travel companies each spoke their own digital "language." I built a translator. Now they all work through one simple, shared connection.',
     foot: 'Symfony · SOAP · REST',
   },
   {
@@ -90,17 +90,17 @@ export const projects = [
   {
     name: 'The engine behind the platform',
     kind: 'Platform',
-    desc: 'The core system behind a large booking platform. It keeps every client\'s data separate and safe, and keeps everything in sync behind the scenes.',
+    desc: 'The core system behind a large booking platform. It keeps every client\'s data separate and safe. And it keeps everything in sync behind the scenes.',
     foot: 'Symfony · MySQL',
   },
 ];
 
 export const background = [
   { period: '2005 — present', role: 'Founder, Rockit Development', link: 'https://www.rockitdevelopment.com', detail: 'My own company. I take on consulting work and build products. Right now my focus is automation for heating and cooling service businesses.' },
-  { period: '2022 — present', role: 'Staff Engineer', detail: 'I lead the team building a platform that ties hotel and travel software together. I take on the hardest connection work and help other developers grow.' },
-  { period: '2018 — 2022', role: 'Senior Integration Engineer', detail: 'I built the core system that links many travel services and lets them share information through one common connection.' },
+  { period: '2022 — present', role: 'Staff Engineer', detail: 'I lead the team building a platform that ties hotel and travel software together. I take on the hardest connection work. And I help other developers grow.' },
+  { period: '2018 — 2022', role: 'Senior Integration Engineer', detail: 'I built the core system that links many travel services. It lets them share data through one common connection.' },
   { period: '2015 — 2018', role: 'Senior Developer / Team Lead', detail: 'I led the design and the team on large booking sites, and set the standards the whole team built by.' },
-  { period: '2007 — 2015', role: 'Senior Systems Analyst', detail: 'Technical lead at a provincial health authority. I built websites, clinical software, and the data links between large hospital systems.' },
+  { period: '2007 — 2015', role: 'Senior Systems Analyst', detail: 'Tech lead at a health authority for the province. I built websites and medical software. I built the data links between big hospital systems.' },
 ];
 
 // Technology section renders as monochrome logos (keyed into TECH_GLYPHS in tech-glyphs.ts).
