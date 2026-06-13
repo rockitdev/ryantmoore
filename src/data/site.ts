@@ -22,7 +22,7 @@ export const outcomes = [
 export const services = [
   {
     title: 'Websites & web apps',
-    body: 'Fast, reliable sites and apps. The kind people use every day without a second thought. I build them to load fast, hold up under heavy use, and stay easy to change later.',
+    body: 'Fast is a feature. The sites I build score 100 on Google\'s PageSpeed test, on phones and desktops alike. They load in under a second, hold up under heavy use, and stay easy to change later.',
   },
   {
     title: 'Getting your tools to talk',
@@ -69,6 +69,12 @@ export const audit = {
 };
 
 export const projects = [
+  {
+    name: 'A website that scores a perfect 100',
+    kind: 'Performance',
+    desc: 'rockitdevelopment.com gets a perfect 100 on Google\'s PageSpeed test. All four scores, on phone and desktop. The site loads in under a second.',
+    foot: 'Astro · Cloudflare · 100 / 100 / 100 / 100',
+  },
   {
     name: 'One language for travel data',
     kind: 'Connecting systems',
