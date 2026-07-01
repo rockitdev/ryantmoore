@@ -2,7 +2,6 @@
   "name": "ryantmoore",
   "compatibility_date": "2026-07-01",
   "assets": {
-    "directory": "./dist",
-    "not_found_handling": "404-page"
+    "directory": "./dist"
   }
 }
