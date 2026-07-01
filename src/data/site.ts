@@ -8,7 +8,7 @@ export const site = {
   since: '2005',
   email: 'ryan@rockitdevelopment.com',
   linkedin: 'https://www.linkedin.com/in/ryantmoore4',
-  url: 'https://ryantmoore.ca',
+  url: 'https://www.ryantmoore.ca',
 };
 
 // What the connected system in the hero diagram actually gets a business owner —
