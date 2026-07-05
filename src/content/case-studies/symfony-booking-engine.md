@@ -7,9 +7,9 @@ role: Senior Developer
 stack: ['PHP / Symfony', 'MySQL', 'REST', 'Payments']
 tags: ['Booking', 'Web apps', 'Symfony']
 metrics:
-  - { value: 'Live', label: 'real-time fares & availability' }
+  - { value: 'Real-time', label: 'fares & seats, straight from the booking system' }
   - { value: 'End-to-end', label: 'search, book, and pay in one flow' }
-  - { value: 'Correct', label: 'holds spots, takes payment, never double-sells' }
+  - { value: '0', label: 'double-sold seats — holds and payment done right' }
 order: 3
 ---
 
@@ -28,3 +28,7 @@ I built a Symfony booking engine for a travel and transport client. It runs the 
 ## The result
 
 The booking engine launched and did what matters to the business. Travelers actually finished the booking flow. The team could trust it with real money. It held spots, took payment, and never sold a seat twice.
+
+## Under the hood
+
+For the technically minded: a Symfony application talking REST to the operator's reservation and payment systems. The unglamorous work was the state machine in the middle — holding inventory through checkout, releasing it on abandonment, confirming only after payment settled — so a seat could never be sold twice, even with many travelers booking at once.

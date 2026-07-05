@@ -7,9 +7,9 @@ role: Senior Developer · Team Lead
 stack: ['Drupal', 'PHP', 'SOAP / REST', 'MySQL']
 tags: ['Websites', 'Booking', 'Team Lead']
 metrics:
-  - { value: 'Live', label: 'real-time availability on the page' }
-  - { value: 'Lead', label: 'led the build, wrote the booking modules' }
-  - { value: 'Handoff', label: 'standards the team built on after launch' }
+  - { value: 'Real-time', label: 'rates & openings, straight from the booking system' }
+  - { value: 'Custom', label: 'Drupal booking modules, written from scratch' }
+  - { value: '3 years', label: 'leading the build and the team' }
 order: 2
 ---
 
@@ -28,3 +28,7 @@ I led the build of the site on Drupal. I wrote the booking modules myself. They 
 ## The result
 
 The site launched and held up. Brand content and live data each stayed in their own lane. Just as important, it left behind clean code and a way of working the team carried into the next build.
+
+## Under the hood
+
+For the technically minded: the site was Drupal, with the booking layer written as custom modules that spoke SOAP and REST to the hotel's central reservation system. Rates and availability were fetched live at request time rather than synced on a schedule, with caching tuned so pages stayed fast without the numbers going stale. Content stayed in Drupal's hands; booking data never did — that boundary is what let the marketing team move fast while the numbers stayed exact.

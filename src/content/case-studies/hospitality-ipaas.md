@@ -32,3 +32,7 @@ I led the design of a system with one firm rule. The app never talks to an outsi
 ## The result
 
 Adding a new partner went from a weeks-long slog to one small translator, written against a format we already knew. The platform has run live since 2018. It now connects dozens of companies through that single connection.
+
+## Under the hood
+
+For the technically minded: this is a Symfony platform that speaks SOAP and REST to each partner and normalizes everything to an OpenTravel-based internal format. Every partner lives in its own adapter behind one shared contract, so adding a company means writing one translator — never touching the core. Client workloads are isolated and processed independently, which is why one busy partner can't slow down another. Runs in Docker, backed by MySQL, live since 2018.

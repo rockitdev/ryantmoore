@@ -7,6 +7,10 @@ export default defineConfig({
   site: 'https://www.ryantmoore.ca',
   output: 'static',
   integrations: [sitemap()],
+  build: {
+    // ~9 KiB gzipped total — cheaper inlined than as a render-blocking request
+    inlineStylesheets: 'always',
+  },
   vite: {
     plugins: [tailwindcss()],
     server: {

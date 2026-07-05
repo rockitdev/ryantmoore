@@ -11,6 +11,17 @@ export const site = {
   url: 'https://www.ryantmoore.ca',
 };
 
+// Default <head> copy. Skill + place keywords live here on purpose — "Symfony",
+// "Drupal", and "Halifax" appear nowhere else in machine-readable text, and this
+// is what search engines and link previews read first.
+export const seo = {
+  title: 'Ryan Moore — Software Engineer · Symfony, Drupal & Integrations',
+  description:
+    'Software engineer in Halifax, NS. Twenty years building websites, web apps, and the connections between business systems — Symfony, Drupal, and practical automation. Open for contract projects.',
+  ogImageAlt:
+    'Diagram of business tools — HubSpot, Stripe, Drupal, Twilio and more — all connected through one core system',
+};
+
 // What the connected system in the hero diagram actually gets a business owner —
 // plain-language outcomes, rendered as the caption row under the graphic.
 export const outcomes = [
@@ -72,7 +83,7 @@ export const projects = [
   {
     name: 'A website that scores a perfect 100',
     kind: 'Performance',
-    desc: 'rockitdevelopment.com gets a perfect 100 on Google\'s PageSpeed test. All four scores, on phone and desktop. The site loads in under a second.',
+    desc: 'My own company\'s site (rockitdevelopment.com) gets a perfect 100 on Google\'s PageSpeed test. All four scores, on phone and desktop. It loads in under a second.',
     foot: 'Astro · Cloudflare · 100 / 100 / 100 / 100',
   },
   {
