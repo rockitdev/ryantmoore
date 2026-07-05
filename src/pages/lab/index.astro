@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const dateFmt = new Intl.DateTimeFormat('en-CA', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<Base
+  title="The Lab — Ryan Moore"
+  description="Where I build in the open. Experiments, teardowns, and working notes on connecting business systems, automation, and putting AI to practical use."
+>
+  <header class="cs-hero">
+    <div class="grid-bg"></div>
+    <div class="wrap wrap--narrow">
+      <div class="kicker">The Lab</div>
+      <h1 class="cs-title serif">The Lab</h1>
+      <p class="cs-summary">
+        Where I build in the open. Experiments, teardowns, and working notes on
+        connecting business systems, automation, and putting AI to practical use.
+        Rough edges included.
+      </p>
+    </div>
+  </header>
+
+  <div class="wrap wrap--narrow">
+    <div class="post-list">
+      {posts.map((p) => (
+        <a class="post-row" href={`/lab/${p.id}/`}>
+          <time class="post-row__date" datetime={p.data.date.toISOString().slice(0, 10)}>
+            {dateFmt.format(p.data.date)}
+          </time>
+          <div>
+            <h2 class="post-row__title serif">{p.data.title}</h2>
+            <p class="post-row__desc">{p.data.description}</p>
+          </div>
+          <span class="work__go" aria-hidden="true">→</span>
+        </a>
+      ))}
+      {posts.length === 0 && <p class="post-list__empty">Nothing in the Lab yet. First experiment coming soon.</p>}
+    </div>
+  </div>
+</Base>

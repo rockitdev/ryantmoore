@@ -1,0 +1,70 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog'))
+    .filter((p) => !p.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+  return posts.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: posts[(i + 1) % posts.length] },
+  }));
+}
+
+const { entry, next } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const dateFmt = new Intl.DateTimeFormat('en-CA', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+
+const postSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: d.title,
+  description: d.description,
+  datePublished: d.date.toISOString().slice(0, 10),
+  author: { '@type': 'Person', name: site.name, url: site.url },
+  url: new URL(`/lab/${entry.id}/`, site.url).href,
+};
+---
+
+<Base title={`${d.title} — Ryan Moore`} description={d.description}>
+  <article>
+    <header class="cs-hero">
+      <div class="grid-bg"></div>
+      <div class="wrap wrap--narrow">
+        <a href="/lab/" class="cs-back">← The Lab</a>
+        <div class="post-meta">
+          <time datetime={d.date.toISOString().slice(0, 10)}>{dateFmt.format(d.date)}</time>
+          {d.tags.length > 0 && <span class="post-meta__tags">{d.tags.join(' · ')}</span>}
+        </div>
+        <h1 class="cs-title serif">{d.title}</h1>
+        <p class="cs-summary">{d.description}</p>
+      </div>
+    </header>
+
+    <div class="wrap wrap--narrow">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+
+    {next && next.id !== entry.id && (
+      <a class="cs-next" href={`/lab/${next.id}/`}>
+        <div class="wrap wrap--narrow">
+          <div class="cs-next__lab">Next post →</div>
+          <div class="cs-next__title serif">{next.data.title}</div>
+        </div>
+      </a>
+    )}
+  </article>
+  <script type="application/ld+json" set:html={JSON.stringify(postSchema)} />
+</Base>

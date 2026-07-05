@@ -24,4 +24,20 @@ const caseStudies = defineCollection({
   }),
 });
 
-export const collections = { caseStudies };
+/**
+ * Blog posts, one markdown file each in src/content/blog/. Frontmatter drives
+ * the /lab/ listing and the article header; the body is the post. Listing is
+ * newest-first by `date`. `draft: true` hides a post everywhere.
+ */
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { caseStudies, blog };
