@@ -135,7 +135,7 @@ const orbits = [ORBIT.inner, ORBIT.outer];
   class="schematic"
   viewBox="0 64 1200 488"
   role="img"
-  aria-label="A solar-system diagram: a glowing core represents the client's website and app at the centre, with the services Ryan integrates — HubSpot, Stripe, Drupal, Twilio, Shopify, WordPress, QuickBooks, Google Calendar, Workiz and Jobber — orbiting it and exchanging data along glowing cables."
+  aria-label="A solar-system diagram: a glowing core represents the client's website and app at the centre, with the services Ryan integrates (HubSpot, Stripe, Drupal, Twilio, Shopify, WordPress, QuickBooks, Google Calendar, Workiz and Jobber) orbiting it and exchanging data along glowing cables."
 >
   <defs>
     <linearGradient id="flowGrad" x1="0" y1="0" x2="0" y2="1">
@@ -248,19 +248,21 @@ const orbits = [ORBIT.inner, ORBIT.outer];
 </svg>
 
 <script>
-  import { gsap } from 'gsap';
-  import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
-  import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
-
-  gsap.registerPlugin(MotionPathPlugin, DrawSVGPlugin);
-
   // Motion is gated behind prefers-reduced-motion: no-preference, and skipped on phones
   // where the graphic is hidden (CSS, <=640px) so we don't animate an invisible element.
   // When we bail, cables stay drawn, packets stay hidden (CSS opacity: 0), nodes stay still.
+  // GSAP is dynamically imported inside the gate so those visitors never download it.
   const animate =
     window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
     !window.matchMedia('(max-width: 640px)').matches;
   if (animate) {
+    const [{ gsap }, { MotionPathPlugin }, { DrawSVGPlugin }] = await Promise.all([
+      import('gsap'),
+      import('gsap/MotionPathPlugin'),
+      import('gsap/DrawSVGPlugin'),
+    ]);
+    gsap.registerPlugin(MotionPathPlugin, DrawSVGPlugin);
+
     const currents = gsap.utils.toArray<SVGPathElement>('.wire-flow--cable');
     const packets = gsap.utils.toArray<SVGCircleElement>('.packet');
     const nodes = gsap.utils.toArray<SVGGElement>('.sch-node-g');

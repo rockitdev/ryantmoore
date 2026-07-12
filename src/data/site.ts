@@ -11,6 +11,17 @@ export const site = {
   url: 'https://www.ryantmoore.ca',
 };
 
+// Default <head> copy. Skill + place keywords live here on purpose — "Symfony",
+// "Drupal", and "Halifax" appear nowhere else in machine-readable text, and this
+// is what search engines and link previews read first.
+export const seo = {
+  title: 'Ryan Moore, Software Engineer · Symfony, Drupal & Integrations',
+  description:
+    'Software engineer in Halifax, NS. Twenty years building websites, web apps, and the links between business systems. Symfony, Drupal, and practical automation. Open for contract projects.',
+  ogImageAlt:
+    'Diagram of business tools (HubSpot, Stripe, Drupal, Twilio and more) all connected through one core system',
+};
+
 // What the connected system in the hero diagram actually gets a business owner —
 // plain-language outcomes, rendered as the caption row under the graphic.
 export const outcomes = [
@@ -26,15 +37,15 @@ export const services = [
   },
   {
     title: 'Getting your tools to talk',
-    body: 'Two tools that were never built to work together? That is my favourite kind of job. I get your tools talking so information moves between them on its own — no copy-and-paste, no missed steps.',
+    body: 'Two tools that were never built to work together? That is my favourite kind of job. I get your tools talking, so information moves between them on its own. No copy-and-paste, no missed steps.',
   },
   {
     title: 'A website you can run yourself',
-    body: 'A site you update yourself. Change a price, post an update, swap a photo. No calling a developer every time. I have built this for teams running large, busy sites. And for owners who just want to stop waiting on someone else.',
+    body: 'A site you update yourself. Change a price, post an update, swap a photo. No calling a developer every time. I have built this for teams running large, busy sites, and for owners who just want to stop waiting on someone else.',
   },
   {
     title: 'Automation & AI',
-    body: 'Most businesses repeat the same small tasks all day. I build tools that handle that work for you — sorting, scheduling, replying, following up — so your team can spend its time where it counts. This is where I put AI to practical, down-to-earth use.',
+    body: 'Most businesses repeat the same small tasks all day. I build tools that handle that work for you: sorting, scheduling, replying, following up. That frees your team to spend its time where it counts. This is where I put AI to practical, down-to-earth use.',
   },
 ];
 
@@ -54,7 +65,7 @@ export const audit = {
     },
     {
       title: 'I map your systems',
-      body: 'I trace how information really moves between your tools — and where it stops. Every gap is a place you lose hours, leads, or money.',
+      body: 'I trace how information really moves between your tools, and where it stops. Every gap is a place you lose hours, leads, or money.',
     },
     {
       title: 'You get the fix list',
@@ -62,7 +73,7 @@ export const audit = {
     },
   ],
   perks: [
-    'Fixed price — no estimate dance',
+    'Fixed price, no estimate dance',
     'The report is yours, use it with any developer',
     'Fee credited to your first project if we go ahead',
   ],
@@ -72,7 +83,7 @@ export const projects = [
   {
     name: 'A website that scores a perfect 100',
     kind: 'Performance',
-    desc: 'rockitdevelopment.com gets a perfect 100 on Google\'s PageSpeed test. All four scores, on phone and desktop. The site loads in under a second.',
+    desc: 'My own company\'s site (rockitdevelopment.com) gets a perfect 100 on Google\'s PageSpeed test. All four scores, on phone and desktop. It loads in under a second.',
     foot: 'Astro · Cloudflare · 100 / 100 / 100 / 100',
   },
   {
@@ -96,17 +107,17 @@ export const projects = [
   {
     name: 'The engine behind the platform',
     kind: 'Platform',
-    desc: 'The core system behind a large booking platform. It keeps every client\'s data separate and safe. And it keeps everything in sync behind the scenes.',
+    desc: 'The core system behind a large booking platform. It keeps every client\'s data separate and safe, and it keeps everything in sync behind the scenes.',
     foot: 'Symfony · MySQL',
   },
 ];
 
 export const background = [
-  { period: '2005 — present', role: 'Founder, Rockit Development', link: 'https://www.rockitdevelopment.com', detail: 'My own company. I take on consulting work and build products. Right now my focus is automation for heating and cooling service businesses.' },
-  { period: '2022 — present', role: 'Staff Engineer', detail: 'I lead the team building a platform that ties hotel and travel software together. I take on the hardest connection work. And I help other developers grow.' },
-  { period: '2018 — 2022', role: 'Senior Integration Engineer', detail: 'I built the core system that links many travel services. It lets them share data through one common connection.' },
-  { period: '2015 — 2018', role: 'Senior Developer / Team Lead', detail: 'I led the design and the team on large booking sites, and set the standards the whole team built by.' },
-  { period: '2007 — 2015', role: 'Senior Systems Analyst', detail: 'Tech lead at a health authority for the province. I built websites and medical software. I built the data links between big hospital systems.' },
+  { period: '2005 to present', role: 'Founder, Rockit Development', link: 'https://www.rockitdevelopment.com', detail: 'My own company. I take on consulting work and build products. Right now my focus is automation for heating and cooling service businesses.' },
+  { period: '2022 to present', role: 'Staff Engineer', detail: 'I lead the team building a platform that ties hotel and travel software together. I take on the hardest connection work, and I help other developers grow.' },
+  { period: '2018 to 2022', role: 'Senior Integration Engineer', detail: 'I built the core system that links many travel services. It lets them share data through one common connection.' },
+  { period: '2015 to 2018', role: 'Senior Developer / Team Lead', detail: 'I led the design and the team on large booking sites, and set the standards the whole team built by.' },
+  { period: '2007 to 2015', role: 'Senior Systems Analyst', detail: 'Tech lead at a health authority for the province. I built websites and medical software, and I built the data links between big hospital systems.' },
 ];
 
 // Technology section renders as monochrome logos (keyed into TECH_GLYPHS in tech-glyphs.ts).
@@ -134,7 +145,7 @@ export const stack: { name: string; logo: string }[] = [
 // IMPORTANT: replace the placeholder text and fill in name/detail BEFORE flipping draft.
 export const testimonials = [
   {
-    quote: 'Ryan automated our phones and we stopped losing jobs to missed calls. It just runs — we never think about it.',
+    quote: 'Ryan automated our phones and we stopped losing jobs to missed calls. It just runs, and we never think about it.',
     name: 'Client name',
     detail: 'Owner, business name',
     draft: true, // ← set to false once this is a real quote you have permission to use

@@ -18,7 +18,7 @@ const quotes = testimonials.filter((t) => !t.draft);
   <section class="hero">
     <div class="wrap hero__head">
       <span class="kicker reveal" style="margin-bottom: 1.5rem; display: inline-flex;">
-        Software engineer — {site.location}
+        Software engineer, {site.location}
       </span>
 
       <h1 class="hero__title serif reveal">
@@ -39,7 +39,7 @@ const quotes = testimonials.filter((t) => !t.draft);
       </div>
 
       <div class="hero__status reveal">
-        <span class="led"></span> Available now — taking on a few new projects
+        <span class="led"></span> Available now, taking on a few new projects
       </div>
     </div>
 
@@ -58,7 +58,7 @@ const quotes = testimonials.filter((t) => !t.draft);
     <div class="wrap">
       <div class="section__head reveal">
         <div>
-          <span class="kicker">01 — Selected work</span>
+          <span class="kicker">01 · Selected work</span>
           <h2 class="section__title serif">A closer look at <em>a few projects</em>.</h2>
         </div>
       </div>
@@ -90,7 +90,7 @@ const quotes = testimonials.filter((t) => !t.draft);
     <div class="wrap">
       <div class="section__head reveal">
         <div>
-          <span class="kicker">02 — More work</span>
+          <span class="kicker">02 · More work</span>
           <h2 class="section__title serif">Smaller jobs, <em>same care</em>.</h2>
         </div>
       </div>
@@ -121,7 +121,7 @@ const quotes = testimonials.filter((t) => !t.draft);
     <div class="wrap">
       <div class="section__head reveal">
         <div>
-          <span class="kicker">03 — What I do</span>
+          <span class="kicker">03 · What I do</span>
           <h2 class="section__title serif">Four kinds of <em>problem I solve</em>.</h2>
         </div>
       </div>
@@ -143,7 +143,7 @@ const quotes = testimonials.filter((t) => !t.draft);
     <div class="wrap">
       <div class="section__head reveal">
         <div>
-          <span class="kicker">04 — Experience</span>
+          <span class="kicker">04 · Experience</span>
           <h2 class="section__title serif">Twenty years, <em>one focus</em>.</h2>
           <p class="section__lede">
             The same engineer travel platforms and hospitals trust with their hardest
@@ -192,7 +192,7 @@ const quotes = testimonials.filter((t) => !t.draft);
     <div class="wrap">
       <div class="section__head reveal">
         <div>
-          <span class="kicker">05 — Where to start</span>
+          <span class="kicker">05 · Where to start</span>
           <h2 class="section__title serif">Not sure what you need? Start with a <em>systems audit</em>.</h2>
           <p class="section__lede">
             One week, one flat fee. I map how information moves through your business.
@@ -236,7 +236,7 @@ const quotes = testimonials.filter((t) => !t.draft);
             <div class="quote__mark" aria-hidden="true">&#8220;</div>
             <blockquote class="quote__text serif">{t.quote}</blockquote>
             <figcaption class="quote__cite">
-              {t.name}{t.detail && <span class="quote__detail"> — {t.detail}</span>}
+              {t.name}{t.detail && <span class="quote__detail">, {t.detail}</span>}
             </figcaption>
           </figure>
         ))}
@@ -247,7 +247,7 @@ const quotes = testimonials.filter((t) => !t.draft);
   <!-- CONTACT -->
   <section class="section contact" id="contact">
     <div class="wrap wrap--narrow">
-      <span class="kicker kicker--plain reveal" style="justify-content: center; display: flex;">06 — Contact</span>
+      <span class="kicker kicker--plain reveal" style="justify-content: center; display: flex;">06 · Contact</span>
       <h2 class="contact__title serif reveal" style="margin-top: 1.25rem;">
         Available for the <em>right</em> project.
       </h2>
@@ -271,9 +271,9 @@ const quotes = testimonials.filter((t) => !t.draft);
         <label>
           <span class="lab">What do you need?</span>
           <select name="interest">
-            <option>A project — website, integration, or automation</option>
+            <option>A project: website, integration, or automation</option>
             <option>The systems audit</option>
-            <option>Not sure yet — let's talk</option>
+            <option>Not sure yet, let's talk</option>
           </select>
         </label>
         <label>
@@ -341,14 +341,14 @@ const quotes = testimonials.filter((t) => !t.draft);
       if (!res.ok) throw new Error('webhook failed');
 
       form.reset();
-      send.textContent = 'Got it — talk soon';
+      send.textContent = 'Got it, talk soon';
       status.textContent = 'Thanks. I read every one of these myself. I will get back to you within a business day.';
       status.classList.add('cform__status--ok');
       status.hidden = false;
     } catch {
       send.disabled = false;
       send.innerHTML = original;
-      status.textContent = 'Something went wrong sending that — email me directly instead.';
+      status.textContent = 'Something went wrong sending that. Email me directly instead.';
       status.classList.remove('cform__status--ok');
       status.hidden = false;
     }

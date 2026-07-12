@@ -1,22 +1,32 @@
 ---
 import '../styles/global.css';
-import { site } from '../data/site';
+import { site, seo } from '../data/site';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const {
-  title = `${site.name} — ${site.role}`,
-  description = 'Ryan Moore is a software engineer with 20+ years behind him. I build websites and web apps. I get business systems talking to each other. I automate everyday work. Open for contract projects.',
-} = Astro.props;
+const { title = seo.title, description = seo.description } = Astro.props;
 
 // per-page canonical/OG URL; the share image is a capture of the hero (public/og.png)
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL('/og.png', site.url).href;
 
-const year = '2026';
+// Person schema: feeds knowledge panels / local search for "who is Ryan Moore".
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: site.role,
+  url: site.url,
+  email: `mailto:${site.email}`,
+  address: { '@type': 'PostalAddress', addressLocality: 'Halifax', addressRegion: 'NS', addressCountry: 'CA' },
+  sameAs: [site.linkedin],
+  knowsAbout: ['PHP', 'Symfony', 'Drupal', 'System integration', 'Web development', 'Automation', 'TypeScript'],
+};
+
+const year = new Date().getFullYear(); // build-time: site is fully static
 ---
 
 <!DOCTYPE html>
@@ -25,9 +35,14 @@ const year = '2026';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#f7f5f0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <meta name="author" content={site.name} />
   <link rel="canonical" href={canonical} />
+  <meta property="og:site_name" content={site.name} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
@@ -35,19 +50,19 @@ const year = '2026';
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={seo.ogImageAlt} />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..900&display=swap"
-    rel="stylesheet"
-  />
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
   <header class="nav">
     <div class="wrap nav__in">
-      <a href="/" class="brand" aria-label={`${site.name} — home`}>
+      <a href="/" class="brand" aria-label={`${site.name} home`}>
         <span class="brand__mark">RM</span>
         <span class="brand__name nav__hideable">{site.name}</span>
       </a>
@@ -55,13 +70,14 @@ const year = '2026';
         <a href="/#work" class="nav__link nav__hideable">Work</a>
         <a href="/#services" class="nav__link nav__hideable">Services</a>
         <a href="/#background" class="nav__link nav__hideable">Background</a>
+        <a href="/lab/" class="nav__link nav__hideable">Lab</a>
         <a href="/#audit" class="nav__link nav__hideable">Audit</a>
         <a href="/#contact" class="nav__cta">Get in touch</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <slot />
   </main>
 
@@ -72,6 +88,7 @@ const year = '2026';
         <a href={`mailto:${site.email}`}>Email</a>
         <a href={site.linkedin} target="_blank" rel="noopener">LinkedIn</a>
         <a href="/#work">Work</a>
+        <a href="/lab/">Lab</a>
       </div>
     </div>
   </footer>
@@ -94,10 +111,17 @@ const year = '2026';
     const nav = document.querySelector('.nav');
     const hero = document.querySelector('.hero');
     if (nav && hero) {
-      const sync = () => nav.classList.toggle('nav--ghost', window.scrollY < hero.offsetHeight - 72);
-      sync();
+      // hero height is only re-measured on resize — reading offsetHeight inside the
+      // scroll handler forces a reflow on every scroll event
+      let threshold = 0;
+      const sync = () => nav.classList.toggle('nav--ghost', window.scrollY < threshold);
+      const measure = () => {
+        threshold = hero.offsetHeight - 72;
+        sync();
+      };
+      measure();
       window.addEventListener('scroll', sync, { passive: true });
-      window.addEventListener('resize', sync);
+      window.addEventListener('resize', measure);
     }
   </script>
 </body>

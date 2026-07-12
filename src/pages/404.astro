@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base title={`Page not found · ${site.name}`} description="That page doesn't exist. Head back to the homepage.">
+  <section class="section notfound">
+    <div class="wrap wrap--narrow">
+      <span class="kicker">404 · no signal</span>
+      <h1 class="section__title serif notfound__title">This page isn't <em>connected</em>.</h1>
+      <p class="notfound__body">
+        Whatever used to live here has been unplugged. The homepage has everything worth seeing.
+      </p>
+      <a href="/" class="btn btn--primary">Back to the homepage <span class="arr" aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+</Base>
