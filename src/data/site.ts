@@ -32,20 +32,16 @@ export const outcomes = [
 
 export const services = [
   {
-    title: 'Websites & web apps',
-    body: 'Fast is a feature. The sites I build score 100 on Google\'s PageSpeed test, on phones and desktops alike. They load in under a second, hold up under heavy use, and stay easy to change later.',
+    title: 'AI agents & orchestration',
+    body: 'I build AI agents that run the work your business repeats all day: sorting, scheduling, replying, following up. Not one-off scripts, but systems that coordinate several steps and tools on their own, and know when to hand a decision back to a person. This is where I put AI to practical, down-to-earth use.',
   },
   {
     title: 'Getting your tools to talk',
-    body: 'Two tools that were never built to work together? That is my favourite kind of job. I get your tools talking, so information moves between them on its own. No copy-and-paste, no missed steps.',
+    body: 'Agents are only as good as what they can reach. Two tools that were never built to work together? That is my favourite kind of job. I get your tools talking, so information moves between them on its own. No copy-and-paste, no missed steps.',
   },
   {
-    title: 'A website you can run yourself',
-    body: 'A site you update yourself. Change a price, post an update, swap a photo. No calling a developer every time. I have built this for teams running large, busy sites, and for owners who just want to stop waiting on someone else.',
-  },
-  {
-    title: 'Automation & AI',
-    body: 'Most businesses repeat the same small tasks all day. I build tools that handle that work for you: sorting, scheduling, replying, following up. That frees your team to spend its time where it counts. This is where I put AI to practical, down-to-earth use.',
+    title: 'Websites & web apps you run yourself',
+    body: 'Fast is a feature. The sites I build score 100 on Google\'s PageSpeed test, on phones and desktops alike, and load in under a second. And you can update them yourself: change a price, post an update, swap a photo, with no developer on call.',
   },
 ];
 

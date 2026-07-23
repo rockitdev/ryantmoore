@@ -4,6 +4,7 @@ client: Rockit / self-built · Production
 summary: A team of AI agents that runs real business work every day. One agent leads. Others research, build, and review. I run it from my phone, and I built the whole thing.
 year: '2026 to present'
 role: Founder · Architect
+order: 1
 stack: ['Claude (Opus / Sonnet / Haiku)', 'Codex', 'Python', 'tmux', 'Discord', 'SQLite', 'systemd']
 tags: ['AI agents', 'Orchestration', 'Automation', 'Architecture']
 metrics:
