@@ -51,7 +51,7 @@ export const services = [
 // can't scope a project yet — the report naturally proposes the bigger work.
 // Edit price/steps here; the section markup just renders this.
 export const audit = {
-  price: '$1,500',
+  price: '$997',
   priceNote: 'CAD, flat fee',
   duration: 'one week',
   steps: [
