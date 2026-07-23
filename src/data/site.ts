@@ -87,12 +87,6 @@ export const projects = [
     foot: 'Astro · Cloudflare · 100 / 100 / 100 / 100',
   },
   {
-    name: 'One language for travel data',
-    kind: 'Connecting systems',
-    desc: 'Dozens of travel companies each spoke their own digital "language." I built a translator. Now they all work through one simple, shared connection.',
-    foot: 'Symfony · SOAP · REST',
-  },
-  {
     name: 'A phone line that runs itself',
     kind: 'Automation',
     desc: 'A phone and text system that books jobs, sends reminders, and follows up with customers. It runs on its own, with no one tied to the phones.',
@@ -103,12 +97,6 @@ export const projects = [
     kind: 'AI',
     desc: 'Messy emails and PDFs go in; clean, organized records come out. AI reads each document and pulls out just what matters, so no one has to retype it.',
     foot: 'Claude API · Node.js',
-  },
-  {
-    name: 'The engine behind the platform',
-    kind: 'Platform',
-    desc: 'The core system behind a large booking platform. It keeps every client\'s data separate and safe, and it keeps everything in sync behind the scenes.',
-    foot: 'Symfony · MySQL',
   },
 ];
 
