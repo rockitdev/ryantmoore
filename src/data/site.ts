@@ -98,6 +98,12 @@ export const projects = [
     desc: 'Messy emails and PDFs go in; clean, organized records come out. AI reads each document and pulls out just what matters, so no one has to retype it.',
     foot: 'Claude API · Node.js',
   },
+  {
+    name: 'A tool to catch frailty early',
+    kind: 'Healthcare',
+    desc: 'A web tool for family doctors to screen older patients for frailty and build a care plan on the spot. Built with Nova Scotia Health and Dalhousie, and piloted with family doctors in community clinics.',
+    foot: 'ASP.NET MVC',
+  },
 ];
 
 export const background = [
