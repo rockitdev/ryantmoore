@@ -189,6 +189,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .nav__link {
   font-family: var(--label); font-size: 0.78rem; letter-spacing: 0.04em;
   color: var(--paper-dim); transition: color 0.2s;
+  display: inline-flex; align-items: center; min-height: 44px;
 }
 .nav__link:hover { color: var(--paper); }
 .nav__cta {
@@ -667,7 +668,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .footer__in { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
 .footer__meta { font-family: var(--label); font-size: 0.74rem; color: var(--paper-faint); letter-spacing: 0.04em; }
 .footer__links { display: flex; gap: 1.5rem; }
-.footer__links a { font-family: var(--label); font-size: 0.76rem; color: var(--paper-dim); transition: color 0.2s; }
+.footer__links a { font-family: var(--label); font-size: 0.76rem; color: var(--paper-dim); transition: color 0.2s; display: inline-flex; align-items: center; min-height: 44px; }
 .footer__links a:hover { color: var(--accent); }
 
 /* ============================================================
