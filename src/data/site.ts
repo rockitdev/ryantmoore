@@ -17,7 +17,7 @@ export const site = {
 export const seo = {
   title: 'Ryan Moore, Software Engineer · Symfony, Drupal & Integrations',
   description:
-    'Software engineer in Halifax, NS. Twenty years building websites, web apps, and the links between business systems. Symfony, Drupal, and practical automation. Open for contract projects.',
+    'Software engineer in Halifax, NS. Twenty-five years building websites, web apps, and the links between business systems. Symfony, Drupal, and practical automation. Open for contract projects.',
   ogImageAlt:
     'Diagram of business tools (HubSpot, Stripe, Drupal, Twilio and more) all connected through one core system',
 };
