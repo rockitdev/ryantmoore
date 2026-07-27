@@ -1,42 +1,28 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Ryan Moore — design system
-   "Field notes from a systems engineer"
-   Warm near-black · editorial serif · mono technical labels
+   Ryan Moore — design system (Swiss / International Typographic Style)
+   One typeface · weight contrast · modular scale · flush-left grid
+   See design.md at repo root for the full type system spec.
    ============================================================ */
 
-/* Hanken Grotesk, self-hosted: one variable file (wght 300–900, latin subset, no
-   italics — every <em> on the site is restyled upright). Keeps fonts.googleapis.com
-   and fonts.gstatic.com out of the critical path entirely; preloaded in Base.astro. */
+/* Archivo Variable — self-hosted, wght 100–900, latin subset.
+   One file covers every weight used on the site.
+   Preloaded in Base.astro to eliminate FOUT on the hero headline. */
 @font-face {
-  font-family: 'Hanken Grotesk';
+  font-family: 'Archivo';
   font-style: normal;
-  font-weight: 300 900;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/hanken-grotesk-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* Space Grotesk, self-hosted: display-only variable font (wght 300–700, latin subset).
-   Used exclusively on .hero__title — scoped to the hero so it never bleeds into
-   body text or other sections. Distinctive and engineered-feeling at display sizes,
-   normal width (not extended/stretched), reads as precise and purposeful.
-   Preloaded in Base.astro alongside Hanken Grotesk. */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
+  src: url('/fonts/archivo-variable-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 :root {
   /* ---- surfaces (light, soft off-white) ---- */
-  --ink:        #f7f5f0;   /* page base */
-  --ink-2:      #fffefb;   /* raised cards / white panels */
-  --ink-3:      #efece4;   /* hover / alt fill */
+  --ink:        #f7f5f0;
+  --ink-2:      #fffefb;
+  --ink-3:      #efece4;
   --ink-4:      #e6e1d5;
   --line:       rgba(20, 20, 15, 0.10);
   --line-2:     rgba(20, 20, 15, 0.16);
@@ -49,15 +35,30 @@
   /* ---- accent — ONE signal colour, everywhere ---- */
   --accent:     #1f4fff;
   --accent-2:   #1a3fd6;
-  --accent-hi:  #5a86ff;   /* lighter tint of the same blue, for legibility on the dark hero */
+  --accent-hi:  #5a86ff;
   --accent-ink: #ffffff;
   --glow:       color-mix(in srgb, var(--accent) 36%, transparent);
 
-  /* ---- fonts — one family, weight contrast does the work ---- */
-  --display: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
-  --sans: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
-  /* label voice: same family, set in caps with tracking (no monospace) */
-  --label: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* ---- typeface — ONE family, Archivo variable ---- */
+  --display: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans:    "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+  --label:   "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ---- modular type scale (1.25 ratio, anchored at 1rem / 16px) ----
+     Steps follow: size = 1rem × 1.25^n
+     Use these tokens everywhere — never hardcode a font-size.
+  */
+  --text-2xs:  0.64rem;    /* 10.24px — diagram sublabels         */
+  --text-xs:   0.8rem;     /* 12.8px  — kickers, tags, meta       */
+  --text-sm:   0.875rem;   /* 14px    — secondary body            */
+  --text-base: 1rem;       /* 16px    — primary body              */
+  --text-lg:   1.25rem;    /* 20px    — large body, card headings */
+  --text-xl:   1.5625rem;  /* 25px    — h3 / sub-headings         */
+  --text-2xl:  1.953rem;   /* 31.25px — section h2                */
+  --text-3xl:  2.441rem;   /* 39px    — large section headings    */
+  --text-4xl:  3.052rem;   /* 48.8px  — h1 / hero headline base   */
+  --text-5xl:  3.815rem;   /* 61px    — hero headline mid         */
+  --text-6xl:  4.768rem;   /* 76.3px  — hero headline max         */
 
   /* ---- rhythm ---- */
   --wrap: 1180px;
@@ -120,7 +121,7 @@ img, svg { display: block; max-width: 100%; }
   background: var(--accent);
   color: var(--accent-ink);
   font-family: var(--label);
-  font-size: 0.8rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.05em;
   border-radius: 8px;
@@ -132,9 +133,10 @@ img, svg { display: block; max-width: 100%; }
 .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gut); }
 .wrap--narrow { max-width: 820px; }
 
+/* Swiss eyebrow label: UPPERCASE + generous tracking (the ITS micro-label trope) */
 .kicker {
   font-family: var(--label);
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -157,9 +159,9 @@ img, svg { display: block; max-width: 100%; }
 
 .serif { font-family: var(--display); font-optical-sizing: auto; }
 .accent { color: var(--accent); }
-.italic { font-style: italic; }
 
-h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; letter-spacing: -0.025em; }
+/* headings — Archivo, tight leading, slightly negative tracking */
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; letter-spacing: -0.025em; }
 
 /* ---------- blueprint grid backdrop ---------- */
 .grid-bg {
@@ -193,30 +195,27 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 }
 .brand { display: inline-flex; align-items: baseline; gap: 0.55rem; }
 .brand__mark {
-  font-family: var(--label); font-weight: 700; font-size: 0.8rem;
+  font-family: var(--label); font-weight: 700; font-size: var(--text-xs);
   letter-spacing: 0.05em;
   border: 1px solid var(--line-2); border-radius: 5px;
   padding: 0.2rem 0.4rem; color: var(--accent);
 }
-.brand__name { font-family: var(--display); font-weight: 500; font-size: 1.05rem; letter-spacing: -0.01em; }
+.brand__name { font-family: var(--display); font-weight: 500; font-size: var(--text-base); letter-spacing: -0.01em; }
 .nav__links { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.25rem); }
 .nav__link {
-  font-family: var(--label); font-size: 0.78rem; letter-spacing: 0.04em;
+  font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.04em;
   color: var(--paper-dim); transition: color 0.2s;
   display: inline-flex; align-items: center; min-height: 44px;
 }
 .nav__link:hover { color: var(--paper); }
 .nav__cta {
-  font-family: var(--label); font-size: 0.76rem; letter-spacing: 0.03em;
+  font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.03em;
   color: var(--paper); border: 1px solid var(--line-2);
   padding: 0.5rem 0.9rem; border-radius: 7px; transition: all 0.2s;
 }
 .nav__cta:hover { border-color: var(--accent); color: var(--accent); }
 
-/* transparent variant while sitting over the dark hero (toggled by JS) */
-/* Over the dark hero the nav reads as airy white-on-dark, but it must still separate
-   from content scrolling beneath it. A dark glass scrim keyed to the hero's top colour
-   (#0a0e1c) is near-invisible at rest yet dims + frosts text that slides under on scroll. */
+/* transparent variant while sitting over the dark hero */
 .nav--ghost {
   background: linear-gradient(180deg, rgba(10, 14, 28, 0.66) 0%, rgba(10, 14, 28, 0.5) 55%, rgba(10, 14, 28, 0) 100%);
   backdrop-filter: blur(7px);
@@ -235,7 +234,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
    ============================================================ */
 .btn {
   display: inline-flex; align-items: center; gap: 0.55rem;
-  font-family: var(--label); font-size: 0.84rem; font-weight: 500;
+  font-family: var(--label); font-size: var(--text-sm); font-weight: 500;
   letter-spacing: 0.02em; padding: 0.85rem 1.4rem; border-radius: 9px;
   transition: transform 0.18s ease, box-shadow 0.25s ease, background 0.2s;
   will-change: transform;
@@ -248,12 +247,11 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .btn:hover .arr { transform: translate(3px, -3px); }
 
 /* ============================================================
-   HERO
+   HERO — dark full-bleed band; Swiss: flush-left headline block
    ============================================================ */
-/* full-bleed dark Splunk-style band; the big radial graphic is the centrepiece */
 .hero {
   position: relative;
-  margin-top: -68px; /* slide up under the sticky (transparent) nav */
+  margin-top: -68px;
   padding: calc(68px + clamp(2.5rem, 5vw, 4.5rem)) 0 clamp(4rem, 8vw, 7rem);
   color: #fff;
   overflow: hidden;
@@ -274,28 +272,27 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 }
 .hero > * { position: relative; z-index: 1; }
 .hero .kicker { color: rgba(255, 255, 255, 0.75); }
-.hero__head { text-align: center; max-width: 900px; margin: 0 auto clamp(2.25rem, 4.5vw, 3.5rem); }
-/* the solar system breaks out of .wrap to span the viewport — a sun needs room to
-   radiate. left:50% + negative half-width margin centres it on the viewport without
-   touching transform (which .reveal animates). */
+/* Swiss: flush-left text block, not centred */
+.hero__head {
+  text-align: left;
+  max-width: 72ch;
+  margin: 0 0 clamp(2.25rem, 4.5vw, 3.5rem);
+}
 .hero__viz {
   position: relative;
   width: min(1440px, 94vw);
   left: 50%;
   margin-left: calc(min(1440px, 94vw) / -2);
 }
-/* the caption row under the diagram: what the connected system gets you, in plain
-   words. each outcome carries the same port-node marker as the kickers — the circuit
-   language, lit. this is the comprehension layer for non-technical visitors. */
 .hero__outcomes {
   list-style: none;
-  display: flex; justify-content: center; align-items: center;
+  display: flex; justify-content: flex-start; align-items: center;
   flex-wrap: wrap; gap: 0.9rem 2.75rem;
-  margin: 1.25rem auto 0;
+  margin: 1.25rem 0 0;
 }
 .hero__outcome {
   display: inline-flex; align-items: center; gap: 0.6rem;
-  font-family: var(--label); font-size: 0.88rem; letter-spacing: 0.02em;
+  font-family: var(--label); font-size: var(--text-sm); letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.68);
 }
 .hero__outcome::before {
@@ -305,9 +302,6 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-hi) 18%, transparent);
 }
 
-/* the constellation loses its impact when squeezed onto a phone — drop it there
-   (the JS skips its animation too, see Schematic.astro) and let the copy carry the hero.
-   the outcomes row stays: it is copy, and the best sales line in the hero. */
 @media (max-width: 640px) {
   .hero__viz { display: none; }
   .hero__head { margin-bottom: 0; }
@@ -315,7 +309,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 }
 .schematic { position: relative; z-index: 1; width: 100%; height: auto; display: block; overflow: visible; }
 
-/* nodes — solid raised navy panels that lift clearly off the hero bg (second tier) */
+/* schematic node styling */
 .sch-node {
   fill: #2c3c6b;
   stroke: rgba(155, 185, 255, 0.72);
@@ -326,9 +320,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .core { fill: url(#coreGrad); stroke: rgba(255, 255, 255, 0.5); stroke-width: 2; filter: url(#coreGlow); }
 .core-ring { fill: none; stroke: rgba(255, 255, 255, 0.3); stroke-width: 1.5; stroke-dasharray: 3 7; }
 .core-label { font-size: 27px; font-weight: 700; letter-spacing: -0.01em; }
-/* font-size is set per-node on the element for depth; do not hardcode it here */
 .sch-label { font-family: var(--label); font-weight: 600; fill: #ffffff; letter-spacing: 0.005em; }
-/* brand glyphs — single light tint, keeps the one-accent discipline */
 .sch-glyph { fill: #e6ecff; }
 .sch-label--strong { fill: #fff; font-weight: 600; font-size: 18px; }
 .sch-label--sub { font-size: 12px; fill: rgba(255, 255, 255, 0.66); letter-spacing: 0.06em; }
@@ -336,7 +328,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .sch-label--onfill.sch-label--sub { fill: rgba(255, 255, 255, 0.82); }
 .in-dot { fill: #5a86ff; filter: url(#dotGlow); }
 
-/* wires — faint base + neon gradient current */
+/* wires */
 .wire-base { fill: none; stroke-linecap: round; stroke: rgba(150, 175, 255, 0.1); }
 .wire-base--in { stroke-width: 3.5; }
 .wire-base--main { stroke-width: 16; stroke: rgba(90, 130, 255, 0.2); }
@@ -375,14 +367,12 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .spoke { fill: none; stroke: rgba(150, 175, 255, 0.14); stroke-width: 2; }
 .ring-label { font-family: var(--label); font-size: 12.5px; letter-spacing: 0.18em; font-weight: 600; fill: #aeb9e0; }
 
-/* vertical IPaaS-style flow: sources -> integration gear -> website/app devices */
+/* vertical IPaaS-style flow */
 .wire-base--cable { stroke-width: 2.5; }
-/* current lines are solid (no marching dash) — GSAP DrawSVG draws them in, packets carry the flow */
 .wire-flow--cable { stroke-width: 3; opacity: 0.55; stroke-dasharray: none; animation: none; }
 .packet { fill: #eaf1ff; opacity: 0; filter: url(#dotGlow); }
 .gear-body { fill: url(#coreGrad); stroke: rgba(255, 255, 255, 0.32); stroke-width: 1.5; }
 .gear-hub { fill: #0a0e1f; opacity: 0.55; }
-/* the star: varied rays + a soft bloom that pulses slowly (gated under reduced-motion) */
 .sun-ray { fill: #8aa8ff; }
 .sun-bloom {
   transform-box: fill-box; transform-origin: center;
@@ -392,13 +382,10 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   0%, 100% { opacity: 0.75; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.05); }
 }
-/* planet anchors — live nodes pinned to the orbit lines */
 .orbit-anchor { fill: #d4e3ff; filter: url(#dotGlow); }
 .gear-core { fill: #d4e3ff; filter: url(#dotGlow); }
-/* the sun's corona — two soft layers behind the gear-core */
 .sun-halo { fill: #3d6fff; filter: blur(28px); opacity: 0.34; animation: breathe 3.6s ease-in-out infinite; }
 .sun-halo--wide { fill: #2f5bff; filter: blur(60px); opacity: 0.22; animation: none; }
-/* the website/app screen sitting in the sun's hub = the product you run on */
 .core-screen__frame { fill: rgba(8, 12, 28, 0.5); stroke: #d4e3ff; stroke-width: 2; }
 .core-screen__bar { stroke: rgba(212, 227, 255, 0.85); stroke-width: 2; }
 .core-screen__dot { fill: #d4e3ff; }
@@ -409,15 +396,12 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .device-dot { fill: rgba(255, 255, 255, 0.55); }
 .out-label { font-family: var(--label); font-size: 13px; letter-spacing: 0.14em; fill: #aeb9e0; opacity: 0.6; }
 
-/* ---- Direction B: round-trip return arcs (July 2026) ---- */
-/* Return arc base wire: faint structural trace of the opposite-bow path.
-   Always visible as a ghost — so the lasso/eye shape reads even at rest. */
+/* ---- Return arcs (round-trip agentic loop) ---- */
 .wire-base--return {
   stroke-width: 1.5;
   stroke: rgba(127, 160, 255, 0.07);
   stroke-dasharray: 3 8;
 }
-/* Return arc flow: brighter when a return packet is travelling; GSAP controls opacity. */
 .wire-flow--return {
   fill: none;
   stroke-linecap: round;
@@ -428,16 +412,11 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   animation: none;
   filter: url(#retGlow);
 }
-/* Return (observation) packet: smaller and cooler-tinted than outbound packets.
-   Smaller radius and lower peak opacity reads as "data arriving back," not a second
-   outbound — the two packets together show the round-trip without visual parity. */
 .packet--return {
   fill: #7fa0ff;
   opacity: 0;
   filter: url(#dotGlow);
 }
-/* Circular-arrow mark on the core: shows where observations land.
-   Small, understated — present as structure, not a decorative ring. */
 .core-loop-mark { pointer-events: none; }
 .core-loop-arc {
   fill: none;
@@ -448,7 +427,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 
 .hero__status {
   display: inline-flex; align-items: center; gap: 0.6rem;
-  font-family: var(--label); font-size: 0.74rem; letter-spacing: 0.04em;
+  font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.6); margin-top: 1.75rem;
 }
 .hero__status .led {
@@ -462,20 +441,18 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-hi) 0%, transparent); }
 }
 
+/* Swiss hero headline: Archivo 800, tight leading, flush-left
+   The annotation underline on <em> reads as a precise technical mark — kept. */
 .hero__title {
-  font-size: clamp(2.7rem, 6.8vw, 5.8rem);
-  /* Space Grotesk at 700 weight: engineered geometric grotesque, reads "precise engineer"
-     not "SaaS template". Normal width — no extended/stretched letterforms. Scoped to the
-     hero headline only; Hanken Grotesk everywhere else. */
-  font-family: 'Space Grotesk', var(--display);
-  font-weight: 700; line-height: 0.96; letter-spacing: -0.04em;
-  max-width: 17ch; margin: 0 auto; color: #fff;
+  font-size: clamp(var(--text-4xl), 6.8vw, var(--text-6xl));
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  max-width: 17ch;
+  margin: 0;
+  color: #fff;
 }
-/* 'AI agent systems' — the central term this business delivers.
-   Treatment: pure white (demands attention on dark hero; not a coloured keyword),
-   with a precise brand-blue ruled underline that reads as a technical annotation,
-   not a generic "startup gradient" treatment.
-   text-decoration-skip-ink: none keeps the rule clean and continuous — deliberate. */
 .hero__title em {
   font-style: normal;
   color: #fff;
@@ -493,10 +470,13 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   box-shadow: inset 0 -0.12em 0 var(--accent-hi);
 }
 .hero__lede {
-  font-size: clamp(1.08rem, 1.7vw, 1.32rem); color: rgba(255, 255, 255, 0.74);
-  max-width: 56ch; margin: 1.75rem auto 2.5rem; line-height: 1.7;
+  font-size: clamp(var(--text-base), 1.7vw, var(--text-lg));
+  color: rgba(255, 255, 255, 0.74);
+  max-width: 56ch;
+  margin: 1.75rem 0 2.5rem;
+  line-height: 1.7;
 }
-.hero__cta { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; justify-content: center; }
+.hero__cta { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; justify-content: flex-start; }
 .hero .btn--ghost { border-color: rgba(255, 255, 255, 0.26); color: rgba(255, 255, 255, 0.86); }
 .hero .btn--ghost:hover { border-color: #fff; color: #fff; background: rgba(255, 255, 255, 0.08); }
 
@@ -506,17 +486,17 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .section { padding: clamp(3rem, 5.5vw, 5rem) 0; border-top: 1px solid var(--line); position: relative; }
 .section--raise { background: linear-gradient(180deg, var(--ink-2), var(--ink)); }
 .section__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: clamp(1.75rem, 3vw, 2.75rem); }
-.section__title { font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 760; letter-spacing: -0.035em; margin-top: 0.75rem; max-width: 22ch; text-wrap: balance; }
+.section__title { font-size: clamp(var(--text-2xl), 3.4vw, var(--text-3xl)); font-weight: 700; letter-spacing: -0.035em; margin-top: 0.75rem; max-width: 22ch; text-wrap: balance; }
 .section__title em { font-style: normal; color: var(--accent); }
-.section__lede { margin-top: 0.9rem; max-width: 52ch; color: var(--paper-dim); font-size: 1.05rem; line-height: 1.6; }
+.section__lede { margin-top: 0.9rem; max-width: 52ch; color: var(--paper-dim); font-size: var(--text-base); line-height: 1.6; }
 
-/* testimonials — a centred pull-quote moment (unnumbered by design) */
+/* testimonials — pull-quote; centered by design (controlled use) */
 .quotes { text-align: center; }
 .quote { max-width: 46ch; margin: 0 auto; }
 .quote + .quote { margin-top: clamp(2.5rem, 5vw, 4rem); }
-.quote__mark { font-family: var(--display); font-weight: 800; font-size: 4rem; line-height: 0.4; color: var(--accent); height: 2.2rem; }
-.quote__text { font-size: clamp(1.45rem, 3vw, 2.05rem); font-weight: 620; letter-spacing: -0.02em; line-height: 1.3; }
-.quote__cite { font-family: var(--label); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--paper-faint); margin-top: 1.5rem; }
+.quote__mark { font-family: var(--display); font-weight: 800; font-size: var(--text-5xl); line-height: 0.4; color: var(--accent); height: 2.2rem; }
+.quote__text { font-size: clamp(var(--text-xl), 3vw, var(--text-2xl)); font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; }
+.quote__cite { font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--paper-faint); margin-top: 1.5rem; }
 .quote__detail { color: var(--paper-dim); }
 
 /* ============================================================
@@ -538,7 +518,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   opacity: 0.07;
 }
 .work__row:hover::before { transform: scaleX(1); }
-.work__idx { font-family: var(--label); font-size: 0.8rem; color: var(--paper-faint); position: relative; padding-left: 1.1rem; }
+.work__idx { font-family: var(--label); font-size: var(--text-xs); color: var(--paper-faint); position: relative; padding-left: 1.1rem; }
 .work__idx::before {
   content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
   width: 7px; height: 7px; border-radius: 50%;
@@ -549,13 +529,13 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent);
 }
 .work__main { min-width: 0; }
-.work__client { font-family: var(--label); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
-.work__name { font-size: clamp(1.45rem, 2.7vw, 2.1rem); font-weight: 740; letter-spacing: -0.03em; line-height: 1.08; transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1); }
+.work__client { font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+.work__name { font-size: clamp(var(--text-xl), 2.7vw, var(--text-2xl)); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1); }
 .work__row:hover .work__name { transform: translateX(0.6rem); }
-.work__sum { color: var(--paper-dim); font-size: 0.98rem; margin-top: 0.6rem; max-width: 60ch; }
+.work__sum { color: var(--paper-dim); font-size: var(--text-base); margin-top: 0.6rem; max-width: 60ch; }
 .work__tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.9rem; }
 .work__meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem; text-align: right; }
-.work__year { font-family: var(--label); font-size: 0.78rem; color: var(--paper-faint); }
+.work__year { font-family: var(--label); font-size: var(--text-xs); color: var(--paper-faint); }
 .work__go {
   width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 1px solid var(--line-2);
   display: grid; place-items: center; color: var(--paper-dim); transition: all 0.3s;
@@ -567,7 +547,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 }
 
 .tag {
-  font-family: var(--label); font-size: 0.68rem; letter-spacing: 0.03em;
+  font-family: var(--label); font-size: var(--text-2xs); letter-spacing: 0.03em;
   color: var(--paper-dim); border: 1px solid var(--line);
   padding: 0.22rem 0.55rem; border-radius: 5px; background: var(--ink-2);
 }
@@ -582,16 +562,15 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 }
 .proj:hover { background: var(--ink-3); }
 .proj__top { display: flex; align-items: center; justify-content: space-between; }
-.proj__ix { font-family: var(--label); font-size: 0.72rem; color: var(--paper-faint); }
-.proj__kind { font-family: var(--label); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
-.proj__name { font-family: var(--display); font-size: 1.3rem; font-weight: 640; letter-spacing: -0.02em; line-height: 1.15; }
-.proj__desc { font-size: 0.9rem; color: var(--paper-dim); line-height: 1.55; }
-.proj__foot { margin-top: auto; font-family: var(--label); font-size: 0.7rem; color: var(--paper-faint); letter-spacing: 0.04em; }
-/* optional status pill (e.g. private beta) — a live-dot + label, echoing the hero LED */
+.proj__ix { font-family: var(--label); font-size: var(--text-xs); color: var(--paper-faint); }
+.proj__kind { font-family: var(--label); font-size: var(--text-2xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.proj__name { font-family: var(--display); font-size: var(--text-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+.proj__desc { font-size: var(--text-sm); color: var(--paper-dim); line-height: 1.55; }
+.proj__foot { margin-top: auto; font-family: var(--label); font-size: var(--text-2xs); color: var(--paper-faint); letter-spacing: 0.04em; }
 .proj__tags { display: inline-flex; align-items: center; gap: 0.55rem; }
 .proj__status {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  font-family: var(--label); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+  font-family: var(--label); font-size: var(--text-2xs); letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--accent); border-radius: 999px; padding: 0.18rem 0.5rem;
   border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
   background: color-mix(in srgb, var(--accent) 9%, transparent);
@@ -614,9 +593,9 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 @media (max-width: 640px) { .svc-grid { grid-template-columns: 1fr; } }
 .svc { background: var(--ink); padding: clamp(1.75rem, 3vw, 2.5rem); transition: background 0.25s; }
 .svc:hover { background: var(--ink-2); }
-.svc__no { font-family: var(--label); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.5rem; }
-.svc__title { font-family: var(--display); font-size: 1.35rem; font-weight: 640; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
-.svc__body { color: var(--paper-dim); font-size: 0.96rem; line-height: 1.65; }
+.svc__no { font-family: var(--label); font-size: var(--text-xs); color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+.svc__title { font-family: var(--display); font-size: var(--text-lg); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+.svc__body { color: var(--paper-dim); font-size: var(--text-base); line-height: 1.65; }
 
 /* ============================================================
    TIMELINE / BACKGROUND
@@ -628,36 +607,34 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   transition: background 0.25s;
 }
 .tl__row:hover { background: var(--ink-2); }
-.tl__period { font-family: var(--label); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.02em; padding-top: 0.3rem; }
-.tl__role { font-family: var(--display); font-size: 1.3rem; font-weight: 640; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+.tl__period { font-family: var(--label); font-size: var(--text-xs); color: var(--accent); letter-spacing: 0.02em; padding-top: 0.3rem; }
+.tl__role { font-family: var(--display); font-size: var(--text-lg); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
 .tl__role a { border-bottom: 1px solid var(--accent); padding-bottom: 0.1rem; transition: color 0.2s; }
 .tl__role a:hover { color: var(--accent); }
 .tl__role .arr { font-size: 0.8em; color: var(--accent); }
-.tl__detail { color: var(--paper-dim); font-size: 0.96rem; line-height: 1.6; max-width: 64ch; }
+.tl__detail { color: var(--paper-dim); font-size: var(--text-base); line-height: 1.6; max-width: 64ch; }
 @media (max-width: 640px) { .tl__row { grid-template-columns: 1fr; gap: 0.5rem; } }
 
 /* ============================================================
    AUDIT — fixed-price entry offer
    ============================================================ */
 .audit { display: grid; grid-template-columns: 1fr 340px; gap: clamp(1.5rem, 3vw, 2.5rem); align-items: start; }
-/* steps reuse the proj-grid treatment: hairline-separated white cells */
 .audit__steps {
   list-style: none; display: grid; gap: 1px;
   background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
 }
 .audit__step { background: var(--ink-2); padding: 1.75rem; }
-.audit__no { font-family: var(--label); font-size: 0.72rem; color: var(--accent); }
-.audit__title { font-family: var(--display); font-size: 1.25rem; font-weight: 640; letter-spacing: -0.02em; margin: 0.5rem 0 0.4rem; }
-.audit__body { color: var(--paper-dim); font-size: 0.96rem; line-height: 1.6; max-width: 58ch; }
-/* the offer card goes dark — an echo of the hero, so the price reads as the centrepiece */
+.audit__no { font-family: var(--label); font-size: var(--text-xs); color: var(--accent); }
+.audit__title { font-family: var(--display); font-size: var(--text-lg); font-weight: 700; letter-spacing: -0.02em; margin: 0.5rem 0 0.4rem; }
+.audit__body { color: var(--paper-dim); font-size: var(--text-base); line-height: 1.6; max-width: 58ch; }
 .audit__card {
   background: var(--paper); border-radius: 16px; padding: 2.1rem;
   display: flex; flex-direction: column; align-items: flex-start;
 }
-.audit__price { font-size: 2.7rem; font-weight: 760; letter-spacing: -0.03em; line-height: 1; color: #fff; }
-.audit__meta { font-family: var(--label); font-size: 0.74rem; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.55); margin-top: 0.65rem; }
+.audit__price { font-size: var(--text-4xl); font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: #fff; }
+.audit__meta { font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.55); margin-top: 0.65rem; }
 .audit__perks { list-style: none; margin: 1.5rem 0 1.9rem; display: grid; gap: 0.6rem; }
-.audit__perk { display: flex; gap: 0.6rem; font-size: 0.92rem; line-height: 1.5; color: rgba(255, 255, 255, 0.78); }
+.audit__perk { display: flex; gap: 0.6rem; font-size: var(--text-sm); line-height: 1.5; color: rgba(255, 255, 255, 0.78); }
 .audit__perk::before { content: '·'; color: var(--accent-hi); font-weight: 700; }
 @media (max-width: 860px) { .audit { grid-template-columns: 1fr; } }
 
@@ -675,11 +652,11 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .cform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 .cform label { display: grid; gap: 0.45rem; }
 .cform .lab {
-  font-family: var(--label); font-size: 0.7rem; letter-spacing: 0.1em;
+  font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--paper-faint);
 }
 .cform input, .cform select, .cform textarea {
-  font: inherit; font-size: 0.95rem; color: var(--paper); width: 100%;
+  font: inherit; font-size: var(--text-base); color: var(--paper); width: 100%;
   background: var(--ink-2); border: 1px solid var(--line-2); border-radius: 8px;
   padding: 0.7rem 0.85rem; transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -691,22 +668,18 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .cform textarea { min-height: 130px; resize: vertical; }
 .cform__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .cform__send { justify-self: center; margin-top: 0.4rem; }
-.cform__status { font-size: 0.92rem; line-height: 1.5; color: var(--paper-dim); text-align: center; }
+.cform__status { font-size: var(--text-sm); line-height: 1.5; color: var(--paper-dim); text-align: center; }
 .cform__status--ok { color: var(--accent-2); }
-.cform__alt { color: var(--paper-dim); font-size: 0.95rem; }
+.cform__alt { color: var(--paper-dim); font-size: var(--text-base); }
 @media (max-width: 560px) { .cform__row { grid-template-columns: 1fr; } }
 
 /* ============================================================
    STACK
    ============================================================ */
-/* technology logos: bare monochrome brand marks on an even grid. Each mark is normalised
-   to a shared optical size via its viewBox (see tech-glyphs.ts), so the row reads as one
-   deliberate set. Muted at rest, accent + lift on hover — the "complete the circuit"
-   language used elsewhere on the site. */
-.tech { margin-top: clamp(2.5rem, 5vw, 4rem); text-align: center; }
+.tech { margin-top: clamp(2.5rem, 5vw, 4rem); text-align: left; }
 .tech__kicker { display: block; margin-bottom: 1.75rem; }
 .stack {
-  list-style: none; margin: 0 auto; padding: 0;
+  list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(7, 1fr);
   gap: clamp(1.5rem, 3vw, 2.75rem);
   max-width: 52rem;
@@ -723,11 +696,11 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 /* ============================================================
    CONTACT
    ============================================================ */
-.contact { text-align: center; }
-.contact__title { font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 780; letter-spacing: -0.04em; line-height: 1; margin-bottom: 1.5rem; }
+.contact { text-align: left; }
+.contact__title { font-size: clamp(var(--text-3xl), 5vw, var(--text-4xl)); font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 1.5rem; }
 .contact__title em { font-style: normal; color: var(--accent); }
-.contact__lede { color: var(--paper-dim); font-size: 1.08rem; line-height: 1.7; max-width: 46ch; margin: 0 auto 2.75rem; }
-.contact__mail { font-family: var(--label); font-size: clamp(0.95rem, 2.5vw, 1.3rem); color: var(--paper); border-bottom: 1px solid var(--accent); padding-bottom: 0.25rem; transition: color 0.2s; }
+.contact__lede { color: var(--paper-dim); font-size: var(--text-base); line-height: 1.7; max-width: 46ch; margin: 0 0 2.75rem; }
+.contact__mail { font-family: var(--label); font-size: clamp(var(--text-base), 2.5vw, var(--text-lg)); color: var(--paper); border-bottom: 1px solid var(--accent); padding-bottom: 0.25rem; transition: color 0.2s; }
 .contact__mail:hover { color: var(--accent); }
 
 /* ============================================================
@@ -735,57 +708,57 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
    ============================================================ */
 .footer { border-top: 1px solid var(--line); padding: 3rem 0; }
 .footer__in { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
-.footer__meta { font-family: var(--label); font-size: 0.74rem; color: var(--paper-faint); letter-spacing: 0.04em; }
+.footer__meta { font-family: var(--label); font-size: var(--text-xs); color: var(--paper-faint); letter-spacing: 0.04em; }
 .footer__links { display: flex; gap: 1.5rem; }
-.footer__links a { font-family: var(--label); font-size: 0.76rem; color: var(--paper-dim); transition: color 0.2s; display: inline-flex; align-items: center; min-height: 44px; }
+.footer__links a { font-family: var(--label); font-size: var(--text-xs); color: var(--paper-dim); transition: color 0.2s; display: inline-flex; align-items: center; min-height: 44px; }
 .footer__links a:hover { color: var(--accent); }
 
 /* ============================================================
    CASE STUDY ARTICLE
    ============================================================ */
 .cs-hero { padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(2.5rem, 5vw, 4rem); position: relative; }
-.cs-back { font-family: var(--label); font-size: 0.76rem; color: var(--paper-dim); display: inline-flex; gap: 0.5rem; align-items: center; margin-bottom: 2.5rem; transition: color 0.2s; }
+.cs-back { font-family: var(--label); font-size: var(--text-xs); color: var(--paper-dim); display: inline-flex; gap: 0.5rem; align-items: center; margin-bottom: 2.5rem; transition: color 0.2s; }
 .cs-back:hover { color: var(--accent); }
-.cs-title { font-size: clamp(2.3rem, 6vw, 4.5rem); font-weight: 740; letter-spacing: -0.04em; line-height: 0.98; max-width: 18ch; margin-bottom: 1.5rem; }
+.cs-title { font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl)); font-weight: 800; letter-spacing: -0.04em; line-height: 0.98; max-width: 18ch; margin-bottom: 1.5rem; }
 .cs-title em { font-style: normal; color: var(--accent); }
-.cs-summary { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--paper-dim); max-width: 56ch; line-height: 1.6; }
+.cs-summary { font-size: clamp(var(--text-base), 2vw, var(--text-lg)); color: var(--paper-dim); max-width: 56ch; line-height: 1.6; }
 
 .cs-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 2rem 0; margin: 3rem 0; }
-.cs-meta dt { font-family: var(--label); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper-faint); margin-bottom: 0.5rem; }
-.cs-meta dd { font-size: 0.95rem; color: var(--paper); line-height: 1.5; }
+.cs-meta dt { font-family: var(--label); font-size: var(--text-2xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper-faint); margin-bottom: 0.5rem; }
+.cs-meta dd { font-size: var(--text-base); color: var(--paper); line-height: 1.5; }
 
 .cs-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 3rem 0; }
 .cs-metric { background: var(--ink-2); padding: 2rem 1.5rem; }
-.cs-metric__val { font-family: var(--display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 760; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
-.cs-metric__lab { font-family: var(--label); font-size: 0.74rem; color: var(--paper-dim); margin-top: 0.6rem; letter-spacing: 0.02em; }
+.cs-metric__val { font-family: var(--display); font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
+.cs-metric__lab { font-family: var(--label); font-size: var(--text-xs); color: var(--paper-dim); margin-top: 0.6rem; letter-spacing: 0.02em; }
 
-/* prose */
+/* prose — case study body copy */
 .prose { max-width: 720px; }
 .prose > * + * { margin-top: 1.4rem; }
-.prose h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-top: 3.5rem; letter-spacing: -0.025em; }
-.prose h3 { font-size: 1.3rem; font-weight: 640; margin-top: 2.5rem; font-family: var(--display); }
-.prose p { color: var(--paper-dim); font-size: 1.06rem; line-height: 1.75; }
+.prose h2 { font-size: clamp(var(--text-xl), 3vw, var(--text-2xl)); font-weight: 700; margin-top: 3.5rem; letter-spacing: -0.025em; }
+.prose h3 { font-size: var(--text-lg); font-weight: 700; margin-top: 2.5rem; font-family: var(--display); }
+.prose p { color: var(--paper-dim); font-size: var(--text-base); line-height: 1.75; }
 .prose a { color: var(--accent); border-bottom: 1px solid var(--line-2); }
 .prose a:hover { border-color: var(--accent); }
-.prose strong { color: var(--paper); font-weight: 600; }
+.prose strong { color: var(--paper); font-weight: 700; }
 .prose ul, .prose ol { padding-left: 1.3rem; color: var(--paper-dim); }
 .prose li { margin-top: 0.6rem; line-height: 1.7; }
 .prose li::marker { color: var(--accent); }
-.prose blockquote { border-left: 3px solid var(--accent); padding-left: 1.5rem; font-family: var(--display); font-weight: 600; font-size: 1.35rem; color: var(--paper); letter-spacing: -0.01em; }
+.prose blockquote { border-left: 3px solid var(--accent); padding-left: 1.5rem; font-family: var(--display); font-weight: 700; font-size: var(--text-lg); color: var(--paper); letter-spacing: -0.01em; }
 .prose code { font-family: var(--label); font-size: 0.88em; background: var(--ink-3); padding: 0.15em 0.4em; border-radius: 4px; color: var(--accent-2); }
 .prose pre { background: var(--ink-2); border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem; overflow-x: auto; }
 .prose pre code { background: none; padding: 0; color: var(--paper-dim); }
 .prose hr { border: none; border-top: 1px solid var(--line); margin: 3rem 0; }
 
 .cs-next { border-top: 1px solid var(--line); padding: clamp(3rem,6vw,5rem) 0; }
-.cs-next__lab { font-family: var(--label); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper-faint); margin-bottom: 1rem; }
-.cs-next__title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.035em; transition: color 0.2s; }
+.cs-next__lab { font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper-faint); margin-bottom: 1rem; }
+.cs-next__title { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); font-weight: 700; letter-spacing: -0.035em; transition: color 0.2s; }
 .cs-next:hover .cs-next__title { color: var(--accent); }
 
 /* ============================================================
    BLOG (listing + post header — post body reuses .prose)
    ============================================================ */
-.post-meta { display: flex; gap: 0.9rem; align-items: baseline; font-family: var(--label); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-faint); margin-bottom: 1.25rem; }
+.post-meta { display: flex; gap: 0.9rem; align-items: baseline; font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-faint); margin-bottom: 1.25rem; }
 .post-meta__tags { color: var(--accent); }
 
 .post-list { display: flex; flex-direction: column; padding-bottom: clamp(4rem, 8vw, 7rem); }
@@ -804,10 +777,10 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   opacity: 0.07;
 }
 .post-row:hover::before { transform: scaleX(1); }
-.post-row__date { font-family: var(--label); font-size: 0.78rem; color: var(--paper-faint); }
-.post-row__title { font-size: clamp(1.3rem, 2.4vw, 1.8rem); font-weight: 740; letter-spacing: -0.03em; line-height: 1.1; transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1); }
+.post-row__date { font-family: var(--label); font-size: var(--text-xs); color: var(--paper-faint); }
+.post-row__title { font-size: clamp(var(--text-lg), 2.4vw, var(--text-2xl)); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1); }
 .post-row:hover .post-row__title { transform: translateX(0.6rem); }
-.post-row__desc { color: var(--paper-dim); font-size: 0.96rem; margin-top: 0.5rem; max-width: 60ch; }
+.post-row__desc { color: var(--paper-dim); font-size: var(--text-base); margin-top: 0.5rem; max-width: 60ch; }
 .post-row:hover .work__go { background: var(--accent); border-color: var(--accent); color: #fff; }
 .post-list__empty { color: var(--paper-dim); padding: 2rem 0; }
 @media (max-width: 760px) {
@@ -830,9 +803,6 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   .hub-halo, .sun-halo, .sun-bloom { animation: none; }
   .int-ring { animation: none; }
   html { scroll-behavior: auto; }
-  /* Return arcs: keep faint ghost wires visible as structure (they carry no motion),
-     but hide the return packets. The GSAP animations never run under reduced-motion
-     (gated in script), but these rules ensure packets stay hidden if anything runs early. */
   .packet--return { display: none; }
   .wire-flow--return { display: none; }
 }

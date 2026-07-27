@@ -56,10 +56,9 @@ const year = new Date().getFullYear(); // build-time: site is fully static
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
   <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-  <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <!-- Space Grotesk: display-only, hero headline font. Preloaded so the headline doesn't
-       flash on first paint — it's the first thing a visitor reads. -->
-  <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- Archivo Variable: the ONE typeface used across the entire site (Swiss discipline).
+       Preloaded to eliminate FOUT on the hero headline — first thing a visitor reads. -->
+  <link rel="preload" href="/fonts/archivo-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
