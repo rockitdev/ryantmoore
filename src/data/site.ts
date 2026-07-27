@@ -25,9 +25,10 @@ export const seo = {
 // What the connected system in the hero diagram actually gets a business owner —
 // plain-language outcomes, rendered as the caption row under the graphic.
 export const outcomes = [
-  'Bookings land in your calendar',
-  'Orders flow straight to your books',
-  'Nothing typed in twice',
+  'Reads what comes in and works out what to do',
+  'Handles the exceptions, flags only what needs you',
+  'Runs the whole job, not one scripted step',
+  "Checks its own work before it reaches a customer",
 ];
 
 export const services = [
