@@ -252,7 +252,9 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 .hero {
   position: relative;
   margin-top: -68px;
-  padding: calc(68px + clamp(2.5rem, 5vw, 4.5rem)) 0 clamp(4rem, 8vw, 7rem);
+  /* FIX: bump minimum extra clearance from 2.5rem → 4rem so kicker + headline
+     always sit at least 64px below the 68px nav at every breakpoint. */
+  padding: calc(68px + clamp(4rem, 5vw, 5rem)) 0 clamp(4rem, 8vw, 7rem);
   color: #fff;
   overflow: hidden;
   isolation: isolate;
@@ -305,10 +307,20 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-hi) 18%, transparent);
 }
 
-@media (max-width: 640px) {
+/* FIX: stack hero to single column at ≤900px (catches 768px tablet).
+   Two-column only above 900px. */
+@media (max-width: 900px) {
   .hero__inner { grid-template-columns: 1fr; }
-  .hero__viz { display: none; }
   .hero__outcomes { margin-top: 2rem; }
+  /* Tablet (641–900px): show schematic centred below copy at a capped width */
+  .hero__viz {
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}
+/* Mobile ≤640px: hide schematic entirely (no room, no overflow) */
+@media (max-width: 640px) {
+  .hero__viz { display: none; }
 }
 .schematic { position: relative; z-index: 1; width: 100%; height: auto; display: block; overflow: visible; }
 
@@ -482,6 +494,17 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 .hero__cta { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; justify-content: flex-start; }
 .hero .btn--ghost { border-color: rgba(255, 255, 255, 0.26); color: rgba(255, 255, 255, 0.86); }
 .hero .btn--ghost:hover { border-color: #fff; color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+/* FIX: ultrawide balance — widen the hero content area and balance the grid
+   so the schematic fills its column and there are no giant empty side gutters. */
+@media (min-width: 1600px) {
+  .hero .wrap { max-width: 1480px; }
+  /* Equal-weight columns at this width; schematic has more room to breathe */
+  .hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@media (min-width: 2200px) {
+  .hero .wrap { max-width: 1800px; }
+}
 
 /* ============================================================
    SECTION SCAFFOLD
