@@ -61,7 +61,7 @@
   --text-6xl:  4.768rem;   /* 76.3px  — hero headline max         */
 
   /* ---- rhythm ---- */
-  --wrap: 1180px;
+  --wrap: 1320px;
   --gut: clamp(1.25rem, 4vw, 3rem);
 }
 
@@ -495,15 +495,12 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 .hero .btn--ghost { border-color: rgba(255, 255, 255, 0.26); color: rgba(255, 255, 255, 0.86); }
 .hero .btn--ghost:hover { border-color: #fff; color: #fff; background: rgba(255, 255, 255, 0.08); }
 
-/* FIX: ultrawide balance — widen the hero content area and balance the grid
-   so the schematic fills its column and there are no giant empty side gutters. */
+/* Ultrawide: keep the hero in the SAME container as the nav + every section
+   (var(--wrap)) so all left/right edges align. Only rebalance the two hero
+   columns to equal weight for breathing room; never widen the hero past the
+   shared container (that misaligns it from the rest of the page). */
 @media (min-width: 1600px) {
-  .hero .wrap { max-width: 1480px; }
-  /* Equal-weight columns at this width; schematic has more room to breathe */
   .hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-}
-@media (min-width: 2200px) {
-  .hero .wrap { max-width: 1800px; }
 }
 
 /* ============================================================
