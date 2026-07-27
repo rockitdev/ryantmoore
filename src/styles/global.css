@@ -18,17 +18,17 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Syne, self-hosted: display-only variable font (wght 400–800, latin subset).
+/* Space Grotesk, self-hosted: display-only variable font (wght 300–700, latin subset).
    Used exclusively on .hero__title — scoped to the hero so it never bleeds into
-   body text or other sections. "Precise engineer" geometric sans: wide tracking
-   at display sizes, distinctive at 780–800 weight, nothing generic about it.
+   body text or other sections. Distinctive and engineered-feeling at display sizes,
+   normal width (not extended/stretched), reads as precise and purposeful.
    Preloaded in Base.astro alongside Hanken Grotesk. */
 @font-face {
-  font-family: 'Syne';
+  font-family: 'Space Grotesk';
   font-style: normal;
-  font-weight: 400 800;
+  font-weight: 300 700;
   font-display: swap;
-  src: url('/fonts/syne-variable-latin.woff2') format('woff2');
+  src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -409,47 +409,41 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 .device-dot { fill: rgba(255, 255, 255, 0.55); }
 .out-label { font-family: var(--label); font-size: 13px; letter-spacing: 0.14em; fill: #aeb9e0; opacity: 0.6; }
 
-/* ---- Agentic loop ring (Direction C, July 2026) ---- */
-/* Main ring arc: the near-full circle with arrowhead that closes the loop.
-   loopGlow is softer than wireGlow so the ring glows without overwhelming the cables. */
-.loop-ring {
+/* ---- Direction B: round-trip return arcs (July 2026) ---- */
+/* Return arc base wire: faint structural trace of the opposite-bow path.
+   Always visible as a ghost — so the lasso/eye shape reads even at rest. */
+.wire-base--return {
+  stroke-width: 1.5;
+  stroke: rgba(127, 160, 255, 0.07);
+  stroke-dasharray: 3 8;
+}
+/* Return arc flow: brighter when a return packet is travelling; GSAP controls opacity. */
+.wire-flow--return {
   fill: none;
-  stroke: url(#loopGrad);
-  stroke-width: 1.8;
   stroke-linecap: round;
-  filter: url(#loopGlow);
+  stroke: rgba(127, 160, 255, 0.55);
+  stroke-width: 2;
+  opacity: 0;
+  stroke-dasharray: none;
+  animation: none;
+  filter: url(#retGlow);
 }
-/* Faint depth ring: inner concentric circle, dashed, counter-rotates via GSAP.
-   Very low opacity — present as texture, not a competing element. */
-.loop-ring--inner {
-  fill: none;
-  stroke: rgba(127, 160, 255, 0.20);
-  stroke-width: 1.2;
-  stroke-dasharray: 2 9;
-}
-/* Waypoint labels: all-caps tracking type, same family as the schematic labels.
-   Positioned outside the rotating group so they never go upside-down. */
-.loop-label {
-  font-family: var(--label);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  fill: rgba(127, 160, 255, 0.72);
-}
-/* Loop packet: brighter fill than cable packets (cdddff vs eaf1ff) — marks the
-   orchestrator's position on the cycle; opacity is GSAP-controlled, 0 at rest. */
-.loop-packet {
-  fill: #cdddff;
+/* Return (observation) packet: smaller and cooler-tinted than outbound packets.
+   Smaller radius and lower peak opacity reads as "data arriving back," not a second
+   outbound — the two packets together show the round-trip without visual parity. */
+.packet--return {
+  fill: #7fa0ff;
   opacity: 0;
   filter: url(#dotGlow);
 }
-/* Hidden motion-path reference circle for the loop packet. */
-.loop-ring-path {
+/* Circular-arrow mark on the core: shows where observations land.
+   Small, understated — present as structure, not a decorative ring. */
+.core-loop-mark { pointer-events: none; }
+.core-loop-arc {
   fill: none;
-  stroke: none;
-  opacity: 0;
-  pointer-events: none;
+  stroke: rgba(127, 160, 255, 0.55);
+  stroke-width: 1.6;
+  stroke-linecap: round;
 }
 
 .hero__status {
@@ -470,10 +464,11 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
 
 .hero__title {
   font-size: clamp(2.7rem, 6.8vw, 5.8rem);
-  /* Syne at 780–800 weight: angular geometric grotesque, reads "precise engineer"
-     not "SaaS template". Scoped to the hero headline only; Hanken Grotesk everywhere else. */
-  font-family: 'Syne', var(--display);
-  font-weight: 780; line-height: 0.96; letter-spacing: -0.04em;
+  /* Space Grotesk at 700 weight: engineered geometric grotesque, reads "precise engineer"
+     not "SaaS template". Normal width — no extended/stretched letterforms. Scoped to the
+     hero headline only; Hanken Grotesk everywhere else. */
+  font-family: 'Space Grotesk', var(--display);
+  font-weight: 700; line-height: 0.96; letter-spacing: -0.04em;
   max-width: 17ch; margin: 0 auto; color: #fff;
 }
 /* 'AI agent systems' — the central term this business delivers.
@@ -835,9 +830,9 @@ h1, h2, h3 { font-family: var(--display); font-weight: 640; line-height: 1.02; l
   .hub-halo, .sun-halo, .sun-bloom { animation: none; }
   .int-ring { animation: none; }
   html { scroll-behavior: auto; }
-  /* Loop ring: keep the static arc + labels visible (complete composition),
-     but hide the loop packet and suppress any rotation. The GSAP animations
-     never run under reduced-motion (gated in script), but these rules ensure
-     the packet stays hidden even if something runs early. */
-  .loop-packet { display: none; }
+  /* Return arcs: keep faint ghost wires visible as structure (they carry no motion),
+     but hide the return packets. The GSAP animations never run under reduced-motion
+     (gated in script), but these rules ensure packets stay hidden if anything runs early. */
+  .packet--return { display: none; }
+  .wire-flow--return { display: none; }
 }
