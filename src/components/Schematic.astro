@@ -4,6 +4,15 @@
 // Ryan integrates orbit it and exchange data along glowing cables. The story is "I build
 // the product at the centre AND wire your whole stack into it", not "we run a platform".
 
+// AGENTIC LOOP RING (Direction C — July 2026 redesign):
+// A circular-arrow loop ring (r=90) wraps the core inside the innermost orbit. Three
+// labelled waypoints (PLAN → ACT → OBSERVE) mark the agent reasoning phases. The ring
+// slowly rotates via GSAP so the arrowhead sweeps through the waypoints, reading as
+// "the orchestrator is always in some phase." A packet rides the ring at a different
+// speed. A faint counter-rotating inner ring (r=76) adds depth. All motion is gated
+// behind prefers-reduced-motion: no-preference so the static composition still reads
+// as a complete agentic loop.
+
 // Monochrome brand glyphs, tinted via CSS (fill: currentColor inherits .sch-glyph).
 // simple-icons live in a 24-unit box; Twilio's mark is a 64-unit box (ring + 4 dots).
 const GLYPHS: Record<string, { box: number; d?: string; twilio?: boolean }> = {
@@ -31,14 +40,15 @@ const C = { x: 600, y: 300 };
 const R_sun = 64; // cables meet the sun's body here
 const ORBIT = { inner: { rx: 300, ry: 118 }, outer: { rx: 480, ry: 172 } };
 
-// Services that orbit the product. `logo` -> a GLYPHS key. Each sits on a tilted
-// elliptical orbit at angle `deg` (0°=right, 90°=front/bottom); `s` is the depth scale
-// (front-of-orbit nodes read larger/brighter/nearer). `bow` curves its cable. Asymmetric
-// on purpose — a loose constellation, not a clock face.
-// `dir` is which way this service's data packets travel: most feed 'in' to the product,
-// but the services the hero outcomes name as destinations — bookings out to the calendar,
-// orders out to the books, texts out via Twilio — flow 'out', so the diagram shows the
-// two-way conversation the lede promises ("so they finally talk to each other").
+// Loop ring geometry (Direction C, July 2026):
+// r=90 sits in the clear zone between the gear body (r=64) and the inner orbit (ry=118).
+// Gap of 15° at 12 o'clock; arrowhead at the end reads "about to return to start."
+// Arc: 345° CW from 7.5° right-of-top to 7.5° left-of-top.
+// Start: std angle -82.5° → (611.7, 210.8). End: std angle -97.5° → (588.3, 210.8).
+const LOOP_R = 90;
+const LOOP_ARC = `M 611.7,210.8 A ${LOOP_R},${LOOP_R} 0 1 1 588.3,210.8`;
+
+// Services that orbit the product.
 const sources = [
   { name: 'HubSpot',         logo: 'hubspot',    orbit: 'outer', deg: 145, s: 1.12, bow:  20, dir: 'in' },
   { name: 'Stripe',          logo: 'stripe',     orbit: 'outer', deg: 35,  s: 1.05, bow: -18, dir: 'in' },
@@ -57,7 +67,6 @@ type Node = (typeof sources)[number];
 function geom(n: Node) {
   const o = ORBIT[n.orbit as 'inner' | 'outer'];
   const t = (n.deg * Math.PI) / 180;
-  // the anchor sits exactly ON the orbit ellipse — the planet's true position
   const ax = C.x + o.rx * Math.cos(t);
   const ay = C.y + o.ry * Math.sin(t);
   const s = n.s;
@@ -68,8 +77,6 @@ function geom(n: Node) {
   const padL = 16 * s, gap = 11 * s, padR = 18 * s;
   const textW = n.name.length * font * 0.6;
   const w = padL + markerW + gap + textW + padR;
-  // the label card hangs just OUTSIDE its anchor (radially away from the sun), so the
-  // glowing anchor node stays visible on the orbit line with the card attached to it
   const vx = ax - C.x, vy = ay - C.y;
   const vl = Math.hypot(vx, vy) || 1;
   const ux = vx / vl, uy = vy / vl;
@@ -78,21 +85,17 @@ function geom(n: Node) {
   const cy = ay + uy * off;
   const x = cx - w / 2;
   const y = cy - h / 2;
-  // nearer nodes read brighter; further ones recede into the field
   const depth = +(0.55 + 0.45 * ((s - S_MIN) / (S_MAX - S_MIN))).toFixed(3);
   const labelX = x + padL + markerW + gap;
   return { ...n, ax, ay, cx, cy, s, font, h, w, x, y, markerW, padL, gap, depth, hasLogo, labelX };
 }
 const N = sources.map(geom);
 
-// each cable runs from the planet's orbit anchor inward to the sun's body, gently
-// bowed so the constellation reads as cables rather than rigid spokes.
-// packets travel anchor -> sun for dir:'in' cables, sun -> anchor for dir:'out'.
 function cable(n: ReturnType<typeof geom>) {
   const dx = C.x - n.ax, dy = C.y - n.ay;
   const dist = Math.hypot(dx, dy) || 1;
   const ux = dx / dist, uy = dy / dist;
-  const sx = n.ax + ux * 9, sy = n.ay + uy * 9; // leave the anchor dot crisp
+  const sx = n.ax + ux * 9, sy = n.ay + uy * 9;
   const ex = C.x - ux * R_sun, ey = C.y - uy * R_sun;
   const mx = (sx + ex) / 2, my = (sy + ey) / 2;
   const px = -(ey - sy), py = ex - sx;
@@ -102,8 +105,6 @@ function cable(n: ReturnType<typeof geom>) {
   return `M${r(sx)},${r(sy)} Q${r(qx)},${r(qy)} ${r(ex)},${r(ey)}`;
 }
 
-// the sun's rays — hand-varied angle / length / width / opacity so the corona reads
-// as a radiant star, not a uniform gear. R_ray is where rays begin (just off the body).
 const R_ray = 72;
 const rays = [
   { ang: 5,   len: 34, w: 4,   o: 0.80 },
@@ -124,9 +125,6 @@ const rays = [
   { ang: 338, len: 26, w: 3,   o: 0.40 },
 ];
 
-// One source of truth per cable — base line, drawn-in current line, and the GSAP packet
-// all reference the same id/d. The path always runs service -> sun; `dir` tells the
-// packet which way to ride it.
 const cables = N.map((n, i) => ({ id: `cbl-${i}`, d: cable(n), dir: n.dir }));
 const orbits = [ORBIT.inner, ORBIT.outer];
 ---
@@ -135,7 +133,7 @@ const orbits = [ORBIT.inner, ORBIT.outer];
   class="schematic"
   viewBox="0 64 1200 488"
   role="img"
-  aria-label="A solar-system diagram: a glowing core represents the client's website and app at the centre, with the services Ryan integrates (HubSpot, Stripe, Drupal, Twilio, Shopify, WordPress, QuickBooks, Google Calendar, Workiz and Jobber) orbiting it and exchanging data along glowing cables."
+  aria-label="An orchestration diagram: a glowing core represents the client's website and app at the centre; an agentic loop ring around the core shows the Plan, Act, Observe cycle; the services Ryan integrates (HubSpot, Stripe, Drupal, Twilio, Shopify, WordPress, QuickBooks, Google Calendar, Workiz and Jobber) orbit it and exchange data along glowing cables."
 >
   <defs>
     <linearGradient id="flowGrad" x1="0" y1="0" x2="0" y2="1">
@@ -147,13 +145,23 @@ const orbits = [ORBIT.inner, ORBIT.outer];
       <stop offset="0.55" stop-color="#3d6fff" />
       <stop offset="1" stop-color="#1f4fff" />
     </radialGradient>
-    <!-- soft radial bloom with opacity falloff — the star's light, not a hard ring -->
     <radialGradient id="bloomGrad">
       <stop offset="0" stop-color="#cdddff" stop-opacity="0.55" />
       <stop offset="0.35" stop-color="#5a86ff" stop-opacity="0.28" />
       <stop offset="0.7" stop-color="#1f4fff" stop-opacity="0.1" />
       <stop offset="1" stop-color="#1f4fff" stop-opacity="0" />
     </radialGradient>
+    <!-- Loop ring gradient: horizontal wash, glows brightest at 3/9 o'clock -->
+    <linearGradient id="loopGrad" gradientUnits="userSpaceOnUse" x1="510" y1="300" x2="690" y2="300">
+      <stop offset="0" stop-color="#7fa0ff" stop-opacity="0.65" />
+      <stop offset="0.5" stop-color="#cdddff" stop-opacity="0.90" />
+      <stop offset="1" stop-color="#5a86ff" stop-opacity="0.70" />
+    </linearGradient>
+    <!-- Arrowhead for the loop ring — points in direction of travel; gap at 12 o'clock
+         so the tip reads as "about to return to PLAN" -->
+    <marker id="loopArrow" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0.5 L6,2.5 L0,4.5 Z" fill="#cdddff" opacity="0.88" />
+    </marker>
     <filter id="wireGlow" x="-60%" y="-60%" width="220%" height="220%">
       <feGaussianBlur stdDeviation="3" result="b" />
       <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
@@ -166,6 +174,10 @@ const orbits = [ORBIT.inner, ORBIT.outer];
       <feGaussianBlur stdDeviation="2.6" result="b" />
       <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
     </filter>
+    <filter id="loopGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="3.5" result="b" />
+      <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
   </defs>
 
   <!-- sun corona glow -->
@@ -174,6 +186,43 @@ const orbits = [ORBIT.inner, ORBIT.outer];
 
   <!-- tilted orbit guides -->
   {orbits.map((o) => <ellipse class="orbit-guide" cx={C.x} cy={C.y} rx={o.rx} ry={o.ry} />)}
+
+  <!-- =============================================
+       AGENTIC LOOP RING — Direction C (July 2026)
+       Closes the "integration but no loop" gap in the original hero.
+       The ring sits at r=90 between the gear body (r=62) and the inner orbit (ry=118).
+       Counter-rotating depth ring at r=76 for dimensionality.
+       ============================================= -->
+
+  <!-- Depth ring: faint, counter-rotating, dashed inner circle -->
+  <g id="loop-inner-spin">
+    <circle class="loop-ring--inner" cx={C.x} cy={C.y} r="76" />
+  </g>
+
+  <!-- Main loop ring: 345° CW arc with arrowhead at end.
+       GSAP rotates this group 360° every 45 s — imperceptible crawl, never a spinner.
+       The arrowhead sweeps through the static waypoint labels, showing which phase
+       the orchestrator is currently in. -->
+  <g id="loop-ring-spin">
+    <path
+      class="loop-ring"
+      d={LOOP_ARC}
+      marker-end="url(#loopArrow)"
+    />
+  </g>
+
+  <!-- Waypoint labels: NOT inside the rotating group. They stay fixed at their SVG
+       coordinates so the text is always upright and readable. The slowly-sweeping
+       arrowhead on the rotating ring marks which waypoint is "active." -->
+  <g class="loop-ring-labels" aria-hidden="true">
+    <text class="loop-label" x="629" y="190" text-anchor="start">PLAN</text>
+    <text class="loop-label" x="707" y="343" text-anchor="start">ACT</text>
+    <text class="loop-label" x="491" y="330" text-anchor="end">OBSERVE</text>
+  </g>
+
+  <!-- Hidden full-circle path for the loop packet's MotionPath.
+       Invisible but present; GSAP references it for motion. -->
+  <circle id="loop-ring-path" cx={C.x} cy={C.y} r={LOOP_R} class="loop-ring-path" />
 
   <!-- cables (faint base) -->
   {cables.map((c) => <path class="wire-base wire-base--cable" d={c.d} />)}
@@ -184,12 +233,16 @@ const orbits = [ORBIT.inner, ORBIT.outer];
   <!-- data packets — GSAP MotionPath sends these inward along the cables to the core -->
   {cables.map((c) => <circle class="packet" data-path={`#${c.id}`} data-dir={c.dir} r="4.5" cx="0" cy="0" />)}
 
-  <!-- planet anchors — glowing nodes that sit exactly ON their orbit line (these stay
-       fixed while the label cards float, so the orbit relationship never breaks) -->
+  <!-- Loop packet: orbits the ring continuously at 12 s/lap.
+       Slower and more deliberate than cable packets (2–3 s/trip);
+       reads as "the orchestrator thinking its way around the cycle."
+       Brighter fill (cdddff) to distinguish from cable packets (eaf1ff). -->
+  <circle class="loop-packet" r="4" cx="0" cy="0" />
+
+  <!-- planet anchors — glowing nodes that sit exactly ON their orbit line -->
   {N.map((s) => <circle class="orbit-anchor" cx={s.ax.toFixed(1)} cy={s.ay.toFixed(1)} r={(3.4 + 2.6 * s.s).toFixed(1)} opacity={s.depth} />)}
 
-  <!-- external system nodes (top) — solid raised panels carrying real brand marks.
-       depth (opacity + scale) makes nearer nodes command attention, further ones recede -->
+  <!-- external system nodes (top) — solid raised panels carrying real brand marks -->
   {N.map((s) => (
     <g class="sch-node-g" opacity={s.depth}>
       <rect class="sch-node" x={s.x} y={s.y} width={s.w} height={s.h} rx={13 * s.s} />
@@ -250,8 +303,9 @@ const orbits = [ORBIT.inner, ORBIT.outer];
 <script>
   // Motion is gated behind prefers-reduced-motion: no-preference, and skipped on phones
   // where the graphic is hidden (CSS, <=640px) so we don't animate an invisible element.
-  // When we bail, cables stay drawn, packets stay hidden (CSS opacity: 0), nodes stay still.
-  // GSAP is dynamically imported inside the gate so those visitors never download it.
+  // When we bail out: cables stay drawn, packets stay hidden (CSS opacity: 0), nodes still.
+  // The loop ring is ALWAYS VISIBLE as a static complete composition — only the rotation
+  // and loop packet are withheld under prefers-reduced-motion.
   const animate =
     window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
     !window.matchMedia('(max-width: 640px)').matches;
@@ -272,9 +326,6 @@ const orbits = [ORBIT.inner, ORBIT.outer];
     gsap.to(currents, { drawSVG: '100%', duration: 0.9, ease: 'power2.out', stagger: 0.08 });
 
     // PRIMARY — glowing data packets travel the cables continuously into / out of the core.
-    // dir:'in' packets ride the path forward (service -> sun); dir:'out' packets ride it in
-    // reverse (sun -> service), so the system reads as a conversation, not a sink.
-    // Each packet fades in as it leaves a node and out as it lands, so the loop never snaps.
     packets.forEach((p, i) => {
       const path = p.getAttribute('data-path')!;
       const out = p.getAttribute('data-dir') === 'out';
@@ -303,5 +354,55 @@ const orbits = [ORBIT.inner, ORBIT.outer];
         delay: i * 0.25,
       });
     });
+
+    // =========================================================
+    // AGENTIC LOOP RING ANIMATIONS (Direction C, July 2026)
+    // =========================================================
+
+    // Very slow rotation of the main loop ring: 45 s/revolution = imperceptible crawl,
+    // never reads as a loading spinner. svgOrigin pins the transform to the SVG
+    // coordinate centre (600 300) regardless of the group's bounding-box position.
+    const loopRingSpin = document.getElementById('loop-ring-spin') as SVGGElement | null;
+    if (loopRingSpin) {
+      gsap.to(loopRingSpin, {
+        rotation: 360,
+        duration: 45,
+        ease: 'none',
+        repeat: -1,
+        svgOrigin: '600 300',
+      });
+    }
+
+    // Counter-rotating depth ring: 62 s/rev, opposite direction.
+    // Different cadence so the two rings are never in phase — reads as depth, not duplication.
+    const loopInnerSpin = document.getElementById('loop-inner-spin') as SVGGElement | null;
+    if (loopInnerSpin) {
+      gsap.to(loopInnerSpin, {
+        rotation: -360,
+        duration: 62,
+        ease: 'none',
+        repeat: -1,
+        svgOrigin: '600 300',
+      });
+    }
+
+    // Loop packet: orbits the ring at 12 s/lap — more deliberate than cable packets (2–3 s).
+    // Fades in smoothly, completes full lap, fades out just before restart.
+    const loopPkt = document.querySelector<SVGCircleElement>('.loop-packet');
+    if (loopPkt) {
+      gsap.timeline({ repeat: -1, delay: 1.0 })
+        .set(loopPkt, { opacity: 0 })
+        .to(loopPkt, {
+          duration: 12,
+          ease: 'none',
+          motionPath: {
+            path: '#loop-ring-path',
+            align: '#loop-ring-path',
+            alignOrigin: [0.5, 0.5],
+          },
+        }, 0)
+        .to(loopPkt, { opacity: 0.9, duration: 0.8 }, 0)
+        .to(loopPkt, { opacity: 0, duration: 0.9 }, 11.1);
+    }
   }
 </script>
