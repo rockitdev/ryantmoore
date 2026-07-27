@@ -16,42 +16,45 @@ const quotes = testimonials.filter((t) => !t.draft);
 <Base>
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap hero__head">
-      <span class="kicker reveal" style="margin-bottom: 1.5rem; display: inline-flex;">
-        Software engineer, {site.location}
-      </span>
-
-      <h1 class="hero__title serif reveal">
-        I build the <em>AI agent systems</em> businesses quietly <span class="u">run on</span>.
-      </h1>
-
-      <p class="hero__lede reveal">
-        I build AI that works like a sharp new hire, not another app to babysit.
-        It handles the admin, the follow-ups, and the back-and-forth between the
-        tools you already use, and it makes the calls a good employee would. It
-        only comes to you when something genuinely needs you. Twenty-five years
-        connecting business systems, and I run a whole team of these on my own.
-      </p>
-
-      <div class="hero__cta reveal">
-        <a href={`mailto:${site.email}`} class="btn btn--primary">
-          Work with me <span class="arr">↗</span>
-        </a>
-        <a href="#work" class="btn btn--ghost">Selected work</a>
-      </div>
-
-      <div class="hero__status reveal">
-        <span class="led"></span> Available now, taking on a few new projects
-      </div>
-    </div>
-
     <div class="wrap">
-      <div class="hero__viz reveal">
-        <Schematic />
+      <div class="hero__inner">
+        <div class="hero__head">
+          <span class="kicker reveal" style="margin-bottom: 1.5rem; display: inline-flex;">
+            Software engineer, {site.location}
+          </span>
+
+          <h1 class="hero__title serif reveal">
+            I build the <em>AI agent systems</em> businesses quietly <span class="u">run on</span>.
+          </h1>
+
+          <p class="hero__lede reveal">
+            I build AI that works like a sharp new hire, not another app to babysit.
+            It handles the admin, the follow-ups, and the back-and-forth between the
+            tools you already use, and it makes the calls a good employee would. It
+            only comes to you when something genuinely needs you. Twenty-five years
+            connecting business systems, and I run a whole team of these on my own.
+          </p>
+
+          <div class="hero__cta reveal">
+            <a href={`mailto:${site.email}`} class="btn btn--primary">
+              Work with me <span class="arr">↗</span>
+            </a>
+            <a href="#work" class="btn btn--ghost">Selected work</a>
+          </div>
+
+          <div class="hero__status reveal">
+            <span class="led"></span> Available now, taking on a few new projects
+          </div>
+
+          <ul class="hero__outcomes reveal">
+            {outcomes.map((o) => <li class="hero__outcome">{o}</li>)}
+          </ul>
+        </div>
+
+        <div class="hero__viz reveal">
+          <Schematic />
+        </div>
       </div>
-      <ul class="hero__outcomes reveal">
-        {outcomes.map((o) => <li class="hero__outcome">{o}</li>)}
-      </ul>
     </div>
   </section>
 
