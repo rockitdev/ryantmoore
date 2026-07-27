@@ -579,6 +579,24 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 }
 
 /* ============================================================
+   MID-PAGE CTA BAND
+   ============================================================ */
+.cta-band { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.cta-band__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; padding: 0.5rem 0;
+}
+.cta-band__line {
+  font-size: var(--text-xl); font-weight: 400; letter-spacing: -0.02em;
+  color: var(--paper); margin: 0;
+}
+.cta-band__line em { font-style: italic; color: var(--accent-hi); }
+@media (max-width: 640px) {
+  .cta-band__inner { flex-direction: column; align-items: flex-start; }
+  .cta-band__line { font-size: var(--text-lg); }
+}
+
+/* ============================================================
    PROJECTS (denser grid)
    ============================================================ */
 .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }

@@ -36,7 +36,7 @@ const quotes = testimonials.filter((t) => !t.draft);
           </p>
 
           <div class="hero__cta reveal">
-            <a href={`mailto:${site.email}`} class="btn btn--primary">
+            <a href="#contact" class="btn btn--primary">
               Work with me <span class="arr">↗</span>
             </a>
             <a href="#work" class="btn btn--ghost">Selected work</a>
@@ -86,6 +86,20 @@ const quotes = testimonials.filter((t) => !t.draft);
             </div>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MID-PAGE CTA — single conversion path: funnels to contact form -->
+  <section class="section cta-band">
+    <div class="wrap wrap--narrow">
+      <div class="cta-band__inner reveal">
+        <p class="cta-band__line serif">
+          Seen enough? <em>Let's talk about your project.</em>
+        </p>
+        <a href="#contact" class="btn btn--primary" data-prefill-audit>
+          Book an audit <span class="arr">↗</span>
+        </a>
       </div>
     </div>
   </section>
