@@ -1840,3 +1840,20 @@ body:has(.hero) .footer :is(.footer__meta, .footer__links a) { color: rgba(236, 
   /* Particle canvas: keep dots visible but stop all animation (JS checks this flag) */
   .hero__particles { opacity: 0.6; }
 }
+
+/* Mobile: the agent-runtime console is a fixed ~640px self-contained unit; scale the
+   whole unit down so it fits the phone with no clip and no overlap with the stats row. */
+@media (max-width: 640px) {
+  .agent-visual { zoom: 0.52; }
+}
+@media (max-width: 380px) {
+  .agent-visual { zoom: 0.48; }
+}
+
+/* Mobile hero: force a clean single-column stack (copy -> console -> stats in DOM
+   order). The desktop grid-template-areas were not being reset on small screens,
+   which placed the stats row into the console's area = overlap. */
+@media (max-width: 900px) {
+  .hero__layout { grid-template-columns: 1fr !important; grid-template-areas: none !important; }
+  .hero__head, .hero__network, .hero__proof { grid-area: auto !important; grid-column: auto !important; }
+}
