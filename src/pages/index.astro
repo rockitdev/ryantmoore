@@ -19,6 +19,7 @@ const quotes = testimonials.filter((t) => !t.draft);
 
   <!-- HERO -->
   <section class="hero">
+    <canvas class="hero__particles" aria-hidden="true"></canvas>
     <div class="wrap hero__layout">
       <div class="hero__head">
         <span class="kicker reveal">
@@ -31,11 +32,11 @@ const quotes = testimonials.filter((t) => !t.draft);
 
         <p class="hero__lede reveal">
           I build agentic workflows that watch your systems, make bounded decisions,
-          and take action—without waiting for someone to push the next button.
+          and take action without waiting for someone to push the next button.
         </p>
 
         <div class="hero__cta reveal">
-          <a href={`mailto:${site.email}`} class="btn btn--primary">
+          <a href="#contact" class="btn btn--primary">
             Work with me <span class="arr">↗</span>
           </a>
           <a href="#work" class="btn btn--ghost">Selected work</a>
@@ -307,7 +308,113 @@ const quotes = testimonials.filter((t) => !t.draft);
 </Base>
 
 <script>
-  // A thin progress signal makes the long-form landing page feel like one journey.
+  /* ============================================================
+     PARTICLE FIELD — lightweight Inngest-style starfield
+     Uses requestAnimationFrame on non-reduced-motion; static on
+     prefers-reduced-motion. Halves particle count on mobile.
+     ============================================================ */
+  (function initParticles() {
+    const canvas = document.querySelector<HTMLCanvasElement>('.hero__particles');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    type Particle = { x: number; y: number; r: number; vx: number; vy: number; o: number };
+    let particles: Particle[] = [];
+    let rafId = 0;
+
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+
+    function createParticles() {
+      const isMobile = window.innerWidth <= 768;
+      const count = isMobile ? 30 : 90;
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.1 + 0.25,
+        vx: (Math.random() - 0.5) * 0.12,
+        vy: (Math.random() - 0.5) * 0.12,
+        o: Math.random() * 0.35 + 0.08,
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${p.o})`;
+        ctx.fill();
+        if (!prefersReduced) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < -2) p.x = canvas.width + 2;
+          else if (p.x > canvas.width + 2) p.x = -2;
+          if (p.y < -2) p.y = canvas.height + 2;
+          else if (p.y > canvas.height + 2) p.y = -2;
+        }
+      }
+      if (!prefersReduced) rafId = requestAnimationFrame(draw);
+    }
+
+    resize();
+    createParticles();
+    draw();
+
+    window.addEventListener('resize', () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      resize();
+      createParticles();
+      if (!prefersReduced) draw();
+    });
+  })();
+
+  /* ============================================================
+     CONSOLE SCALE LOCK — Linear pattern: whole console shrinks
+     as one unit on mobile so sub-elements never reflow or clip.
+     ============================================================ */
+  function scaleConsole() {
+    const net = document.querySelector<HTMLElement>('.hero__network');
+    const vis = net?.querySelector<HTMLElement>('.agent-visual');
+    if (!net || !vis) return;
+
+    // Reset inline styles so we can measure natural size
+    vis.style.removeProperty('width');
+    vis.style.removeProperty('transform');
+    vis.style.removeProperty('transform-origin');
+    vis.style.removeProperty('margin-bottom');
+
+    if (window.innerWidth > 768) return;
+
+    const CONSOLE_W = 640;
+    const availW = net.clientWidth;
+    if (availW >= CONSOLE_W) return;
+
+    const cs = availW / CONSOLE_W;
+
+    // Measure natural height with fixed width before scaling
+    vis.style.width = CONSOLE_W + 'px';
+    const naturalH = vis.offsetHeight;
+
+    // Apply scale — visual shrinks, layout footprint gets negative margin to compensate
+    vis.style.transformOrigin = 'top left';
+    vis.style.transform = `scale(${cs})`;
+    vis.style.marginBottom = `${(cs - 1) * naturalH}px`;
+  }
+
+  scaleConsole();
+  window.addEventListener('resize', scaleConsole);
+
+  /* ============================================================
+     SCROLL PROGRESS
+     A thin progress signal makes the long-form landing page feel like one journey.
+     ============================================================ */
   const progress = document.querySelector<HTMLElement>('.scroll-progress span');
   let progressFrame = 0;
   const syncProgress = () => {
