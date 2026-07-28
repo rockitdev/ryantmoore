@@ -1112,29 +1112,28 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(110deg, transparent 38%, rgba(255,255,255,.055) 50%, transparent 62%);
-  transform: translateX(-100%);
-  animation: agent-glint 8s ease-in-out infinite;
+  background:
+    linear-gradient(115deg, transparent 0 58%, rgba(255,255,255,.035) 72%, transparent 88%),
+    radial-gradient(circle at 88% 0%, rgba(150, 105, 255, .09), transparent 34%);
 }
 .agent-visual::after {
   content: "";
   position: absolute;
+  z-index: 4;
   inset: 42px 0 auto;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 82, 186, .6), transparent);
-  box-shadow: 0 0 20px rgba(255, 82, 186, .65);
-  animation: agent-scanline 8s cubic-bezier(.4,0,.2,1) infinite;
+  height: 2px;
+  background: linear-gradient(90deg, #765cff, #ff43b4 72%, #ff9bd9);
+  box-shadow: 0 0 14px rgba(255, 67, 180, .58);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: agent-runtime-progress 8s linear infinite;
   pointer-events: none;
 }
-@keyframes agent-glint {
-  0%, 58% { transform: translateX(-110%); }
-  82%, 100% { transform: translateX(110%); }
-}
-@keyframes agent-scanline {
-  0% { transform: translateY(0); opacity: 0; }
-  8% { opacity: .6; }
-  85% { opacity: .26; }
-  100% { transform: translateY(580px); opacity: 0; }
+@keyframes agent-runtime-progress {
+  0% { transform: scaleX(0); opacity: .45; }
+  4% { opacity: 1; }
+  96% { opacity: 1; }
+  100% { transform: scaleX(1); opacity: .35; }
 }
 .agent-visual__chrome {
   height: 43px;
@@ -1251,6 +1250,11 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
   transform-origin: center;
   animation: agent-ambient 8s ease-in-out infinite;
 }
+.agent-diagram__phase-wash {
+  fill: rgba(255, 65, 179, .11);
+  filter: url(#agentSoftGlow);
+  pointer-events: none;
+}
 @keyframes agent-ambient {
   0%, 100% { opacity: .35; transform: scale(.96); }
   50% { opacity: .62; transform: scale(1.1); }
@@ -1338,6 +1342,9 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
   fill: #0d1020;
   stroke: rgba(198, 207, 255, .32);
   stroke-width: 1.2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: agent-step-surface 8s ease-in-out infinite;
 }
 .agent-diagram__step text {
   font-family: var(--label);
@@ -1358,9 +1365,26 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 .agent-diagram__step--reason { animation-delay: 2s; }
 .agent-diagram__step--act { animation-delay: 4s; }
 .agent-diagram__step--verify { animation-delay: 6s; }
+.agent-diagram__step--reason circle { animation-delay: 2s; }
+.agent-diagram__step--act circle { animation-delay: 4s; }
+.agent-diagram__step--verify circle { animation-delay: 6s; }
 @keyframes agent-step {
   0%, 18% { filter: drop-shadow(0 0 14px rgba(255, 73, 182, .9)); }
   24%, 100% { filter: none; }
+}
+@keyframes agent-step-surface {
+  0%, 18% {
+    fill: #191329;
+    stroke: rgba(255, 100, 194, .95);
+    stroke-width: 2;
+    transform: scale(1.055);
+  }
+  24%, 100% {
+    fill: #0d1020;
+    stroke: rgba(198, 207, 255, .32);
+    stroke-width: 1.2;
+    transform: scale(1);
+  }
 }
 .agent-diagram__workers path {
   fill: none;
@@ -1729,7 +1753,8 @@ body:has(.hero) .footer :is(.footer__meta, .footer__links a) { color: rgba(236, 
   .network-diagram__packet, .network-diagram__packets { display: none; }
   .agent-visual::before, .agent-visual::after,
   .agent-visual__live i, .agent-diagram__ambient,
-  .agent-diagram__loop-energy, .agent-diagram__step,
+  .agent-diagram__loop-energy, .agent-diagram__phase-wash,
+  .agent-diagram__step, .agent-diagram__step circle,
   .agent-diagram__core, .agent-diagram__core-wake,
   .agent-diagram__core-scan, .agent-diagram__core-dot,
   .agent-diagram__intake g, .agent-diagram__output g,
@@ -1741,6 +1766,7 @@ body:has(.hero) .footer :is(.footer__meta, .footer__links a) { color: rgba(236, 
   .agent-visual__jobs strong { opacity: 0; transform: none; }
   .agent-visual__jobs strong:first-child { opacity: 1; }
   .agent-diagram__packets { display: none; }
+  .agent-diagram__phase-wash { display: none; }
   .signal-rail__track { animation: none; transform: none; }
   .hero__network { transition: none; }
   html { scroll-behavior: auto; }

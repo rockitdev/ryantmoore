@@ -53,6 +53,9 @@
     <circle class="agent-diagram__ambient" cx="380" cy="360" r="248" />
 
     <!-- Route layer: the packet sits above its path, but below every node and card. -->
+    <circle class="agent-diagram__phase-wash" r="72">
+      <animateMotion dur="8s" repeatCount="indefinite"><mpath href="#agent-loop" /></animateMotion>
+    </circle>
     <g class="agent-diagram__loop" aria-hidden="true">
       <use href="#agent-loop" />
       <use class="agent-diagram__loop-energy" href="#agent-loop" />
@@ -155,7 +158,7 @@
     <g class="agent-diagram__telemetry" transform="translate(276 648)">
       <text x="0" y="0">TASK 0482</text>
       <text x="104" y="0">CONFIDENCE 97%</text>
-      <text x="256" y="0">HUMAN ESCALATION: OFF</text>
+      <text x="256" y="0">HUMAN ESCALATION: READY</text>
     </g>
 
   </svg>
