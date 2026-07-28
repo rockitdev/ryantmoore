@@ -1831,13 +1831,7 @@ body:has(.hero) .footer :is(.footer__meta, .footer__links a) { color: rgba(236, 
   .hero__particles { opacity: 0.6; }
 }
 
-/* Mobile: the agent-runtime console is a fixed ~640px self-contained unit; scale the
-   whole unit down so it fits the phone with no clip and no overlap with the stats row. */
-@media (max-width: 640px) {
-  .agent-visual { zoom: 0.52; }
-}
-@media (max-width: 380px) {
-  .agent-visual { zoom: 0.48; }
-}
+
+
 
 /* Mobile single-column stack is handled in the max-width: 1000px block above — no !important needed. */
