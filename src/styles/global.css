@@ -131,12 +131,13 @@ img, svg { display: block; max-width: 100%; }
 .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gut); }
 .wrap--narrow { max-width: 820px; }
 
-/* Swiss eyebrow label: UPPERCASE + generous tracking (the ITS micro-label trope) */
+/* Telemetry-style eyebrow label: mono, UPPERCASE, tight tracking — reads "console/engineer".
+   Per DESIGN.md: label { family: mono, transform: uppercase, tracking: 0.08em } */
 .kicker {
-  font-family: var(--label);
+  font-family: var(--mono);
   font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.22em;
+  font-weight: 600;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   color: var(--paper-faint);
   display: inline-flex;
@@ -215,7 +216,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 
 /* transparent variant while sitting over the dark hero */
 .nav--ghost {
-  background: linear-gradient(180deg, rgba(10, 14, 28, 0.66) 0%, rgba(10, 14, 28, 0.5) 55%, rgba(10, 14, 28, 0) 100%);
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.66) 0%, rgba(10, 10, 10, 0.5) 55%, rgba(10, 10, 10, 0) 100%);
   backdrop-filter: blur(7px);
   border-bottom-color: transparent;
 }
@@ -1295,8 +1296,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 }
 
 body:has(.hero) .nav:not(.nav--ghost) {
-  background: rgba(8, 12, 27, 0.92);
-  border-bottom-color: rgba(175, 191, 255, 0.15);
+  background: rgba(10, 10, 10, 0.92);
+  border-bottom-color: rgba(245, 77, 38, 0.16);
 }
 body:has(.hero) .nav:not(.nav--ghost) .brand__name,
 body:has(.hero) .nav:not(.nav--ghost) .nav__cta { color: #fff; }
@@ -1403,14 +1404,14 @@ body:has(.hero) .nav:not(.nav--ghost) .nav__link { color: rgba(255, 255, 255, 0.
   background:
     radial-gradient(56% 46% at 88% 10%, rgba(245, 77, 38, 0.10), transparent 68%),
     radial-gradient(48% 42% at 8% 82%, rgba(245, 77, 38, 0.06), transparent 65%),
-    #090d1d;
+    #0A0A0A;
 }
 #work .section__head { margin-bottom: clamp(3rem, 7vw, 6rem); }
-#work .kicker { color: rgba(230, 236, 255, 0.62); }
+#work .kicker { color: rgba(255, 255, 255, 0.65); }
 #work .section__title { max-width: 16ch; font-size: clamp(var(--text-3xl), 5.5vw, var(--text-5xl)); }
 #work .section__title em { color: var(--accent); }
-#work .work { border-top: 1px solid rgba(189, 205, 255, 0.24); }
-#work .work__row { grid-template-columns: 5rem minmax(0, 1fr) auto; border-color: rgba(189, 205, 255, 0.20); padding: clamp(2rem, 4vw, 3.7rem) 0; }
+#work .work { border-top: 1px solid rgba(255, 255, 255, 0.14); }
+#work .work__row { grid-template-columns: 5rem minmax(0, 1fr) auto; border-color: rgba(255, 255, 255, 0.12); padding: clamp(2rem, 4vw, 3.7rem) 0; }
 #work .work__row::before { background: linear-gradient(90deg, rgba(245, 77, 38, 0.12), rgba(245, 77, 38, 0.04)); opacity: 1; }
 #work .work__idx {
   padding-left: 0;
@@ -1420,13 +1421,13 @@ body:has(.hero) .nav:not(.nav--ghost) .nav__link { color: rgba(255, 255, 255, 0.
   color: rgba(245, 77, 38, 0.78);
 }
 #work .work__idx::before { display: none; }
-#work .work__year { color: rgba(228, 235, 255, 0.52); }
+#work .work__year { color: rgba(255, 255, 255, 0.50); }
 #work .work__client { color: var(--accent-hi); }
 #work .work__name { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); color: #fff; }
-#work .work__sum { max-width: 52ch; color: rgba(240, 244, 255, 0.70); }
-#work .tag { background: rgba(255, 255, 255, 0.06); border-color: rgba(210, 220, 255, 0.22); color: rgba(240, 244, 255, 0.72); }
-#work .work__go { border-color: rgba(220, 228, 255, 0.36); color: #fff; }
-#work .work__row:hover .work__go { background: var(--accent); border-color: var(--accent); }
+#work .work__sum { max-width: 52ch; color: rgba(255, 255, 255, 0.68); }
+#work .tag { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.16); color: rgba(255, 255, 255, 0.70); }
+#work .work__go { border-color: rgba(255, 255, 255, 0.28); color: rgba(255, 255, 255, 0.85); }
+#work .work__row:hover .work__go { background: var(--accent); border-color: var(--accent); color: #fff; }
 
 #projects {
   border-top: 0;
@@ -1439,7 +1440,7 @@ body:has(.hero) .nav:not(.nav--ghost) .nav__link { color: rgba(255, 255, 255, 0.
 #projects .proj-grid { gap: 0.85rem; border: 0; border-radius: 0; background: transparent; overflow: visible; }
 #projects .proj { min-height: 250px; padding: 2rem; border: 1px solid rgba(20, 20, 15, 0.12); border-radius: 16px; box-shadow: 0 18px 34px rgba(42, 47, 82, 0.07); transition: transform 0.35s cubic-bezier(.2,.8,.2,1), background 0.3s, box-shadow 0.3s; }
 #projects .proj:nth-child(3n + 2) { transform: translateY(1.8rem); }
-#projects .proj:hover { transform: translateY(-0.55rem); background: #13172a; box-shadow: 0 28px 50px rgba(28, 28, 64, 0.20); }
+#projects .proj:hover { transform: translateY(-0.55rem); background: #0d0d0d; box-shadow: 0 28px 50px rgba(0, 0, 0, 0.28); }
 #projects .proj:hover :is(.proj__ix, .proj__desc, .proj__foot) { color: rgba(255,255,255,.66); }
 #projects .proj:hover :is(.proj__name, .proj__kind) { color: #fff; }
 
@@ -1452,7 +1453,7 @@ body:has(.hero) .nav:not(.nav--ghost) .nav__link { color: rgba(255, 255, 255, 0.
     radial-gradient(56% 64% at 100% 0%, rgba(245, 77, 38, 0.08), transparent 72%),
     #101314;
 }
-#services .kicker { color: rgba(235, 238, 255, 0.60); }
+#services .kicker { color: rgba(255, 255, 255, 0.65); }
 #services .section__title em { color: var(--accent-hi); }
 #services .svc-grid { gap: 0.85rem; background: transparent; border: 0; border-radius: 0; overflow: visible; }
 #services .svc { min-height: 300px; border: 1px solid rgba(245, 77, 38, .15); border-radius: 16px; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(12px); transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s, background .3s; }
@@ -1460,7 +1461,7 @@ body:has(.hero) .nav:not(.nav--ghost) .nav__link { color: rgba(255, 255, 255, 0.
 #services .svc:hover { transform: translateY(-0.6rem); border-color: rgba(245, 77, 38, .65); background: rgba(245, 77, 38, .08); }
 #services .svc__no { color: var(--accent-hi); }
 #services .svc__title { font-size: var(--text-xl); color: #fff; }
-#services .svc__body { max-width: 47ch; color: rgba(239, 243, 255, 0.68); }
+#services .svc__body { max-width: 47ch; color: rgba(255, 255, 255, 0.68); }
 
 #background { border-top: 0; padding: clamp(7rem, 11vw, 11rem) 0; background: #f0f0ec; }
 #background::before { content: "25"; position: absolute; right: clamp(1rem, 8vw, 10rem); top: 2rem; z-index: 0; font-family: var(--display); font-weight: 800; font-size: clamp(12rem, 30vw, 31rem); letter-spacing: -0.10em; line-height: .8; color: rgba(245, 77, 38, 0.06); pointer-events: none; }
@@ -1480,13 +1481,13 @@ body:has(.hero) .nav:not(.nav--ghost) .nav__link { color: rgba(255, 255, 255, 0.
     radial-gradient(52% 58% at 0% 100%, rgba(245, 77, 38, 0.08), transparent 68%),
     #0d0b0a;
 }
-#audit .kicker, #audit .section__lede { color: rgba(235, 239, 255, 0.68); }
+#audit .kicker, #audit .section__lede { color: rgba(255, 255, 255, 0.68); }
 #audit .section__title em { color: var(--accent-hi); }
 #audit .audit__steps { gap: .7rem; background: transparent; border: 0; border-radius: 0; overflow: visible; }
 #audit .audit__step { border: 1px solid rgba(245, 77, 38, .18); border-radius: 14px; background: rgba(255, 255, 255, 0.04); }
 #audit .audit__no { color: var(--accent-hi); }
 #audit .audit__title { color: #fff; }
-#audit .audit__body { color: rgba(238, 242, 255, 0.68); }
+#audit .audit__body { color: rgba(255, 255, 255, 0.68); }
 #audit .audit__card { position: sticky; top: 6rem; border: 1px solid rgba(245, 77, 38, 0.50); background: linear-gradient(155deg, #F54D26, #c43a1e 48%, #1a0d08); box-shadow: 0 28px 80px rgba(0,0,0,.45), 0 0 48px rgba(245,77,38,.18); }
 
 .contact {
@@ -1497,7 +1498,7 @@ body:has(.hero) .nav:not(.nav--ghost) .nav__link { color: rgba(255, 255, 255, 0.
     radial-gradient(42% 48% at 85% 10%, rgba(245, 77, 38, 0.18), transparent 70%),
     linear-gradient(145deg, #110d0a, #080808 72%);
 }
-.contact .kicker, .contact__lede, .contact .cform__alt { color: rgba(236, 240, 255, 0.66); }
+.contact .kicker, .contact__lede, .contact .cform__alt { color: rgba(255, 255, 255, 0.68); }
 .contact__title { font-size: clamp(var(--text-4xl), 7vw, var(--text-6xl)); max-width: 10ch; }
 .contact__title em { color: var(--accent-hi); }
 .contact .cform { max-width: 100%; margin: 3.5rem 0 2.5rem; padding: clamp(1.25rem, 3vw, 2.5rem); border: 1px solid rgba(245, 77, 38, .20); border-radius: 16px; background: rgba(255,255,255,.04); backdrop-filter: blur(12px); }
