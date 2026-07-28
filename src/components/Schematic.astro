@@ -1,182 +1,63 @@
+<!--
+  AgentCard — compact live-status element (Inngest-style restraint).
+  ONE small self-contained unit: chrome bar + current action + loop motif + meta.
+  Replaces the previous dense SVG diagram. No absolutely-positioned sub-elements.
+  Stacks cleanly below the headline on mobile via normal flow.
+-->
 <div
-  class="agent-visual"
+  class="agent-card"
   role="img"
-  aria-label="An autonomous AI agent observing work, reasoning, taking action, and verifying the result in a continuous loop."
+  aria-label="Live agent status: autonomous AI continuously observing, reasoning, acting, and verifying."
 >
-  <div class="agent-visual__chrome" aria-hidden="true">
-    <span>AGENT RUNTIME / 01</span>
-    <span class="agent-visual__chrome-status">
-      <span>GUARDRAILS ACTIVE</span>
-      <span class="agent-visual__live"><i></i> LIVE</span>
+  <!-- Chrome bar -->
+  <div class="agent-card__chrome" aria-hidden="true">
+    <span class="agent-card__live">
+      <i class="agent-card__led"></i> LIVE
     </span>
+    <span class="agent-card__id">RUNTIME / 01</span>
   </div>
 
-  <div class="agent-visual__trace" aria-hidden="true">
-    <span class="agent-visual__trace-label"><i></i> Now executing</span>
-    <div class="agent-visual__jobs">
-      <strong>Trigger received · new lead</strong>
-      <strong>Planning qualified response</strong>
-      <strong>Updating CRM + scheduling</strong>
-      <strong>Verifying every outcome</strong>
+  <!-- Body -->
+  <div class="agent-card__body" aria-hidden="true">
+
+    <!-- Rotating current action -->
+    <div class="agent-card__now">
+      <span class="agent-card__now-label">NOW</span>
+      <div class="agent-card__stream">
+        <span>followed up 2 leads</span>
+        <span>updated CRM · 3 records</span>
+        <span>scheduled 2 discovery calls</span>
+        <span>verified all outcomes</span>
+      </div>
     </div>
-    <span class="agent-visual__trace-meta">CYCLE 0482 · CONFIDENCE 0.97</span>
+
+    <!-- The loop: 4 nodes connected by wires, active cycles via CSS -->
+    <div class="agent-card__loop">
+      <div class="agent-card__node agent-card__node--0">
+        <div class="agent-card__dot"></div>
+        <span>OBSERVE</span>
+      </div>
+      <div class="agent-card__wire"></div>
+      <div class="agent-card__node agent-card__node--1">
+        <div class="agent-card__dot"></div>
+        <span>REASON</span>
+      </div>
+      <div class="agent-card__wire"></div>
+      <div class="agent-card__node agent-card__node--2">
+        <div class="agent-card__dot"></div>
+        <span>ACT</span>
+      </div>
+      <div class="agent-card__wire"></div>
+      <div class="agent-card__node agent-card__node--3">
+        <div class="agent-card__dot"></div>
+        <span>VERIFY</span>
+      </div>
+    </div>
+
+    <!-- Meta line -->
+    <div class="agent-card__meta">CYCLE 0482 · CONFIDENCE 97%</div>
   </div>
 
-  <svg class="agent-diagram" viewBox="0 0 760 720" aria-hidden="true">
-    <defs>
-      <!-- Direction A: electric orange orbit + core -->
-      <linearGradient id="agentOrbit" x1="70" y1="90" x2="690" y2="650" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#F54D26" />
-        <stop offset=".5" stop-color="#ff7a55" />
-        <stop offset="1" stop-color="#ffb085" />
-      </linearGradient>
-      <radialGradient id="agentCore" cx="35%" cy="25%" r="85%">
-        <stop stop-color="#ff7a55" />
-        <stop offset=".35" stop-color="#F54D26" />
-        <stop offset="1" stop-color="#1a0d07" />
-      </radialGradient>
-      <!-- Orange ambient glow behind the core (Temporal-style) -->
-      <radialGradient id="agentCoreOrangeGlow" cx="50%" cy="50%" r="50%">
-        <stop stop-color="#F54D26" stop-opacity="0.38" />
-        <stop offset="0.6" stop-color="#F54D26" stop-opacity="0.14" />
-        <stop offset="1" stop-color="#F54D26" stop-opacity="0" />
-      </radialGradient>
-      <filter id="agentGlow" x="-150%" y="-150%" width="400%" height="400%">
-        <feGaussianBlur stdDeviation="7" result="blur" />
-        <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-      </filter>
-      <filter id="agentSoftGlow" x="-100%" y="-100%" width="300%" height="300%">
-        <feGaussianBlur stdDeviation="18" />
-      </filter>
-      <filter id="agentOrangeGlow" x="-200%" y="-200%" width="500%" height="500%">
-        <feGaussianBlur stdDeviation="44" />
-      </filter>
-
-      <path id="agent-loop" pathLength="100" d="M217 117 C380 78 520 104 571 192 C660 300 650 430 574 530 C450 620 300 610 197 530 C100 430 100 240 217 117Z" />
-    </defs>
-
-    <g class="agent-diagram__grid" aria-hidden="true">
-      <path d="M0 90H760M0 180H760M0 270H760M0 360H760M0 450H760M0 540H760M0 630H760" />
-      <path d="M95 0V720M190 0V720M285 0V720M380 0V720M475 0V720M570 0V720M665 0V720" />
-    </g>
-
-    <circle class="agent-diagram__ambient" cx="380" cy="360" r="248" />
-
-    <!-- Route layer: the packet sits above its path, but below every node and card. -->
-    <circle class="agent-diagram__phase-wash" r="72">
-      <animateMotion dur="8s" repeatCount="indefinite"><mpath href="#agent-loop" /></animateMotion>
-    </circle>
-    <g class="agent-diagram__loop" aria-hidden="true">
-      <use href="#agent-loop" />
-      <use class="agent-diagram__loop-energy" href="#agent-loop" />
-    </g>
-    <g class="agent-diagram__packets" aria-hidden="true">
-      <circle r="5"><animateMotion dur="8s" repeatCount="indefinite"><mpath href="#agent-loop" /></animateMotion></circle>
-      <circle class="agent-diagram__packet-trail" r="2.5"><animateMotion dur="8s" begin=".16s" repeatCount="indefinite"><mpath href="#agent-loop" /></animateMotion></circle>
-    </g>
-
-    <g class="agent-diagram__intake">
-      <path d="M18 170 C92 170 100 216 142 250" />
-      <path d="M16 374 C68 374 82 372 108 360" />
-      <g transform="translate(14 130)">
-        <rect width="130" height="56" rx="8" />
-        <text x="14" y="22">NEW LEAD</text>
-        <text class="agent-diagram__micro" x="14" y="41">HubSpot · now</text>
-      </g>
-      <g transform="translate(6 390)">
-        <rect width="144" height="56" rx="8" />
-        <text x="14" y="22">INVOICE DUE</text>
-        <text class="agent-diagram__micro" x="14" y="41">QuickBooks · 2m</text>
-      </g>
-    </g>
-
-    <g class="agent-diagram__output">
-      <path d="M615 245 C663 222 690 202 748 202" />
-      <path d="M652 360 C696 360 716 360 754 360" />
-      <path d="M610 492 C672 518 699 528 750 528" />
-      <g transform="translate(626 154)">
-        <rect width="128" height="56" rx="8" />
-        <text x="14" y="22">CRM UPDATED</text>
-        <text class="agent-diagram__micro" x="14" y="41">completed · 0.8s</text>
-      </g>
-      <g transform="translate(638 374)">
-        <rect width="116" height="56" rx="8" />
-        <text x="14" y="22">EMAIL SENT</text>
-        <text class="agent-diagram__micro" x="14" y="41">verified · 1.2s</text>
-      </g>
-      <g transform="translate(620 540)">
-        <rect width="134" height="56" rx="8" />
-        <text x="14" y="22">CALL BOOKED</text>
-        <text class="agent-diagram__micro" x="14" y="41">calendar · 1.6s</text>
-      </g>
-    </g>
-
-    <g class="agent-diagram__step agent-diagram__step--observe" transform="translate(217 117)">
-      <circle r="39" />
-      <text class="agent-diagram__step-no" y="-3" text-anchor="middle">01</text>
-      <text y="14" text-anchor="middle">OBSERVE</text>
-    </g>
-    <g class="agent-diagram__step agent-diagram__step--reason" transform="translate(571 192)">
-      <circle r="39" />
-      <text class="agent-diagram__step-no" y="-3" text-anchor="middle">02</text>
-      <text y="14" text-anchor="middle">REASON</text>
-    </g>
-    <g class="agent-diagram__step agent-diagram__step--act" transform="translate(574 530)">
-      <circle r="39" />
-      <text class="agent-diagram__step-no" y="-3" text-anchor="middle">03</text>
-      <text y="14" text-anchor="middle">ACT</text>
-    </g>
-    <g class="agent-diagram__step agent-diagram__step--verify" transform="translate(197 530)">
-      <circle r="39" />
-      <text class="agent-diagram__step-no" y="-3" text-anchor="middle">04</text>
-      <text y="14" text-anchor="middle">VERIFY</text>
-    </g>
-
-    <g class="agent-diagram__workers" aria-hidden="true">
-      <path d="M302 330L234 286" />
-      <path d="M458 327L518 279" />
-      <path d="M461 397L523 441" />
-      <path d="M301 400L238 442" />
-      <g class="agent-diagram__worker" transform="translate(229 282)">
-        <circle r="22" />
-        <text y="3" text-anchor="middle">CRM</text>
-      </g>
-      <g class="agent-diagram__worker" transform="translate(523 275)">
-        <circle r="22" />
-        <text y="3" text-anchor="middle">CAL</text>
-      </g>
-      <g class="agent-diagram__worker" transform="translate(528 445)">
-        <circle r="22" />
-        <text y="3" text-anchor="middle">MAIL</text>
-      </g>
-      <g class="agent-diagram__worker" transform="translate(233 446)">
-        <circle r="22" />
-        <text y="3" text-anchor="middle">BILL</text>
-      </g>
-    </g>
-
-    <!-- Orange ambient glow behind the core — Temporal-style runtime energy -->
-    <ellipse class="agent-diagram__core-orange-glow" cx="380" cy="364" rx="200" ry="180" />
-
-    <g class="agent-diagram__core">
-      <circle class="agent-diagram__core-wake" cx="380" cy="364" r="134" />
-      <circle class="agent-diagram__core-scan" cx="380" cy="364" r="114" />
-      <circle class="agent-diagram__core-body" cx="380" cy="364" r="96" />
-      <circle class="agent-diagram__core-dot" cx="380" cy="304" r="4.5" />
-      <text class="agent-diagram__core-state" x="380" y="336" text-anchor="middle">AUTONOMOUS</text>
-      <text class="agent-diagram__core-title" x="380" y="374" text-anchor="middle">AI AGENT</text>
-      <text class="agent-diagram__core-meta" x="380" y="407" text-anchor="middle">PLANS · DELEGATES · EXECUTES</text>
-    </g>
-
-    <g class="agent-diagram__telemetry" transform="translate(276 648)">
-      <text x="0" y="0">TASK 0482</text>
-      <text x="104" y="0">CONFIDENCE 97%</text>
-      <text x="256" y="0">HUMAN ESCALATION: READY</text>
-    </g>
-
-  </svg>
-
-  <div class="agent-visual__ticker" aria-hidden="true">
-    <span>01 observe</span><i></i><span>02 reason</span><i></i><span>03 act</span><i></i><span>04 verify</span>
-  </div>
+  <!-- Ambient orange glow (Temporal-style) -->
+  <span class="agent-card__glow" aria-hidden="true"></span>
 </div>

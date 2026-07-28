@@ -309,21 +309,27 @@ const quotes = testimonials.filter((t) => !t.draft);
 
 <script>
   /* ============================================================
-     PARTICLE FIELD — lightweight Inngest-style starfield
-     Uses requestAnimationFrame on non-reduced-motion; static on
-     prefers-reduced-motion. Halves particle count on mobile.
+     STARFIELD — dense Inngest-style particle field.
+     3 tiers of stars: dim texture (60%), medium (35%), bright (5%).
+     Each star twinkles (slow sinusoidal opacity) and drifts slowly.
+     prefers-reduced-motion: renders once, static. Mobile: half count.
      ============================================================ */
-  (function initParticles() {
+  (function initStarfield() {
     const canvas = document.querySelector<HTMLCanvasElement>('.hero__particles');
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    type Particle = { x: number; y: number; r: number; vx: number; vy: number; o: number };
-    let particles: Particle[] = [];
+    type Star = {
+      x: number; y: number; r: number;
+      baseO: number; o: number;
+      vx: number; vy: number;
+      tw: number; tws: number;
+      bright: boolean;
+    };
+    let stars: Star[] = [];
     let rafId = 0;
 
     function resize() {
@@ -331,85 +337,83 @@ const quotes = testimonials.filter((t) => !t.draft);
       canvas.height = canvas.offsetHeight;
     }
 
-    function createParticles() {
+    function createStars() {
       const isMobile = window.innerWidth <= 768;
-      const count = isMobile ? 30 : 90;
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.1 + 0.25,
-        vx: (Math.random() - 0.5) * 0.12,
-        vy: (Math.random() - 0.5) * 0.12,
-        o: Math.random() * 0.35 + 0.08,
-      }));
+      const count = isMobile ? 140 : 300;
+      stars = Array.from({ length: count }, () => {
+        const tier = Math.random();
+        let r: number, baseO: number, bright = false;
+        if (tier < 0.60) {
+          // dim background texture
+          r = Math.random() * 0.45 + 0.18;
+          baseO = Math.random() * 0.16 + 0.06;
+        } else if (tier < 0.95) {
+          // medium
+          r = Math.random() * 0.55 + 0.55;
+          baseO = Math.random() * 0.22 + 0.22;
+        } else {
+          // bright feature stars (a handful)
+          r = Math.random() * 0.9 + 1.2;
+          baseO = Math.random() * 0.20 + 0.60;
+          bright = true;
+        }
+        return {
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r,
+          baseO,
+          o: baseO,
+          vx: (Math.random() - 0.5) * 0.05,
+          vy: (Math.random() - 0.5) * 0.05,
+          tw: Math.random() * Math.PI * 2,
+          tws: Math.random() * 0.007 + 0.002,
+          bright,
+        };
+      });
     }
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (const p of particles) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${p.o})`;
-        ctx.fill();
+      for (const s of stars) {
         if (!prefersReduced) {
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < -2) p.x = canvas.width + 2;
-          else if (p.x > canvas.width + 2) p.x = -2;
-          if (p.y < -2) p.y = canvas.height + 2;
-          else if (p.y > canvas.height + 2) p.y = -2;
+          // Twinkle: slow sinusoidal opacity variation ±28% of base
+          s.tw += s.tws;
+          s.o = s.baseO * (0.72 + 0.28 * Math.sin(s.tw));
+          // Slow drift
+          s.x += s.vx;
+          s.y += s.vy;
+          if (s.x < -2) s.x = canvas.width + 2;
+          else if (s.x > canvas.width + 2) s.x = -2;
+          if (s.y < -2) s.y = canvas.height + 2;
+          else if (s.y > canvas.height + 2) s.y = -2;
         }
+        const o = Math.max(0, Math.min(1, s.o));
+        // Subtle glow bloom on bright feature stars
+        if (s.bright && o > 0.5) {
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r * 3.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,255,255,${(o * 0.06).toFixed(3)})`;
+          ctx.fill();
+        }
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${o.toFixed(3)})`;
+        ctx.fill();
       }
       if (!prefersReduced) rafId = requestAnimationFrame(draw);
     }
 
     resize();
-    createParticles();
-    draw();
+    createStars();
+    draw(); // always render once (static for prefers-reduced, loop for normal)
 
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
       resize();
-      createParticles();
-      if (!prefersReduced) draw();
+      createStars();
+      draw();
     });
   })();
-
-  /* ============================================================
-     CONSOLE SCALE LOCK — Linear pattern: whole console shrinks
-     as one unit on mobile so sub-elements never reflow or clip.
-     ============================================================ */
-  function scaleConsole() {
-    const net = document.querySelector<HTMLElement>('.hero__network');
-    const vis = net?.querySelector<HTMLElement>('.agent-visual');
-    if (!net || !vis) return;
-
-    // Reset inline styles so we can measure natural size
-    vis.style.removeProperty('width');
-    vis.style.removeProperty('transform');
-    vis.style.removeProperty('transform-origin');
-    vis.style.removeProperty('margin-bottom');
-
-    if (window.innerWidth > 768) return;
-
-    const CONSOLE_W = 640;
-    const availW = net.clientWidth;
-    if (availW >= CONSOLE_W) return;
-
-    const cs = availW / CONSOLE_W;
-
-    // Measure natural height with fixed width before scaling
-    vis.style.width = CONSOLE_W + 'px';
-    const naturalH = vis.offsetHeight;
-
-    // Apply scale — visual shrinks, layout footprint gets negative margin to compensate
-    vis.style.transformOrigin = 'top left';
-    vis.style.transform = `scale(${cs})`;
-    vis.style.marginBottom = `${(cs - 1) * naturalH}px`;
-  }
-
-  scaleConsole();
-  window.addEventListener('resize', scaleConsole);
 
   /* ============================================================
      SCROLL PROGRESS
