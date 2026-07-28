@@ -1,0 +1,336 @@
+---
+/**
+ * Preview: Direction C — "Atmospheric Loop"
+ * Trigger energy: oversized type dominant. Behind/around it, a LARGER
+ * but faint agentic loop (observe→reason→act→verify) bleeds into the
+ * starfield as ambient background texture — low-contrast, orange-tinged.
+ * The type IS the hero. The loop is atmosphere. Maximum restraint.
+ */
+import Base from '../../layouts/Base.astro';
+import IntegrationMarquee from '../../components/IntegrationMarquee.astro';
+---
+
+<Base title="Hero Preview — Direction C" description="Hero direction C: atmospheric loop">
+  <div class="preview-label" aria-label="Hero direction indicator">
+    <a href="/preview/hero-a" class="preview-label__link">← A</a>
+    <a href="/preview/hero-b" class="preview-label__link">← B</a>
+    <span class="preview-label__badge">Direction C — Atmospheric Loop</span>
+  </div>
+
+  <!-- HERO — Direction C: full-width, type dominant, loop as atmosphere -->
+  <section class="hero hero--c">
+    <canvas class="hero__particles" aria-hidden="true"></canvas>
+
+    <!-- Atmospheric loop SVG — bleeds into background, very low opacity -->
+    <div class="atmos-loop" aria-hidden="true">
+      <svg class="atmos-loop__svg" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="atmosGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f54d26" stop-opacity="0.18" />
+            <stop offset="60%" stop-color="#f54d26" stop-opacity="0.05" />
+            <stop offset="100%" stop-color="#f54d26" stop-opacity="0" />
+          </radialGradient>
+          <path
+            id="atmosPath"
+            pathLength="100"
+            d="M450 120 C680 80 820 240 820 450 C820 660 660 820 450 820 C240 820 80 660 80 450 C80 240 240 80 450 120Z"
+          />
+        </defs>
+
+        <!-- ambient glow blob -->
+        <ellipse cx="450" cy="450" rx="340" ry="320" fill="url(#atmosGlow)" />
+
+        <!-- loop ring — base (faint) -->
+        <use
+          class="atmos-loop__ring"
+          href="#atmosPath"
+          stroke="rgba(245,77,38,0.12)"
+          stroke-width="1"
+          fill="none"
+        />
+        <!-- loop ring — energy dash (slightly brighter, animated) -->
+        <use
+          class="atmos-loop__energy"
+          href="#atmosPath"
+          stroke="rgba(245,77,38,0.28)"
+          stroke-width="1.5"
+          fill="none"
+          stroke-dasharray="18 82"
+          stroke-dashoffset="0"
+        />
+
+        <!-- node halos — very faint circles at each step position -->
+        <!-- OBSERVE ~top -->
+        <circle class="atmos-node" cx="450" cy="120" r="34" stroke="rgba(245,77,38,0.18)" stroke-width="1" fill="rgba(245,77,38,0.04)" />
+        <!-- REASON ~right -->
+        <circle class="atmos-node" cx="820" cy="450" r="34" stroke="rgba(245,77,38,0.10)" stroke-width="1" fill="rgba(245,77,38,0.02)" />
+        <!-- ACT ~bottom -->
+        <circle class="atmos-node" cx="450" cy="820" r="34" stroke="rgba(245,77,38,0.10)" stroke-width="1" fill="rgba(245,77,38,0.02)" />
+        <!-- VERIFY ~left -->
+        <circle class="atmos-node" cx="80" cy="450" r="34" stroke="rgba(245,77,38,0.10)" stroke-width="1" fill="rgba(245,77,38,0.02)" />
+
+        <!-- step labels — mono, very faint -->
+        <text class="atmos-label" x="450" y="117" text-anchor="middle">OBSERVE</text>
+        <text class="atmos-label" x="820" y="447" text-anchor="middle">REASON</text>
+        <text class="atmos-label" x="450" y="817" text-anchor="middle">ACT</text>
+        <text class="atmos-label" x="80" y="447" text-anchor="middle">VERIFY</text>
+
+        <!-- packet on path -->
+        <circle class="atmos-packet" r="5">
+          <animateMotion dur="12s" repeatCount="indefinite"><mpath href="#atmosPath" /></animateMotion>
+        </circle>
+      </svg>
+    </div>
+
+    <!-- Type-dominant layout: single wide column, headline takes up most of the space -->
+    <div class="wrap hero--c__inner">
+      <div class="hero__head">
+        <span class="kicker reveal">
+          Autonomous systems · Halifax, NS
+        </span>
+
+        <h1 class="hero__title hero--c__title serif reveal">
+          AI agents that keep the work <em>moving.</em>
+        </h1>
+
+        <p class="hero__lede hero--c__lede reveal">
+          Like a sharp new hire, they follow the work across your tools, handle routine
+          decisions, and bring you in when judgment matters. I design the guardrails,
+          connect the systems, and make every action visible.
+        </p>
+
+        <div class="hero__cta reveal">
+          <a href="#contact" class="btn btn--primary">
+            Start with a systems audit <span class="arr">↓</span>
+          </a>
+          <a href="#work" class="btn btn--ghost">Selected work</a>
+        </div>
+
+        <div class="hero__status reveal">
+          <span class="led"></span> Runtime online · available for new projects
+        </div>
+      </div>
+
+      <div class="hero__proof hero--c__proof reveal" aria-label="Agent capabilities">
+        <span><strong>25 years</strong> building production systems</span>
+        <span><strong>Human judgment</strong> when it matters</span>
+        <span><strong>Every action</strong> logged and reviewable</span>
+      </div>
+    </div>
+  </section>
+
+  <IntegrationMarquee />
+</Base>
+
+<style>
+  /* ── preview nav label ── */
+  .preview-label {
+    position: fixed;
+    top: 80px;
+    right: 1.5rem;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(245, 77, 38, 0.4);
+    border-radius: 8px;
+    padding: 0.4rem 0.75rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: rgba(245, 242, 236, 0.7);
+    backdrop-filter: blur(12px);
+  }
+  .preview-label__badge {
+    color: #f54d26;
+    font-weight: 700;
+  }
+  .preview-label__link {
+    color: rgba(245, 242, 236, 0.5);
+    text-decoration: none;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+  }
+  .preview-label__link:hover {
+    color: #f54d26;
+    background: rgba(245, 77, 38, 0.1);
+  }
+
+  /* ── Direction C hero ── */
+  /* Override to single wide column — type dominates */
+  .hero--c {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* The atmospheric loop sits behind everything */
+  .atmos-loop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* offset right so it bleeds off the edge — feels like texture not UI */
+    padding-right: 0;
+    transform: translateX(12%);
+  }
+  .atmos-loop__svg {
+    width: min(72vw, 700px);
+    height: auto;
+    opacity: 0.75;
+  }
+
+  .atmos-loop__energy {
+    animation: atmos-dash 12s linear infinite;
+  }
+  @keyframes atmos-dash {
+    to { stroke-dashoffset: -100; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .atmos-loop__energy { animation: none; }
+    .atmos-packet { display: none; }
+  }
+
+  .atmos-packet {
+    fill: #f54d26;
+    filter: drop-shadow(0 0 5px rgba(245, 77, 38, 0.6));
+    opacity: 0.55;
+  }
+
+  .atmos-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    fill: rgba(245, 77, 38, 0.28);
+  }
+
+  /* type-dominant inner layout */
+  .hero--c__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1180px;
+    padding-block: 0;
+  }
+
+  .hero--c__title {
+    /* Extra large: type IS the hero */
+    max-width: 12ch;
+    font-size: clamp(4rem, 7.5vw, 8.5rem);
+    line-height: 0.82;
+    letter-spacing: -0.075em;
+    margin-bottom: 0;
+  }
+
+  .hero--c__lede {
+    max-width: 46ch;
+  }
+
+  /* proof row becomes a horizontal band at bottom of head */
+  .hero--c__proof {
+    margin-top: clamp(2.5rem, 5vh, 4.5rem);
+    grid-template-columns: repeat(3, max-content);
+    gap: clamp(2rem, 4vw, 4rem);
+    border-top: 1px solid rgba(245, 77, 38, 0.12);
+    padding-top: 1rem;
+  }
+
+  /* ── responsive ── */
+  @media (max-width: 1000px) {
+    .atmos-loop {
+      transform: translateX(20%);
+    }
+    .atmos-loop__svg {
+      width: min(88vw, 540px);
+    }
+    .hero--c__title {
+      font-size: clamp(3.7rem, 10vw, 6.5rem);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .atmos-loop {
+      /* on mobile: centre the loop, push behind content, smaller */
+      transform: translateX(30%) translateY(10%);
+      align-items: flex-start;
+      padding-top: 60px;
+    }
+    .atmos-loop__svg {
+      width: 100vw;
+      opacity: 0.55;
+    }
+    .hero--c__title {
+      font-size: clamp(3.25rem, 16vw, 4.8rem);
+    }
+    .hero--c__proof {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Particle field — denser/larger for atmospheric feel
+  const particleCanvas = document.querySelector<HTMLCanvasElement>('.hero__particles');
+  const hero = document.querySelector<HTMLElement>('.hero');
+  const particleContext = particleCanvas?.getContext('2d');
+  if (particleCanvas && particleContext && hero) {
+    type Particle = { x: number; y: number; size: number; speed: number; alpha: number; orange: boolean };
+    let width = 0, height = 0, dpr = 1, particles: Particle[] = [], frame = 0, lastPaint = 0;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mobile = window.matchMedia('(max-width: 640px)').matches;
+    const animateParticles = !reducedMotion && !mobile;
+    const seeded = (i: number, o: number) => { const v = Math.sin(i * 9283.31 + o * 77.17) * 43758.5453; return v - Math.floor(v); };
+    const sizeParticles = () => {
+      const rect = hero.getBoundingClientRect();
+      width = Math.max(1, Math.round(rect.width));
+      height = Math.max(1, Math.round(rect.height));
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      particleCanvas.width = Math.round(width * dpr);
+      particleCanvas.height = Math.round(height * dpr);
+      particleContext.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // slightly more particles for the atmospheric feel
+      const count = mobile ? 24 : Math.min(60, Math.max(38, Math.round(width / 26)));
+      particles = Array.from({ length: count }, (_, i) => ({
+        x: seeded(i, 1) * width, y: seeded(i, 2) * height,
+        size: 0.5 + seeded(i, 3) * 1.5, speed: 0.025 + seeded(i, 4) * 0.07,
+        alpha: 0.08 + seeded(i, 5) * 0.28, orange: seeded(i, 6) > 0.80,
+      }));
+      paintParticles(0);
+    };
+    const paintParticles = (delta: number) => {
+      particleContext.clearRect(0, 0, width, height);
+      for (const p of particles) {
+        if (delta) { p.x += p.speed * delta; p.y -= p.speed * delta * 0.14; if (p.x > width + 4) p.x = -4; if (p.y < -4) p.y = height + 4; }
+        particleContext.beginPath(); particleContext.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        particleContext.fillStyle = p.orange ? `rgba(245,77,38,${p.alpha})` : `rgba(245,242,236,${p.alpha})`;
+        particleContext.fill();
+      }
+    };
+    const animate = (time: number) => {
+      if (time - lastPaint >= 33) { paintParticles(Math.min(time - lastPaint, 50)); lastPaint = time; }
+      frame = requestAnimationFrame(animate);
+    };
+    new ResizeObserver(sizeParticles).observe(hero);
+    sizeParticles();
+    if (animateParticles) frame = requestAnimationFrame(animate);
+    window.addEventListener('pagehide', () => cancelAnimationFrame(frame), { once: true });
+  }
+  // Nav ghost
+  const nav = document.querySelector('.nav');
+  const heroEl = document.querySelector('.hero');
+  if (nav && heroEl) {
+    let threshold = 0;
+    const sync = () => nav.classList.toggle('nav--ghost', window.scrollY < threshold);
+    const measure = () => { threshold = (heroEl as HTMLElement).offsetHeight - 72; sync(); };
+    measure();
+    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', measure);
+  }
+</script>

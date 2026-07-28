@@ -1,0 +1,381 @@
+---
+/**
+ * Preview: Direction B — "Agent as Code"
+ * Temporal/E2B energy: oversized type left; right = syntax-highlighted
+ * code block showing a short agent workflow. Mono font, near-black card,
+ * orange accents on key tokens/active line. SAME copy as Direction A.
+ */
+import Base from '../../layouts/Base.astro';
+import IntegrationMarquee from '../../components/IntegrationMarquee.astro';
+---
+
+<Base title="Hero Preview — Direction B" description="Hero direction B: agent as code">
+  <div class="preview-label" aria-label="Hero direction indicator">
+    <a href="/preview/hero-a" class="preview-label__link">← A</a>
+    <span class="preview-label__badge">Direction B — Agent as Code</span>
+    <a href="/preview/hero-c" class="preview-label__link">→ C</a>
+  </div>
+
+  <!-- HERO — Direction B -->
+  <section class="hero hero--b">
+    <canvas class="hero__particles" aria-hidden="true"></canvas>
+    <div class="wrap hero__layout">
+      <div class="hero__head">
+        <span class="kicker reveal">
+          Autonomous systems · Halifax, NS
+        </span>
+
+        <h1 class="hero__title serif reveal">
+          AI agents that keep the work <em>moving.</em>
+        </h1>
+
+        <p class="hero__lede reveal">
+          Like a sharp new hire, they follow the work across your tools, handle routine
+          decisions, and bring you in when judgment matters. I design the guardrails,
+          connect the systems, and make every action visible.
+        </p>
+
+        <div class="hero__cta reveal">
+          <a href="#contact" class="btn btn--primary">
+            Start with a systems audit <span class="arr">↓</span>
+          </a>
+          <a href="#work" class="btn btn--ghost">Selected work</a>
+        </div>
+
+        <div class="hero__status reveal">
+          <span class="led"></span> Runtime online · available for new projects
+        </div>
+      </div>
+
+      <!-- Direction B visual: code/terminal block -->
+      <div class="hero__network hero__code-wrap reveal" aria-label="Agent workflow code">
+        <div class="code-block" role="img" aria-label="TypeScript agent workflow showing observe, reason, act, verify cycle">
+          <div class="code-block__chrome">
+            <span class="code-block__dots" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </span>
+            <span class="code-block__title">agent/lead-qualify.ts</span>
+            <span class="code-block__live"><i class="code-block__led"></i>LIVE</span>
+          </div>
+          <pre class="code-block__body" aria-hidden="true"><code><span class="tok-kw">async function</span> <span class="tok-fn">runAgent</span>(<span class="tok-param">trigger</span><span class="tok-punct">:</span> <span class="tok-type">HubSpotEvent</span>) {</code>
+<code class="code-line--active"><span class="tok-comment">  // 01 OBSERVE — pull context from connected systems</span></code>
+<code>  <span class="tok-kw">const</span> <span class="tok-var">lead</span>   <span class="tok-punct">=</span> <span class="tok-kw">await</span> <span class="tok-fn">observe</span>(<span class="tok-param">trigger</span><span class="tok-punct">.</span><span class="tok-prop">contact</span>)<span class="tok-punct">;</span></code>
+<code>  <span class="tok-kw">const</span> <span class="tok-var">history</span> <span class="tok-punct">=</span> <span class="tok-kw">await</span> <span class="tok-fn">observe</span>(<span class="tok-param">trigger</span><span class="tok-punct">.</span><span class="tok-prop">interactions</span>)<span class="tok-punct">;</span></code>
+<code></code>
+<code>  <span class="tok-comment">  // 02 REASON — bounded decision inside policy</span></code>
+<code>  <span class="tok-kw">const</span> <span class="tok-var">decision</span> <span class="tok-punct">=</span> <span class="tok-kw">await</span> <span class="tok-fn">reason</span>(<span class="tok-param">lead</span><span class="tok-punct">,</span> <span class="tok-param">history</span><span class="tok-punct">,</span> <span class="tok-type">POLICY</span>)<span class="tok-punct">;</span></code>
+<code>  <span class="tok-kw">if</span> (<span class="tok-var">decision</span><span class="tok-punct">.</span><span class="tok-prop">confidence</span> <span class="tok-punct">&lt;</span> <span class="tok-num">0.8</span>) {</code>
+<code>    <span class="tok-kw">return</span> <span class="tok-fn">escalate</span>(<span class="tok-var">decision</span>)<span class="tok-punct">;</span>  <span class="tok-comment">// human in loop</span></code>
+<code>  }</code>
+<code></code>
+<code>  <span class="tok-comment">  // 03 ACT — write only what policy permits</span></code>
+<code>  <span class="tok-kw">await</span> <span class="tok-fn">act</span>(<span class="tok-punct">()</span> <span class="tok-punct">=&gt;</span> <span class="tok-var">crm</span><span class="tok-punct">.</span><span class="tok-fn">qualify</span>(<span class="tok-var">lead</span><span class="tok-punct">.</span><span class="tok-prop">id</span>))<span class="tok-punct">;</span></code>
+<code>  <span class="tok-kw">await</span> <span class="tok-fn">act</span>(<span class="tok-punct">()</span> <span class="tok-punct">=&gt;</span> <span class="tok-var">calendar</span><span class="tok-punct">.</span><span class="tok-fn">book</span>(<span class="tok-var">lead</span><span class="tok-punct">,</span> <span class="tok-type">NEXT_SLOT</span>))<span class="tok-punct">;</span></code>
+<code></code>
+<code>  <span class="tok-comment">  // 04 VERIFY — confirm outcome, log everything</span></code>
+<code>  <span class="tok-kw">const</span> <span class="tok-var">result</span> <span class="tok-punct">=</span> <span class="tok-kw">await</span> <span class="tok-fn">verify</span>(<span class="tok-var">lead</span><span class="tok-punct">.</span><span class="tok-prop">id</span>)<span class="tok-punct">;</span></code>
+<code>  <span class="tok-kw">return</span> <span class="tok-fn">log</span>(<span class="tok-punct">{</span> <span class="tok-var">result</span><span class="tok-punct">,</span> <span class="tok-var">cycle</span><span class="tok-punct">:</span> <span class="tok-var">CYCLE</span><span class="tok-punct">++,</span> <span class="tok-var">bounded</span><span class="tok-punct">:</span> <span class="tok-kw">true</span> <span class="tok-punct">}</span>)<span class="tok-punct">;</span></code>
+<code>}</code></pre>
+          <div class="code-block__status">
+            <span class="code-block__badge code-block__badge--ok">CYCLE 0482 · PASS</span>
+            <span class="code-block__badge">CONFIDENCE 0.97</span>
+            <span class="code-block__badge">4 ACTIONS LOGGED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__proof reveal" aria-label="Agent capabilities">
+        <span><strong>25 years</strong> building production systems</span>
+        <span><strong>Human judgment</strong> when it matters</span>
+        <span><strong>Every action</strong> logged and reviewable</span>
+      </div>
+    </div>
+  </section>
+
+  <IntegrationMarquee />
+</Base>
+
+<style>
+  /* ── preview nav label ── */
+  .preview-label {
+    position: fixed;
+    top: 80px;
+    right: 1.5rem;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(245, 77, 38, 0.4);
+    border-radius: 8px;
+    padding: 0.4rem 0.75rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: rgba(245, 242, 236, 0.7);
+    backdrop-filter: blur(12px);
+  }
+  .preview-label__badge {
+    color: #f54d26;
+    font-weight: 700;
+  }
+  .preview-label__link {
+    color: rgba(245, 242, 236, 0.5);
+    text-decoration: none;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+  }
+  .preview-label__link:hover {
+    color: #f54d26;
+    background: rgba(245, 77, 38, 0.1);
+  }
+
+  /* ── Direction B hero tweaks ── */
+  /* Wider layout to give code block room; same 2-col template as Direction A */
+  .hero--b .hero__layout {
+    grid-template-columns: minmax(22rem, 0.9fr) minmax(28rem, 1.1fr);
+  }
+
+  /* ── code block ── */
+  .hero__code-wrap {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .code-block {
+    width: 100%;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+      0 32px 72px rgba(0, 0, 0, 0.60),
+      0 0 80px rgba(245, 77, 38, 0.05);
+    animation: code-appear 1s 0.32s both cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes code-appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .code-block { animation: none; }
+  }
+
+  /* chrome bar */
+  .code-block__chrome {
+    height: 40px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.025);
+  }
+  .code-block__dots {
+    display: flex;
+    gap: 6px;
+  }
+  .code-block__dots i {
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+  }
+  .code-block__title {
+    flex: 1;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: rgba(245, 242, 236, 0.40);
+    font-style: normal;
+  }
+  .code-block__live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #f54d26;
+  }
+  .code-block__led {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f54d26;
+    box-shadow: 0 0 10px #f54d26, 0 0 20px rgba(245, 77, 38, 0.4);
+    animation: led-pulse 2s steps(2) infinite;
+  }
+  @keyframes led-pulse { 50% { opacity: 0.2; } }
+  @media (prefers-reduced-motion: reduce) {
+    .code-block__led { animation: none; }
+  }
+
+  /* code body */
+  .code-block__body {
+    margin: 0;
+    padding: 1.25rem 0 1rem;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: clamp(0.7rem, 1.1vw, 0.82rem);
+    line-height: 1.7;
+    background: transparent;
+    /* scrollbar style */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+  }
+  .code-block__body code {
+    display: block;
+    padding: 0 1.5rem;
+    white-space: pre;
+  }
+
+  /* active line highlight */
+  .code-line--active {
+    background: rgba(245, 77, 38, 0.07);
+    border-left: 2px solid #f54d26;
+    padding-left: calc(1.5rem - 2px) !important;
+    animation: active-line-pulse 4s ease-in-out infinite alternate;
+  }
+  @keyframes active-line-pulse {
+    from { background: rgba(245, 77, 38, 0.06); }
+    to   { background: rgba(245, 77, 38, 0.11); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .code-line--active { animation: none; }
+  }
+
+  /* token colours — near-mono with one signal accent */
+  .tok-kw    { color: rgba(245, 242, 236, 0.90); font-weight: 650; }
+  .tok-fn    { color: #f54d26; }
+  .tok-type  { color: rgba(245, 242, 236, 0.75); }
+  .tok-param { color: rgba(245, 242, 236, 0.82); }
+  .tok-var   { color: rgba(245, 242, 236, 0.82); }
+  .tok-prop  { color: rgba(245, 242, 236, 0.62); }
+  .tok-punct { color: rgba(245, 242, 236, 0.35); }
+  .tok-num   { color: rgba(245, 242, 236, 0.70); }
+  .tok-comment {
+    color: rgba(245, 242, 236, 0.32);
+    font-style: italic;
+  }
+  /* active step labels in comments — orange */
+  .code-line--active .tok-comment { color: rgba(245, 77, 38, 0.75); font-style: italic; }
+
+  /* status footer */
+  .code-block__status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.015);
+  }
+  .code-block__badge {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    color: rgba(245, 242, 236, 0.38);
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+  }
+  .code-block__badge--ok {
+    color: #f54d26;
+    border-color: rgba(245, 77, 38, 0.3);
+    background: rgba(245, 77, 38, 0.06);
+  }
+
+  /* ── responsive ── */
+  @media (max-width: 1000px) {
+    .hero--b .hero__layout {
+      grid-template-columns: 1fr;
+    }
+    .code-block__body {
+      font-size: 0.75rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .code-block {
+      border-radius: 8px;
+    }
+    .code-block__body {
+      font-size: 0.65rem;
+      padding-bottom: 0.75rem;
+    }
+    .code-block__body code {
+      padding: 0 1rem;
+    }
+    .code-line--active {
+      padding-left: calc(1rem - 2px) !important;
+    }
+    .code-block__status {
+      padding: 0.6rem 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Particle field
+  const particleCanvas = document.querySelector<HTMLCanvasElement>('.hero__particles');
+  const hero = document.querySelector<HTMLElement>('.hero');
+  const particleContext = particleCanvas?.getContext('2d');
+  if (particleCanvas && particleContext && hero) {
+    type Particle = { x: number; y: number; size: number; speed: number; alpha: number; orange: boolean };
+    let width = 0, height = 0, dpr = 1, particles: Particle[] = [], frame = 0, lastPaint = 0;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mobile = window.matchMedia('(max-width: 640px)').matches;
+    const animateParticles = !reducedMotion && !mobile;
+    const seeded = (i: number, o: number) => { const v = Math.sin(i * 9283.31 + o * 77.17) * 43758.5453; return v - Math.floor(v); };
+    const sizeParticles = () => {
+      const rect = hero.getBoundingClientRect();
+      width = Math.max(1, Math.round(rect.width));
+      height = Math.max(1, Math.round(rect.height));
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      particleCanvas.width = Math.round(width * dpr);
+      particleCanvas.height = Math.round(height * dpr);
+      particleContext.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = mobile ? 20 : Math.min(48, Math.max(30, Math.round(width / 30)));
+      particles = Array.from({ length: count }, (_, i) => ({
+        x: seeded(i, 1) * width, y: seeded(i, 2) * height,
+        size: 0.6 + seeded(i, 3) * 1.35, speed: 0.035 + seeded(i, 4) * 0.09,
+        alpha: 0.12 + seeded(i, 5) * 0.32, orange: seeded(i, 6) > 0.84,
+      }));
+      paintParticles(0);
+    };
+    const paintParticles = (delta: number) => {
+      particleContext.clearRect(0, 0, width, height);
+      for (const p of particles) {
+        if (delta) { p.x += p.speed * delta; p.y -= p.speed * delta * 0.16; if (p.x > width + 4) p.x = -4; if (p.y < -4) p.y = height + 4; }
+        particleContext.beginPath(); particleContext.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        particleContext.fillStyle = p.orange ? `rgba(245,77,38,${p.alpha})` : `rgba(245,242,236,${p.alpha})`;
+        particleContext.fill();
+      }
+    };
+    const animate = (time: number) => {
+      if (time - lastPaint >= 33) { paintParticles(Math.min(time - lastPaint, 50)); lastPaint = time; }
+      frame = requestAnimationFrame(animate);
+    };
+    new ResizeObserver(sizeParticles).observe(hero);
+    sizeParticles();
+    if (animateParticles) frame = requestAnimationFrame(animate);
+    window.addEventListener('pagehide', () => cancelAnimationFrame(frame), { once: true });
+  }
+  // Nav ghost
+  const nav = document.querySelector('.nav');
+  const heroEl = document.querySelector('.hero');
+  if (nav && heroEl) {
+    let threshold = 0;
+    const sync = () => nav.classList.toggle('nav--ghost', window.scrollY < threshold);
+    const measure = () => { threshold = (heroEl as HTMLElement).offsetHeight - 72; sync(); };
+    measure();
+    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', measure);
+  }
+</script>
