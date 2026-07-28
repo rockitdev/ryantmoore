@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import IntegrationMarquee from '../components/IntegrationMarquee.astro';
+import AgentLoop from '../components/AgentLoop.astro';
 import { getCollection } from 'astro:content';
 import { site, services, projects, background, stack, testimonials, audit } from '../data/site';
 import { TECH_GLYPHS } from '../data/tech-glyphs';
@@ -93,6 +94,8 @@ const quotes = testimonials.filter((t) => !t.draft);
   </section>
 
   <IntegrationMarquee />
+
+  <AgentLoop />
 
   <!-- SELECTED WORK -->
   <section class="section" id="work">
