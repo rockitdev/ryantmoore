@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Schematic from '../components/Schematic.astro';
+import IntegrationMarquee from '../components/IntegrationMarquee.astro';
 import { getCollection } from 'astro:content';
 import { site, services, projects, background, stack, testimonials, audit } from '../data/site';
 import { TECH_GLYPHS } from '../data/tech-glyphs';
@@ -57,18 +58,7 @@ const quotes = testimonials.filter((t) => !t.draft);
     </div>
   </section>
 
-  <div class="signal-rail" aria-hidden="true">
-    <div class="signal-rail__track">
-      <span>Observe · Reason · Act</span><i></i>
-      <span>Delegate at machine speed</span><i></i>
-      <span>Guardrails built in</span><i></i>
-      <span>Autonomy with accountability</span><i></i>
-      <span>Observe · Reason · Act</span><i></i>
-      <span>Delegate at machine speed</span><i></i>
-      <span>Guardrails built in</span><i></i>
-      <span>Autonomy with accountability</span><i></i>
-    </div>
-  </div>
+  <IntegrationMarquee />
 
   <!-- SELECTED WORK -->
   <section class="section" id="work">
