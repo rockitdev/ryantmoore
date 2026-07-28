@@ -285,24 +285,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 .hero > * { position: relative; z-index: 1; }
 .hero .kicker { color: rgba(255, 255, 255, 0.75); }
 .hero .reveal { opacity: 1; transform: none; }
-.hero__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.6fr);
-  gap: 2rem clamp(3rem, 8vw, 8rem);
-  align-items: start;
-}
-.hero__head {
-  text-align: left;
-  max-width: 44rem;
-}
-.hero__head .kicker { margin-bottom: 1.5rem; }
+/* Unique hero sub-element rules (layout source of truth is the .hero__layout block ~line 977) */
 .hero__details { max-width: 27rem; padding-bottom: 0.35rem; }
-.hero__network {
-  grid-column: 1 / -1;
-  min-width: 0;
-  margin-top: clamp(1.5rem, 3vw, 3rem);
-  padding: 1rem 0 0;
-}
 .hero__network-label {
   display: block;
   margin: 0 0 0.5rem 0.25rem;
@@ -312,18 +296,6 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.52);
-}
-
-@media (max-width: 1000px) {
-  .hero__layout { grid-template-columns: minmax(0, 42rem); gap: 2rem; }
-  .hero__head { max-width: 42rem; }
-  .hero__details { max-width: 35rem; }
-  .hero__network { max-width: 42rem; }
-}
-@media (max-width: 640px) {
-  .hero { padding-bottom: 3.5rem; }
-  .hero__layout { gap: 2.5rem; }
-  /* hero__network was previously hidden; now shown via scale-lock */
 }
 .schematic { position: relative; z-index: 1; width: 100%; height: auto; display: block; overflow: visible; }
 
@@ -1535,10 +1507,22 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 
 @media (max-width: 1000px) {
   .hero { min-height: auto; padding-top: calc(68px + 4rem); }
+  /* Single-column stack: clear desktop grid-template-areas so children auto-flow
+     in DOM order: .hero__head → .hero__network (console) → .hero__proof (stats).
+     Explicitly reset grid-area/column/row on each child so named areas from the
+     desktop rules can't win — no !important needed because this block comes later
+     in source order than the desktop declarations. */
   .hero__layout {
     grid-template-columns: 1fr;
-    grid-template-areas: "head" "visual" "proof";
+    grid-template-areas: none;
     gap: 2.5rem;
+  }
+  .hero__head,
+  .hero__network,
+  .hero__proof {
+    grid-area: auto;
+    grid-column: auto;
+    grid-row: auto;
   }
   .hero__head { max-width: 45rem; }
   .hero__title { max-width: 10ch; font-size: clamp(3.7rem, 10vw, 6.5rem); }
@@ -1560,7 +1544,13 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
     /* Will be set by scaleConsole() in JS */
   }
   .agent-visual {
-    /* Fixed design width — JS will scale this down as one unit */
+    /* Fixed design width — JS will scale this down as one unit.
+       animation: none required so JS's inline transform: scale() wins —
+       CSS animations override inline styles in the cascade; without this,
+       agent-stage-in's final `transform: none` beats the scale and the
+       negative margin-bottom compensation becomes mismatched, pulling
+       the stats row into the console's visual area. */
+    animation: none;
     width: 640px;
     transform-origin: top left;
     transform: scale(var(--cs, 1));
@@ -1850,10 +1840,4 @@ body:has(.hero) .footer :is(.footer__meta, .footer__links a) { color: rgba(236, 
   .agent-visual { zoom: 0.48; }
 }
 
-/* Mobile hero: force a clean single-column stack (copy -> console -> stats in DOM
-   order). The desktop grid-template-areas were not being reset on small screens,
-   which placed the stats row into the console's area = overlap. */
-@media (max-width: 900px) {
-  .hero__layout { grid-template-columns: 1fr !important; grid-template-areas: none !important; }
-  .hero__head, .hero__network, .hero__proof { grid-area: auto !important; grid-column: auto !important; }
-}
+/* Mobile single-column stack is handled in the max-width: 1000px block above — no !important needed. */
