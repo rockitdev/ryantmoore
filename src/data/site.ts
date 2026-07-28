@@ -44,6 +44,10 @@ export const services = [
     title: 'Websites & web apps you run yourself',
     body: 'Fast is a feature. The sites I build score 100 on Google\'s PageSpeed test, on phones and desktops alike, and load in under a second. And you can update them yourself: change a price, post an update, swap a photo, with no developer on call.',
   },
+  {
+    title: 'Audits & fixing what you already have',
+    body: 'Not everything needs a new build. Often the fastest win is a hard look at the tools and automations you already pay for: what is quietly broken, duplicated, or could be running itself. I map it and hand you a plain plan, or just fix it.',
+  },
 ];
 
 // Smaller, notable builds shown in the denser projects grid.
