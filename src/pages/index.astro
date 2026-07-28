@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Schematic from '../components/Schematic.astro';
 import { getCollection } from 'astro:content';
-import { site, outcomes, services, projects, background, stack, testimonials, audit } from '../data/site';
+import { site, services, projects, background, stack, testimonials, audit } from '../data/site';
 import { TECH_GLYPHS } from '../data/tech-glyphs';
 
 const studies = (await getCollection('caseStudies'))
@@ -14,45 +14,61 @@ const quotes = testimonials.filter((t) => !t.draft);
 ---
 
 <Base>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap hero__head">
-      <span class="kicker reveal" style="margin-bottom: 1.5rem; display: inline-flex;">
-        Software engineer, {site.location}
-      </span>
+    <div class="wrap hero__layout">
+      <div class="hero__head">
+        <span class="kicker reveal">
+          Autonomous systems · {site.location}
+        </span>
 
-      <h1 class="hero__title serif reveal">
-        I build the <em>AI agent systems</em> businesses quietly <span class="u">run on</span>.
-      </h1>
+        <h1 class="hero__title serif reveal">
+          AI agents that <em>keep the work</em> <span class="u">moving.</span>
+        </h1>
 
-      <p class="hero__lede reveal">
-        I build AI agents that handle the repetitive work a business runs on:
-        sorting, scheduling, replying, following up. Then I wire them into the
-        tools you already use, so it all moves on its own. Twenty-five years connecting
-        business systems; now with agents orchestrating them.
-      </p>
+        <p class="hero__lede reveal">
+          I build agentic workflows that watch your systems, make bounded decisions,
+          and take action—without waiting for someone to push the next button.
+        </p>
 
-      <div class="hero__cta reveal">
-        <a href={`mailto:${site.email}`} class="btn btn--primary">
-          Work with me <span class="arr">↗</span>
-        </a>
-        <a href="#work" class="btn btn--ghost">Selected work</a>
+        <div class="hero__cta reveal">
+          <a href={`mailto:${site.email}`} class="btn btn--primary">
+            Work with me <span class="arr">↗</span>
+          </a>
+          <a href="#work" class="btn btn--ghost">Selected work</a>
+        </div>
+
+        <div class="hero__status reveal">
+          <span class="led"></span> Agent runtime online · accepting new builds
+        </div>
       </div>
 
-      <div class="hero__status reveal">
-        <span class="led"></span> Available now, taking on a few new projects
-      </div>
-    </div>
-
-    <div class="wrap">
-      <div class="hero__viz reveal">
+      <div class="hero__network reveal">
         <Schematic />
       </div>
-      <ul class="hero__outcomes reveal">
-        {outcomes.map((o) => <li class="hero__outcome">{o}</li>)}
-      </ul>
+
+      <div class="hero__proof reveal" aria-label="Agent capabilities">
+        <span><strong>24/7</strong> operation</span>
+        <span><strong>&lt; 2s</strong> response</span>
+        <span><strong>100%</strong> traceable</span>
+      </div>
     </div>
   </section>
+
+  <div class="signal-rail" aria-hidden="true">
+    <div class="signal-rail__track">
+      <span>Observe · Reason · Act</span><i></i>
+      <span>Delegate at machine speed</span><i></i>
+      <span>Guardrails built in</span><i></i>
+      <span>Autonomy with accountability</span><i></i>
+      <span>Observe · Reason · Act</span><i></i>
+      <span>Delegate at machine speed</span><i></i>
+      <span>Guardrails built in</span><i></i>
+      <span>Autonomy with accountability</span><i></i>
+    </div>
+  </div>
 
   <!-- SELECTED WORK -->
   <section class="section" id="work">
@@ -248,7 +264,7 @@ const quotes = testimonials.filter((t) => !t.draft);
   <!-- CONTACT -->
   <section class="section contact" id="contact">
     <div class="wrap wrap--narrow">
-      <span class="kicker kicker--plain reveal" style="justify-content: center; display: flex;">06 · Contact</span>
+      <span class="kicker kicker--plain reveal">06 · Contact</span>
       <h2 class="contact__title serif reveal" style="margin-top: 1.25rem;">
         Available for the <em>right</em> project.
       </h2>
@@ -301,6 +317,43 @@ const quotes = testimonials.filter((t) => !t.draft);
 </Base>
 
 <script>
+  // A thin progress signal makes the long-form landing page feel like one journey.
+  const progress = document.querySelector<HTMLElement>('.scroll-progress span');
+  let progressFrame = 0;
+  const syncProgress = () => {
+    if (progressFrame) return;
+    progressFrame = requestAnimationFrame(() => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress?.style.setProperty('--progress', String(max > 0 ? window.scrollY / max : 0));
+      progressFrame = 0;
+    });
+  };
+  syncProgress();
+  window.addEventListener('scroll', syncProgress, { passive: true });
+  window.addEventListener('resize', syncProgress);
+
+  // Give the hero network physical depth on precise pointers.
+  const network = document.querySelector<HTMLElement>('.hero__network');
+  const hero = document.querySelector<HTMLElement>('.hero');
+  const canTilt =
+    window.matchMedia('(pointer: fine)').matches &&
+    window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+  if (network && canTilt) {
+    network.addEventListener('pointermove', (event) => {
+      const rect = network.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      network.style.transform = `perspective(1200px) rotateX(${(-y * 2.4).toFixed(2)}deg) rotateY(${(x * 3.2).toFixed(2)}deg) translateY(-4px)`;
+      hero?.style.setProperty('--mx', `${Math.round((event.clientX / window.innerWidth) * 100)}%`);
+      hero?.style.setProperty('--my', `${Math.round((event.clientY / window.innerHeight) * 100)}%`);
+    });
+    network.addEventListener('pointerleave', () => {
+      network.style.transform = '';
+      hero?.style.removeProperty('--mx');
+      hero?.style.removeProperty('--my');
+    });
+  }
+
   // Lead intake — posts to the same Make.com webhook Rockit uses; the scenario
   // routes on `source` so these land separately from HVAC trial leads.
   const WEBHOOK = 'https://hook.us2.make.com/8krobh69g2sel56hv5eibni99tlkkipf';
