@@ -88,6 +88,14 @@ Near-black, oversized flush-left type, a single electric-orange accent, and a sm
 ## Anti-slop (banned)
 - No blue->purple / rainbow gradients. No gradient-filled headline text. No default Inter/Geist-with-no-intent. No emoji-as-icons. No fake logos / invented stats. No dense busy dashboards. No dead empty voids (fill or remove).
 
+## Hero (locked 2026-07-28)
+Direction B wins. Canonical hero = **agent-as-code**:
+- **Left column:** oversized flush-left type + B's lede ("Like a sharp new hire, they follow the work across your tools, handle routine decisions, and bring you in when judgment matters. I design the guardrails, connect the systems, and make every action visible.") + primary CTA "Start with a systems audit" → #contact.
+- **Right column:** annotated TypeScript code block (`agent/lead-qualify.ts`) showing the four-step agent workflow: `01 OBSERVE` → `02 REASON / bounded-decision` → `escalate()` when `confidence < 0.8` (human in loop) → `03 ACT` → `04 VERIFY`. Orange active-line on OBSERVE. LIVE indicator (orange LED). Status footer: CYCLE / CONFIDENCE / ACTIONS LOGGED.
+- **Stat row (proof band):** `25 YEARS — building production systems | HUMAN JUDGMENT — when it matters | EVERY ACTION — logged and reviewable`. Mono, tracked, uppercase label style.
+- **Layout:** grid `minmax(22rem, 0.9fr) minmax(28rem, 1.1fr)` desktop; stacks single-column below 1000px.
+- Do NOT revert to the Schematic visual or the old Direction-A stats (24/7 / <2s / 100%).
+
 ## Verify (every change)
 - Breakpoints 360/390/768/1024/1440/1920/2560: no clip, no overlap, no void, edges aligned.
 - Rendered-composition check (screenshot), not source. prefers-reduced-motion works. WCAG AA.

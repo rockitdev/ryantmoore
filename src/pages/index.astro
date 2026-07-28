@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Schematic from '../components/Schematic.astro';
 import IntegrationMarquee from '../components/IntegrationMarquee.astro';
 import { getCollection } from 'astro:content';
 import { site, services, projects, background, stack, testimonials, audit } from '../data/site';
@@ -17,8 +16,8 @@ const quotes = testimonials.filter((t) => !t.draft);
 <Base>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO — Direction B (agent-as-code): oversized type left, annotated code block right -->
+  <section class="hero hero--code">
     <canvas class="hero__particles" aria-hidden="true"></canvas>
     <div class="wrap hero__layout">
       <div class="hero__head">
@@ -27,34 +26,68 @@ const quotes = testimonials.filter((t) => !t.draft);
         </span>
 
         <h1 class="hero__title serif reveal">
-          AI agents that <em>keep the work</em> <span class="u">moving.</span>
+          AI agents that keep the work <em>moving.</em>
         </h1>
 
         <p class="hero__lede reveal">
-          I build agentic workflows that watch your systems, make bounded decisions,
-          and take action without waiting for someone to push the next button.
+          Like a sharp new hire, they follow the work across your tools, handle routine
+          decisions, and bring you in when judgment matters. I design the guardrails,
+          connect the systems, and make every action visible.
         </p>
 
         <div class="hero__cta reveal">
           <a href="#contact" class="btn btn--primary">
-            Work with me <span class="arr">↗</span>
+            Start with a systems audit <span class="arr">↓</span>
           </a>
           <a href="#work" class="btn btn--ghost">Selected work</a>
         </div>
 
         <div class="hero__status reveal">
-          <span class="led"></span> Agent runtime online · accepting new builds
+          <span class="led"></span> Runtime online · available for new projects
         </div>
       </div>
 
-      <div class="hero__network reveal">
-        <Schematic />
+      <!-- Direction B visual: annotated agent workflow code block -->
+      <div class="hero__network hero__code-wrap reveal" aria-label="Agent workflow code">
+        <div class="code-block" role="img" aria-label="TypeScript agent workflow showing observe, reason, act, verify cycle">
+          <div class="code-block__chrome">
+            <span class="code-block__dots" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </span>
+            <span class="code-block__title">agent/lead-qualify.ts</span>
+            <span class="code-block__live"><i class="code-block__led"></i>LIVE</span>
+          </div>
+          <pre class="code-block__body" aria-hidden="true"><code><span class="tok-kw">async function</span> <span class="tok-fn">runAgent</span>(<span class="tok-param">trigger</span><span class="tok-punct">:</span> <span class="tok-type">HubSpotEvent</span>) {</code>
+<code class="code-line--active"><span class="tok-comment">  // 01 OBSERVE — pull context from connected systems</span></code>
+<code>  <span class="tok-kw">const</span> <span class="tok-var">lead</span>   <span class="tok-punct">=</span> <span class="tok-kw">await</span> <span class="tok-fn">observe</span>(<span class="tok-param">trigger</span><span class="tok-punct">.</span><span class="tok-prop">contact</span>)<span class="tok-punct">;</span></code>
+<code>  <span class="tok-kw">const</span> <span class="tok-var">history</span> <span class="tok-punct">=</span> <span class="tok-kw">await</span> <span class="tok-fn">observe</span>(<span class="tok-param">trigger</span><span class="tok-punct">.</span><span class="tok-prop">interactions</span>)<span class="tok-punct">;</span></code>
+<code></code>
+<code>  <span class="tok-comment">  // 02 REASON — bounded decision inside policy</span></code>
+<code>  <span class="tok-kw">const</span> <span class="tok-var">decision</span> <span class="tok-punct">=</span> <span class="tok-kw">await</span> <span class="tok-fn">reason</span>(<span class="tok-param">lead</span><span class="tok-punct">,</span> <span class="tok-param">history</span><span class="tok-punct">,</span> <span class="tok-type">POLICY</span>)<span class="tok-punct">;</span></code>
+<code>  <span class="tok-kw">if</span> (<span class="tok-var">decision</span><span class="tok-punct">.</span><span class="tok-prop">confidence</span> <span class="tok-punct">&lt;</span> <span class="tok-num">0.8</span>) {</code>
+<code>    <span class="tok-kw">return</span> <span class="tok-fn">escalate</span>(<span class="tok-var">decision</span>)<span class="tok-punct">;</span>  <span class="tok-comment">// human in loop</span></code>
+<code>  }</code>
+<code></code>
+<code>  <span class="tok-comment">  // 03 ACT — write only what policy permits</span></code>
+<code>  <span class="tok-kw">await</span> <span class="tok-fn">act</span>(<span class="tok-punct">()</span> <span class="tok-punct">=&gt;</span> <span class="tok-var">crm</span><span class="tok-punct">.</span><span class="tok-fn">qualify</span>(<span class="tok-var">lead</span><span class="tok-punct">.</span><span class="tok-prop">id</span>))<span class="tok-punct">;</span></code>
+<code>  <span class="tok-kw">await</span> <span class="tok-fn">act</span>(<span class="tok-punct">()</span> <span class="tok-punct">=&gt;</span> <span class="tok-var">calendar</span><span class="tok-punct">.</span><span class="tok-fn">book</span>(<span class="tok-var">lead</span><span class="tok-punct">,</span> <span class="tok-type">NEXT_SLOT</span>))<span class="tok-punct">;</span></code>
+<code></code>
+<code>  <span class="tok-comment">  // 04 VERIFY — confirm outcome, log everything</span></code>
+<code>  <span class="tok-kw">const</span> <span class="tok-var">result</span> <span class="tok-punct">=</span> <span class="tok-kw">await</span> <span class="tok-fn">verify</span>(<span class="tok-var">lead</span><span class="tok-punct">.</span><span class="tok-prop">id</span>)<span class="tok-punct">;</span></code>
+<code>  <span class="tok-kw">return</span> <span class="tok-fn">log</span>(<span class="tok-punct">{</span> <span class="tok-var">result</span><span class="tok-punct">,</span> <span class="tok-var">cycle</span><span class="tok-punct">:</span> <span class="tok-var">CYCLE</span><span class="tok-punct">++,</span> <span class="tok-var">bounded</span><span class="tok-punct">:</span> <span class="tok-kw">true</span> <span class="tok-punct">}</span>)<span class="tok-punct">;</span></code>
+<code>}</code></pre>
+          <div class="code-block__status">
+            <span class="code-block__badge code-block__badge--ok">CYCLE 0482 · PASS</span>
+            <span class="code-block__badge">CONFIDENCE 0.97</span>
+            <span class="code-block__badge">4 ACTIONS LOGGED</span>
+          </div>
+        </div>
       </div>
 
       <div class="hero__proof reveal" aria-label="Agent capabilities">
-        <span><strong>24/7</strong> operation</span>
-        <span><strong>&lt; 2s</strong> response</span>
-        <span><strong>100%</strong> traceable</span>
+        <span><strong>25 years</strong> building production systems</span>
+        <span><strong>Human judgment</strong> when it matters</span>
+        <span><strong>Every action</strong> logged and reviewable</span>
       </div>
     </div>
   </section>
@@ -307,6 +340,198 @@ const quotes = testimonials.filter((t) => !t.draft);
   </section>
 </Base>
 
+<style>
+  /* ── Hero layout override: wider right column for code block ── */
+  .hero--code .hero__layout {
+    grid-template-columns: minmax(22rem, 0.9fr) minmax(28rem, 1.1fr);
+  }
+
+  /* ── code-wrap alignment ── */
+  .hero__code-wrap {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ── code block ── */
+  .code-block {
+    width: 100%;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+      0 32px 72px rgba(0, 0, 0, 0.60),
+      0 0 80px rgba(245, 77, 38, 0.05);
+    animation: code-appear 1s 0.32s both cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes code-appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .code-block { animation: none; }
+  }
+
+  /* chrome bar */
+  .code-block__chrome {
+    height: 40px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.025);
+  }
+  .code-block__dots {
+    display: flex;
+    gap: 6px;
+  }
+  .code-block__dots i {
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+  }
+  .code-block__title {
+    flex: 1;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: rgba(245, 242, 236, 0.40);
+    font-style: normal;
+  }
+  .code-block__live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #f54d26;
+  }
+  .code-block__led {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f54d26;
+    box-shadow: 0 0 10px #f54d26, 0 0 20px rgba(245, 77, 38, 0.4);
+    animation: led-pulse 2s steps(2) infinite;
+  }
+  @keyframes led-pulse { 50% { opacity: 0.2; } }
+  @media (prefers-reduced-motion: reduce) {
+    .code-block__led { animation: none; }
+  }
+
+  /* code body */
+  .code-block__body {
+    margin: 0;
+    padding: 1.25rem 0 1rem;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: clamp(0.7rem, 1.1vw, 0.82rem);
+    line-height: 1.7;
+    background: transparent;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+  }
+  .code-block__body code {
+    display: block;
+    padding: 0 1.5rem;
+    white-space: pre;
+  }
+
+  /* active line highlight */
+  .code-line--active {
+    background: rgba(245, 77, 38, 0.07);
+    border-left: 2px solid #f54d26;
+    padding-left: calc(1.5rem - 2px) !important;
+    animation: active-line-pulse 4s ease-in-out infinite alternate;
+  }
+  @keyframes active-line-pulse {
+    from { background: rgba(245, 77, 38, 0.06); }
+    to   { background: rgba(245, 77, 38, 0.11); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .code-line--active { animation: none; }
+  }
+
+  /* token colours — near-mono with one signal accent */
+  .tok-kw    { color: rgba(245, 242, 236, 0.90); font-weight: 650; }
+  .tok-fn    { color: #f54d26; }
+  .tok-type  { color: rgba(245, 242, 236, 0.75); }
+  .tok-param { color: rgba(245, 242, 236, 0.82); }
+  .tok-var   { color: rgba(245, 242, 236, 0.82); }
+  .tok-prop  { color: rgba(245, 242, 236, 0.62); }
+  .tok-punct { color: rgba(245, 242, 236, 0.35); }
+  .tok-num   { color: rgba(245, 242, 236, 0.70); }
+  .tok-comment {
+    color: rgba(245, 242, 236, 0.32);
+    font-style: italic;
+  }
+  /* active step labels in comments — orange */
+  .code-line--active .tok-comment { color: rgba(245, 77, 38, 0.75); font-style: italic; }
+
+  /* status footer */
+  .code-block__status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.015);
+  }
+  .code-block__badge {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    color: rgba(245, 242, 236, 0.38);
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+  }
+  .code-block__badge--ok {
+    color: #f54d26;
+    border-color: rgba(245, 77, 38, 0.3);
+    background: rgba(245, 77, 38, 0.06);
+  }
+
+  /* ── responsive ── */
+  @media (max-width: 1000px) {
+    /* hero layout stacks below 1000px (matches global.css breakpoint) */
+    .hero--code .hero__layout {
+      grid-template-columns: 1fr;
+    }
+    .code-block__body {
+      font-size: 0.75rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .code-block {
+      border-radius: 8px;
+    }
+    .code-block__body {
+      font-size: 0.65rem;
+      padding-bottom: 0.75rem;
+    }
+    .code-block__body code {
+      padding: 0 1rem;
+    }
+    .code-line--active {
+      padding-left: calc(1rem - 2px) !important;
+    }
+    .code-block__status {
+      padding: 0.6rem 1rem;
+    }
+  }
+</style>
+
 <script>
   /* ============================================================
      STARFIELD — dense Inngest-style particle field.
@@ -433,28 +658,6 @@ const quotes = testimonials.filter((t) => !t.draft);
   syncProgress();
   window.addEventListener('scroll', syncProgress, { passive: true });
   window.addEventListener('resize', syncProgress);
-
-  // Give the hero network physical depth on precise pointers.
-  const network = document.querySelector<HTMLElement>('.hero__network');
-  const hero = document.querySelector<HTMLElement>('.hero');
-  const canTilt =
-    window.matchMedia('(pointer: fine)').matches &&
-    window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
-  if (network && canTilt) {
-    network.addEventListener('pointermove', (event) => {
-      const rect = network.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      network.style.transform = `perspective(1200px) rotateX(${(-y * 2.4).toFixed(2)}deg) rotateY(${(x * 3.2).toFixed(2)}deg) translateY(-4px)`;
-      hero?.style.setProperty('--mx', `${Math.round((event.clientX / window.innerWidth) * 100)}%`);
-      hero?.style.setProperty('--my', `${Math.round((event.clientY / window.innerHeight) * 100)}%`);
-    });
-    network.addEventListener('pointerleave', () => {
-      network.style.transform = '';
-      hero?.style.removeProperty('--mx');
-      hero?.style.removeProperty('--my');
-    });
-  }
 
   // Lead intake — posts to the same Make.com webhook Rockit uses; the scenario
   // routes on `source` so these land separately from HVAC trial leads.
