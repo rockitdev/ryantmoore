@@ -327,7 +327,7 @@ const quotes = testimonials.filter((t) => !t.draft);
       baseO: number; o: number;
       vx: number; vy: number;
       tw: number; tws: number;
-      bright: boolean;
+      bright: boolean; col: string;
     };
     let stars: Star[] = [];
     let rafId = 0;
@@ -368,6 +368,7 @@ const quotes = testimonials.filter((t) => !t.draft);
           tw: Math.random() * Math.PI * 2,
           tws: Math.random() * 0.007 + 0.002,
           bright,
+          col: Math.random() < 0.20 ? '245,77,38' : '255,255,255',
         };
       });
     }
@@ -392,12 +393,12 @@ const quotes = testimonials.filter((t) => !t.draft);
         if (s.bright && o > 0.5) {
           ctx.beginPath();
           ctx.arc(s.x, s.y, s.r * 3.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,255,255,${(o * 0.06).toFixed(3)})`;
+          ctx.fillStyle = `rgba(${s.col},${(o * 0.06).toFixed(3)})`;
           ctx.fill();
         }
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${o.toFixed(3)})`;
+        ctx.fillStyle = `rgba(${s.col},${o.toFixed(3)})`;
         ctx.fill();
       }
       if (!prefersReduced) rafId = requestAnimationFrame(draw);
