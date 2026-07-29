@@ -25,9 +25,10 @@ export const seo = {
 // What the connected system in the hero diagram actually gets a business owner —
 // plain-language outcomes, rendered as the caption row under the graphic.
 export const outcomes = [
-  'Bookings land in your calendar',
-  'Orders flow straight to your books',
-  'Nothing typed in twice',
+  'Reads what comes in and figures out what to do',
+  'Deals with the odd ones, flags you only when it matters',
+  'Sees a job through start to finish',
+  "Double-checks its own work before it reaches a customer",
 ];
 
 export const services = [
@@ -42,6 +43,10 @@ export const services = [
   {
     title: 'Websites & web apps you run yourself',
     body: 'Fast is a feature. The sites I build score 100 on Google\'s PageSpeed test, on phones and desktops alike, and load in under a second. And you can update them yourself: change a price, post an update, swap a photo, with no developer on call.',
+  },
+  {
+    title: 'Audits & fixing what you already have',
+    body: 'Not everything needs a new build. Often the fastest win is a hard look at the tools and automations you already pay for: what is quietly broken, duplicated, or could be running itself. I map it and hand you a plain plan, or just fix it.',
   },
 ];
 

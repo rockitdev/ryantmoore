@@ -1,0 +1,48 @@
+---
+const integrations = [
+  { name: 'OpenAI', slug: 'openai' },
+  { name: 'Anthropic', slug: 'anthropic' },
+  { name: 'Google Gemini', slug: 'google-gemini' },
+  { name: 'Make', slug: 'make' },
+  { name: 'n8n', slug: 'n8n' },
+  { name: 'Slack', slug: 'slack' },
+  { name: 'Gmail', slug: 'gmail' },
+  { name: 'Google Calendar', slug: 'google-calendar' },
+  { name: 'Google Sheets', slug: 'google-sheets' },
+  { name: 'Notion', slug: 'notion' },
+  { name: 'Airtable', slug: 'airtable' },
+  { name: 'HubSpot', slug: 'hubspot' },
+  { name: 'Salesforce', slug: 'salesforce' },
+  { name: 'Shopify', slug: 'shopify' },
+  { name: 'Stripe', slug: 'stripe' },
+  { name: 'QuickBooks', slug: 'quickbooks' },
+  { name: 'Twilio', slug: 'twilio' },
+  { name: 'PostgreSQL', slug: 'postgresql' },
+  { name: 'Snowflake', slug: 'snowflake' },
+  { name: 'Zendesk', slug: 'zendesk' },
+];
+
+const loop = [...integrations, ...integrations];
+---
+
+<div
+  class="integration-rail"
+  role="img"
+  aria-label={`Common agentic system integrations: ${integrations.map(({ name }) => name).join(', ')}`}
+>
+  <div class="integration-rail__track" aria-hidden="true">
+    {loop.map(({ name, slug }) => (
+      <span class="integration-rail__item">
+        <img
+          src={`/logos/integrations/${slug}.svg`}
+          alt=""
+          width="28"
+          height="28"
+          loading="eager"
+          decoding="async"
+        />
+        <strong>{name}</strong>
+      </span>
+    ))}
+  </div>
+</div>

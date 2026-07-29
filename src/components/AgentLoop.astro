@@ -1,0 +1,469 @@
+---
+// AgentLoop — "How it works" section
+// Plan → Execute → Evaluate → Optimize → Repeat cyclical agent loop diagram.
+// SVG/CSS only animation; prefers-reduced-motion: static with Plan highlighted.
+// Mobile: single scaled SVG unit — no clip or overlap.
+---
+
+<section class="section loop-section" id="how-it-works">
+  <div class="wrap">
+
+    <!-- ── Section header ───────────────────────────────────────── -->
+    <div class="section__head reveal">
+      <div>
+        <span class="kicker">How it works</span>
+        <h2 class="section__title serif">A team of agents, <em>running as one</em>.</h2>
+        <p class="section__lede">
+          Each agent has one job: research, build, or review. They pass work around
+          a continuous loop until it is done right. When a decision needs a judgment
+          call, they stop and wait for you.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── Loop diagram ─────────────────────────────────────────── -->
+    <div class="loop-stage reveal">
+      <svg
+        class="loop-svg"
+        viewBox="0 0 480 378"
+        width="100%"
+        height="auto"
+        overflow="visible"
+        role="img"
+        aria-label="Continuous agent loop: Plan, Execute, Evaluate (with human checkpoint), Optimize, Repeat"
+      >
+        <title>Agent team loop</title>
+        <desc>
+          Five steps in a continuous cycle: Plan, Execute, Evaluate, Optimize, Repeat.
+          A human checkpoint sits between Evaluate and Optimize — work pauses there
+          when confidence is low and waits for your review.
+        </desc>
+
+        <!-- ═══ defs ══════════════════════════════════════════════ -->
+        <defs>
+          <!-- Token glow filter -->
+          <filter id="al-glow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter id="al-glow-sm" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <!--
+            Loop path the token follows.
+            5 arcs of 72° each, clockwise, starting from PLAN at top (270°).
+            Nodes at r=130, center (240,190):
+              PLAN     270°  (240, 60)
+              EXECUTE  342°  (363.6, 149.8)
+              EVALUATE  54°  (316.4, 295.2)
+              OPTIMIZE 126°  (163.6, 295.2)
+              REPEAT   198°  (116.4, 149.8)
+          -->
+          <path id="al-loop-path"
+            d="M 240 60
+               A 130 130 0 0 1 363.6 149.8
+               A 130 130 0 0 1 316.4 295.2
+               A 130 130 0 0 1 163.6 295.2
+               A 130 130 0 0 1 116.4 149.8
+               A 130 130 0 0 1 240 60"
+          />
+        </defs>
+
+        <!-- ═══ track ring ════════════════════════════════════════ -->
+        <circle class="al-track" cx="240" cy="190" r="130" aria-hidden="true" />
+
+        <!-- ═══ direction arrows at arc midpoints ════════════════ -->
+        <!--
+          Midpoint angles (midway between consecutive node angles):
+            PLAN→EXECUTE    306°  → (316.4, 84.8)   tangent rotate(36)
+            EXECUTE→EVALUATE 18°  → (363.6, 230.2)   tangent rotate(108)
+            OPTIMIZE→REPEAT 162°  → (116.4, 230.2)   tangent rotate(252)
+            REPEAT→PLAN     234°  → (163.6, 84.8)   tangent rotate(324)
+          EVALUATE→OPTIMIZE 90° is replaced by the human-checkpoint indicator.
+        -->
+        <g aria-hidden="true">
+          <g class="al-arrow" transform="translate(316.4, 84.8)">
+            <path d="M-5,-3 L2,0 L-5,3" class="al-arrow-path" transform="rotate(36)" />
+          </g>
+          <g class="al-arrow" transform="translate(363.6, 230.2)">
+            <path d="M-5,-3 L2,0 L-5,3" class="al-arrow-path" transform="rotate(108)" />
+          </g>
+          <g class="al-arrow" transform="translate(116.4, 230.2)">
+            <path d="M-5,-3 L2,0 L-5,3" class="al-arrow-path" transform="rotate(252)" />
+          </g>
+          <g class="al-arrow" transform="translate(163.6, 84.8)">
+            <path d="M-5,-3 L2,0 L-5,3" class="al-arrow-path" transform="rotate(324)" />
+          </g>
+        </g>
+
+        <!-- ═══ human checkpoint (at EVALUATE→OPTIMIZE midpoint, bottom of arc) ═ -->
+        <!--
+          Bottom of circle at (240, 320).
+          A dashed arm drops down with a person silhouette and label.
+          This replaces the arrow at the 90° midpoint.
+        -->
+        <g class="al-hc" aria-label="Human checkpoint between Evaluate and Optimize">
+          <!-- dashed stem -->
+          <line class="al-hc-arm" x1="240" y1="319" x2="240" y2="340" />
+          <!-- person: head -->
+          <circle class="al-hc-figure" cx="240" cy="348" r="5.5" />
+          <!-- person: shoulders arc -->
+          <path class="al-hc-figure" d="M228,362 Q240,368 252,362" fill="none" stroke-linecap="round" />
+          <!-- label -->
+          <text class="al-hc-label" x="254" y="352" text-anchor="start">human checkpoint</text>
+        </g>
+
+        <!-- ═══ nodes ═════════════════════════════════════════════ -->
+        <!--
+          Each node group: ring (outer glow ring), dot (solid core), label.
+          CSS cycles their active state in sync with the token's animateMotion.
+          Timing: 10s cycle, 1s pause + 1s transit per step (10% each at 10s).
+          Active windows: PLAN 0–10%, EXECUTE 20–30%, EVALUATE 40–50%,
+                          OPTIMIZE 60–70%, REPEAT 80–90%.
+          Delay formula: delay = -(10 - active_start_time) so that at t=0
+                         each non-PLAN node is inactive.
+        -->
+
+        <!-- PLAN (270°) → (240, 60) — label above -->
+        <g class="al-node al-node--plan" transform="translate(240,60)" aria-label="Plan">
+          <circle class="al-ring" r="22" />
+          <circle class="al-dot" r="10" />
+          <text class="al-label" y="-33" text-anchor="middle">PLAN</text>
+        </g>
+
+        <!-- EXECUTE (342°) → (363.6, 149.8) — label to the right -->
+        <g class="al-node al-node--execute" transform="translate(363.6,149.8)" aria-label="Execute">
+          <circle class="al-ring" r="22" />
+          <circle class="al-dot" r="10" />
+          <text class="al-label" x="32" y="4" text-anchor="start">EXECUTE</text>
+        </g>
+
+        <!-- EVALUATE (54°) → (316.4, 295.2) — label to the right, offset up to clear HC indicator -->
+        <g class="al-node al-node--evaluate" transform="translate(316.4,295.2)" aria-label="Evaluate">
+          <circle class="al-ring" r="22" />
+          <circle class="al-dot" r="10" />
+          <text class="al-label" x="32" y="4" text-anchor="start">EVALUATE</text>
+        </g>
+
+        <!-- OPTIMIZE (126°) → (163.6, 295.2) — label to the left -->
+        <g class="al-node al-node--optimize" transform="translate(163.6,295.2)" aria-label="Optimize">
+          <circle class="al-ring" r="22" />
+          <circle class="al-dot" r="10" />
+          <text class="al-label" x="-32" y="4" text-anchor="end">OPTIMIZE</text>
+        </g>
+
+        <!-- REPEAT (198°) → (116.4, 149.8) — label to the left -->
+        <g class="al-node al-node--repeat" transform="translate(116.4,149.8)" aria-label="Repeat">
+          <circle class="al-ring" r="22" />
+          <circle class="al-dot" r="10" />
+          <text class="al-label" x="-32" y="4" text-anchor="end">REPEAT</text>
+        </g>
+
+        <!-- ═══ animated token ════════════════════════════════════ -->
+        <!--
+          Two concentric circles: glow halo + solid core.
+          Both use animateMotion with keyTimes/keyPoints to pause at each node.
+          keyTimes:  0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1
+          keyPoints: 0, 0,   0.2, 0.2, 0.4, 0.4, 0.6, 0.6, 0.8, 0.8, 1
+          → Pause for 10% (1s), transit in 10% (1s). 10s total cycle.
+        -->
+        <g class="al-token" aria-hidden="true">
+          <circle class="al-token-glow" r="14" filter="url(#al-glow)">
+            <animateMotion
+              dur="10s"
+              repeatCount="indefinite"
+              rotate="0"
+              calcMode="linear"
+              keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9;1"
+              keyPoints="0;0;0.2;0.2;0.4;0.4;0.6;0.6;0.8;0.8;1">
+              <mpath href="#al-loop-path" />
+            </animateMotion>
+          </circle>
+          <circle class="al-token-core" r="6" filter="url(#al-glow-sm)">
+            <animateMotion
+              dur="10s"
+              repeatCount="indefinite"
+              rotate="0"
+              calcMode="linear"
+              keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9;1"
+              keyPoints="0;0;0.2;0.2;0.4;0.4;0.6;0.6;0.8;0.8;1">
+              <mpath href="#al-loop-path" />
+            </animateMotion>
+          </circle>
+        </g>
+
+      </svg>
+    </div>
+
+    <!-- ── Concept cards ─────────────────────────────────────────── -->
+    <div class="loop-concepts">
+      <div class="loop-concept reveal">
+        <div class="loop-concept__no">01 /</div>
+        <h3 class="loop-concept__title">Specialized agents</h3>
+        <p class="loop-concept__body">
+          A research agent gathers context. A builder agent does the work.
+          A QA agent checks it. Each knows its lane and nothing operates
+          outside it.
+        </p>
+      </div>
+      <div class="loop-concept reveal">
+        <div class="loop-concept__no">02 /</div>
+        <h3 class="loop-concept__title">Continuous improvement</h3>
+        <p class="loop-concept__body">
+          Every cycle is logged. The system knows what worked last time and
+          the next run starts from a stronger position without any manual
+          tuning.
+        </p>
+      </div>
+      <div class="loop-concept reveal">
+        <div class="loop-concept__no">03 /</div>
+        <h3 class="loop-concept__title">Human in the loop</h3>
+        <p class="loop-concept__body">
+          You set the threshold. Below it, agents handle it. Above it, work
+          stops and lands in your queue with full context. You stay in
+          control of the decisions that matter.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ── Loop section scaffold ──────────────────────────────────── */
+  .loop-section {
+    /* Inherits .section: border-top + padding */
+  }
+
+  /* ── Dark diagram stage ─────────────────────────────────────── */
+  .loop-stage {
+    /* Center horizontally, constrain max-width, leave room below for cards */
+    margin: 0 auto clamp(2rem, 4vw, 3.5rem);
+    max-width: 640px;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: clamp(1.5rem, 5vw, 3rem);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+      0 24px 64px rgba(0, 0, 0, 0.20),
+      0 0 60px rgba(245, 77, 38, 0.04);
+  }
+
+  .loop-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ── Track ring ─────────────────────────────────────────────── */
+  .al-track {
+    fill: none;
+    stroke: rgba(245, 242, 236, 0.09);
+    stroke-width: 1.5;
+    stroke-dasharray: 3 9;
+  }
+
+  /* ── Arrow chevrons ─────────────────────────────────────────── */
+  .al-arrow-path {
+    fill: none;
+    stroke: rgba(245, 242, 236, 0.22);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ── Node base state ────────────────────────────────────────── */
+  .al-ring {
+    fill: none;
+    stroke: rgba(245, 242, 236, 0.12);
+    stroke-width: 1.5;
+  }
+
+  .al-dot {
+    fill: rgba(245, 242, 236, 0.11);
+  }
+
+  .al-label {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    fill: rgba(245, 242, 236, 0.36);
+  }
+
+  /* ── Node active keyframes ──────────────────────────────────── */
+  @keyframes al-dot-on {
+    /* Active during 0–10% of the 10s cycle */
+    0%, 10%    { fill: #f54d26; filter: drop-shadow(0 0 8px rgba(245, 77, 38, 0.85)); }
+    10.1%, 100% { fill: rgba(245, 242, 236, 0.11); filter: none; }
+  }
+  @keyframes al-ring-on {
+    0%, 10%    { stroke: rgba(245, 77, 38, 0.45); }
+    10.1%, 100% { stroke: rgba(245, 242, 236, 0.12); }
+  }
+  @keyframes al-label-on {
+    0%, 10%    { fill: #f54d26; }
+    10.1%, 100% { fill: rgba(245, 242, 236, 0.36); }
+  }
+
+  /*
+    Sync timing: 10s cycle.
+    Active window for each node: [0%, 10%] of the cycle.
+    Negative delay shifts each node's "active window" to the right time:
+      PLAN     → delay: 0s    (active 0–1s)
+      EXECUTE  → delay: -8s   (active 2–3s)
+      EVALUATE → delay: -6s   (active 4–5s)
+      OPTIMIZE → delay: -4s   (active 6–7s)
+      REPEAT   → delay: -2s   (active 8–9s)
+  */
+  .al-node--plan .al-dot     { animation: al-dot-on   10s 0s  linear infinite; }
+  .al-node--plan .al-ring    { animation: al-ring-on  10s 0s  linear infinite; }
+  .al-node--plan .al-label   { animation: al-label-on 10s 0s  linear infinite; }
+
+  .al-node--execute .al-dot  { animation: al-dot-on   10s -8s linear infinite; }
+  .al-node--execute .al-ring { animation: al-ring-on  10s -8s linear infinite; }
+  .al-node--execute .al-label{ animation: al-label-on 10s -8s linear infinite; }
+
+  .al-node--evaluate .al-dot  { animation: al-dot-on   10s -6s linear infinite; }
+  .al-node--evaluate .al-ring { animation: al-ring-on  10s -6s linear infinite; }
+  .al-node--evaluate .al-label{ animation: al-label-on 10s -6s linear infinite; }
+
+  .al-node--optimize .al-dot  { animation: al-dot-on   10s -4s linear infinite; }
+  .al-node--optimize .al-ring { animation: al-ring-on  10s -4s linear infinite; }
+  .al-node--optimize .al-label{ animation: al-label-on 10s -4s linear infinite; }
+
+  .al-node--repeat .al-dot  { animation: al-dot-on   10s -2s linear infinite; }
+  .al-node--repeat .al-ring { animation: al-ring-on  10s -2s linear infinite; }
+  .al-node--repeat .al-label{ animation: al-label-on 10s -2s linear infinite; }
+
+  /* ── Token ──────────────────────────────────────────────────── */
+  .al-token-glow { fill: rgba(245, 77, 38, 0.35); }
+  .al-token-core { fill: #f54d26; }
+
+  /* ── Human checkpoint indicator ─────────────────────────────── */
+  .al-hc-arm {
+    fill: none;
+    stroke: rgba(245, 242, 236, 0.20);
+    stroke-width: 1;
+    stroke-dasharray: 2.5 5;
+    stroke-linecap: round;
+  }
+  .al-hc-figure {
+    fill: none;
+    stroke: rgba(245, 242, 236, 0.30);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+  /* head is filled */
+  .al-hc circle.al-hc-figure {
+    fill: rgba(245, 242, 236, 0.18);
+  }
+  .al-hc-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    fill: rgba(245, 242, 236, 0.28);
+  }
+
+  /* ── prefers-reduced-motion ─────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    /* Freeze all node animations; keep PLAN highlighted as static "active" */
+    .al-node--plan .al-dot     { animation: none; fill: #f54d26; filter: drop-shadow(0 0 8px rgba(245,77,38,.85)); }
+    .al-node--plan .al-ring    { animation: none; stroke: rgba(245,77,38,.45); }
+    .al-node--plan .al-label   { animation: none; fill: #f54d26; }
+
+    .al-node--execute .al-dot,
+    .al-node--evaluate .al-dot,
+    .al-node--optimize .al-dot,
+    .al-node--repeat .al-dot   { animation: none; }
+
+    .al-node--execute .al-ring,
+    .al-node--evaluate .al-ring,
+    .al-node--optimize .al-ring,
+    .al-node--repeat .al-ring  { animation: none; }
+
+    .al-node--execute .al-label,
+    .al-node--evaluate .al-label,
+    .al-node--optimize .al-label,
+    .al-node--repeat .al-label { animation: none; }
+
+    /* Hide the animated token */
+    .al-token { display: none; }
+  }
+
+  /* ── Concept cards ──────────────────────────────────────────── */
+  .loop-concepts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 640px) {
+    .loop-concepts {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .loop-concept {
+    background: var(--ink-2);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    transition: background 0.25s;
+  }
+  .loop-concept:hover {
+    background: var(--ink-3);
+  }
+
+  .loop-concept__no {
+    font-family: var(--label);
+    font-size: var(--text-xs);
+    color: var(--accent);
+    letter-spacing: 0.10em;
+    margin-bottom: 1rem;
+  }
+
+  .loop-concept__title {
+    font-family: var(--display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    line-height: 1.15;
+  }
+
+  .loop-concept__body {
+    color: var(--paper-dim);
+    font-size: var(--text-base);
+    line-height: 1.65;
+  }
+</style>
+
+<script>
+  /*
+   * Pause SMIL animateMotion for visitors who prefer reduced motion.
+   * CSS already freezes the node highlight animations; this stops the SVG token.
+   */
+  (() => {
+    const pref = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const sync = () => {
+      document.querySelectorAll<SVGSVGElement>('.loop-svg').forEach((svg) => {
+        pref.matches ? svg.pauseAnimations() : svg.unpauseAnimations();
+      });
+    };
+    sync();
+    pref.addEventListener('change', sync);
+  })();
+</script>
