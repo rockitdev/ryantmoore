@@ -33,20 +33,20 @@ export const outcomes = [
 
 export const services = [
   {
-    title: 'AI agents & orchestration',
-    body: 'I build AI agents that run the work your business repeats all day: sorting, scheduling, replying, following up. Not one-off scripts, but systems that coordinate several steps and tools on their own, and know when to hand a decision back to a person. This is where I put AI to practical, down-to-earth use.',
+    title: 'Work that keeps repeating',
+    body: 'Sorting, scheduling, replying, following up. I build agents that carry routine work forward and bring you in when judgment matters.',
   },
   {
-    title: 'Getting your tools to talk',
-    body: 'Agents are only as good as what they can reach. Two tools that were never built to work together? That is my favourite kind of job. I get your tools talking, so information moves between them on its own. No copy-and-paste, no missed steps.',
+    title: 'Tools that don\'t talk to each other',
+    body: 'I connect the systems your business already uses so information moves automatically, without copying, pasting, or missed steps.',
   },
   {
-    title: 'Websites & web apps you run yourself',
-    body: 'Fast is a feature. The sites I build score 100 on Google\'s PageSpeed test, on phones and desktops alike, and load in under a second. And you can update them yourself: change a price, post an update, swap a photo, with no developer on call.',
+    title: 'Websites that are slow or hard to change',
+    body: 'I build fast websites and applications your team can update without calling a developer every time something changes.',
   },
   {
-    title: 'Audits & fixing what you already have',
-    body: 'Not everything needs a new build. Often the fastest win is a hard look at the tools and automations you already pay for: what is quietly broken, duplicated, or could be running itself. I map it and hand you a plain plan, or just fix it.',
+    title: 'Systems that have become messy',
+    body: 'I find what is broken, duplicated, or needlessly manual, then give you a practical fix list, or handle the fixes myself.',
   },
 ];
 
