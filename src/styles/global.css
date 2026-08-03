@@ -906,7 +906,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 .cs-next__title { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); font-weight: 700; letter-spacing: -0.035em; transition: color 0.2s; }
 .cs-next:hover .cs-next__title { color: var(--accent); }
 .cs-next--post { padding: clamp(2rem, 4vw, 3rem) 0; }
-.cs-next--post .cs-next__title { font-size: clamp(var(--text-lg), 2.5vw, var(--text-2xl)); letter-spacing: -0.02em; }
+.cs-next--post .cs-next__title { font-size: var(--text-lg); font-weight: 600; letter-spacing: -0.01em; }
 
 /* ============================================================
    BLOG (listing + post header — post body reuses .prose)
