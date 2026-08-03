@@ -77,8 +77,8 @@ const isLab = Astro.url.pathname.startsWith('/lab');
         <div class="nav__menu" id="nav-menu">
           <a href="/#work" class="nav__link">Work</a>
           <a href="/#services" class="nav__link">How I help</a>
-          <a href="/#background" class="nav__link">Experience</a>
           <a href="/lab/" class={`nav__link${isLab ? ' nav__link--active' : ''}`} aria-current={isLab ? 'page' : undefined}>Lab</a>
+          <a href="/#background" class="nav__link">Experience</a>
           <a href="/#audit" class="nav__link">Systems audit</a>
         </div>
         <a href="/#contact" class="nav__cta">Get in touch</a>

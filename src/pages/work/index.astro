@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-import { site } from '../../data/site';
+import { site, projects } from '../../data/site';
 
 const studies = (await getCollection('caseStudies'))
   .filter((s) => !s.data.draft)
@@ -38,6 +38,35 @@ const studies = (await getCollection('caseStudies'))
               <span class="work__go" aria-hidden="true">↗</span>
             </div>
           </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--raise">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="kicker">Also</span>
+          <h2 class="section__title serif">Smaller jobs, <em>same care</em>.</h2>
+        </div>
+      </div>
+      <div class="proj-grid">
+        {projects.map((p, i) => (
+          <article class="proj">
+            <div class="proj__top">
+              <span class="proj__ix">P/{String(i + 1).padStart(2, '0')}</span>
+              <span class="proj__tags">
+                {'status' in p && p.status && (
+                  <span class="proj__status"><span class="led"></span>{p.status}</span>
+                )}
+                <span class="proj__kind">{p.kind}</span>
+              </span>
+            </div>
+            <h3 class="proj__name">{p.name}</h3>
+            <p class="proj__desc">{p.desc}</p>
+            <span class="proj__foot">{p.foot}</span>
+          </article>
         ))}
       </div>
     </div>
