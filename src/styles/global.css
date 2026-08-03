@@ -1009,7 +1009,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
   to { transform: translate3d(3%, -1%, 0) scale(1.1); }
 }
 .hero__layout {
-  max-width: 1360px;
+  max-width: var(--wrap);
   display: grid;
   /* Left headline dominates (Inngest-style): ~65% left, ~35% right */
   grid-template-columns: minmax(26rem, 1fr) minmax(0, .48fr);
