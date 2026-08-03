@@ -37,8 +37,8 @@ const quotes = testimonials.filter((t) => !t.draft);
         </p>
 
         <div class="hero__cta reveal">
-          <a href="#contact" class="btn btn--primary">
-            Start with a systems audit <span class="arr">↓</span>
+          <a href="#audit" class="btn btn--primary">
+            See the systems audit <span class="arr">↓</span>
           </a>
           <a href="#work" class="btn btn--ghost">Selected work</a>
         </div>
@@ -305,11 +305,13 @@ const quotes = testimonials.filter((t) => !t.draft);
         <div class="cform__row">
           <label>
             <span class="lab">Name</span>
-            <input type="text" name="name" required autocomplete="name" placeholder="Your name" />
+            <input type="text" name="name" required autocomplete="name" placeholder="Your name" aria-describedby="err-name" />
+            <span class="cform__err" id="err-name" hidden></span>
           </label>
           <label>
             <span class="lab">Email</span>
-            <input type="email" name="email" required autocomplete="email" placeholder="you@company.com" />
+            <input type="email" name="email" required autocomplete="email" placeholder="you@company.com" aria-describedby="err-email" />
+            <span class="cform__err" id="err-email" hidden></span>
           </label>
         </div>
         <label>
@@ -322,7 +324,8 @@ const quotes = testimonials.filter((t) => !t.draft);
         </label>
         <label>
           <span class="lab">Tell me a little about it</span>
-          <textarea name="message" required placeholder="What's not talking to what? What keeps getting typed in twice?"></textarea>
+          <textarea name="message" required placeholder="What's not talking to what? What keeps getting typed in twice?" aria-describedby="err-message"></textarea>
+          <span class="cform__err" id="err-message" hidden></span>
         </label>
         <!-- honeypot: real people never see or fill this -->
         <label class="cform__hp" aria-hidden="true">
@@ -332,7 +335,7 @@ const quotes = testimonials.filter((t) => !t.draft);
         <button type="submit" class="btn btn--primary cform__send">
           Send it <span class="arr">↗</span>
         </button>
-        <p class="cform__status" hidden></p>
+        <p class="cform__status" role="status" aria-live="polite" hidden></p>
       </form>
 
       <div class="reveal">
@@ -670,6 +673,39 @@ const quotes = testimonials.filter((t) => !t.draft);
   const status = form?.querySelector('.cform__status') as HTMLElement | null;
   const send = form?.querySelector('.cform__send') as HTMLButtonElement | null;
 
+  const control = (name: string) =>
+    (form?.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | null);
+  const setErr = (name: string, message: string) => {
+    const c = control(name);
+    const box = form?.querySelector<HTMLElement>(`#err-${name}`) ?? null;
+    if (!c) return;
+    if (message) {
+      c.setAttribute('aria-invalid', 'true');
+      if (box) { box.textContent = message; box.hidden = false; }
+    } else {
+      c.removeAttribute('aria-invalid');
+      if (box) { box.textContent = ''; box.hidden = true; }
+    }
+  };
+  const validateForm = (): boolean => {
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const name = (control('name')?.value ?? '').trim();
+    const email = (control('email')?.value ?? '').trim();
+    const message = (control('message')?.value ?? '').trim();
+    const errs = {
+      name: name ? '' : 'Add your name.',
+      email: !email ? 'Add your email.' : (emailRe.test(email) ? '' : 'Check that email address.'),
+      message: message ? '' : 'Tell me a little about what you need.',
+    } as const;
+    (['name', 'email', 'message'] as const).forEach((n) => setErr(n, errs[n]));
+    const firstBad = (['name', 'email', 'message'] as const).find((n) => errs[n]);
+    if (firstBad) { control(firstBad)?.focus(); return false; }
+    return true;
+  };
+  (['name', 'email', 'message'] as const).forEach((n) => {
+    control(n)?.addEventListener('input', () => setErr(n, ''));
+  });
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!send || !status) return;
@@ -677,10 +713,7 @@ const quotes = testimonials.filter((t) => !t.draft);
     const fd = new FormData(form);
     if ((fd.get('company') as string)?.trim()) return; // honeypot — silently drop bots
 
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
+    if (!validateForm()) return;
 
     const original = send.innerHTML;
     send.disabled = true;
