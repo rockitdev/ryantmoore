@@ -58,7 +58,7 @@ const postSchema = {
     </div>
 
     {prev && prev.id !== entry.id && (
-      <a class="cs-next" href={`/lab/${prev.id}/`}>
+      <a class="cs-next cs-next--post" href={`/lab/${prev.id}/`}>
         <div class="wrap wrap--narrow">
           <div class="cs-next__lab">← Previous post</div>
           <div class="cs-next__title serif">{prev.data.title}</div>
