@@ -9,6 +9,7 @@ import { TECH_GLYPHS } from '../data/tech-glyphs';
 const studies = (await getCollection('caseStudies'))
   .filter((s) => !s.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
+const featured = studies.slice(0, 3);
 
 // only show the testimonials band once a real (non-draft) quote exists
 const quotes = testimonials.filter((t) => !t.draft);
@@ -82,6 +83,13 @@ const quotes = testimonials.filter((t) => !t.draft);
             <span class="code-block__badge">CONFIDENCE 0.97</span>
             <span class="code-block__badge">4 ACTIONS LOGGED</span>
           </div>
+          <ol class="agent-stages" aria-label="How the agent works">
+            <li><span class="agent-stages__no">01</span><span class="agent-stages__t"><strong>Observe</strong> pull context from your connected tools</span></li>
+            <li><span class="agent-stages__no">02</span><span class="agent-stages__t"><strong>Reason</strong> decide inside the policy you set</span></li>
+            <li><span class="agent-stages__no">03</span><span class="agent-stages__t"><strong>Act</strong> write only what it's allowed to</span></li>
+            <li><span class="agent-stages__no">04</span><span class="agent-stages__t"><strong>Verify</strong> confirm the outcome, log everything</span></li>
+          </ol>
+          <p class="agent-stages__human">A person is looped in whenever judgment matters.</p>
         </div>
       </div>
 
@@ -108,7 +116,7 @@ const quotes = testimonials.filter((t) => !t.draft);
       </div>
 
       <div class="work">
-        {studies.map((s, i) => (
+        {featured.map((s, i) => (
           <a class="work__row reveal" href={`/work/${s.id}/`}>
             <span class="work__idx">{String(i + 1).padStart(2, '0')}</span>
             <div class="work__main">
@@ -126,6 +134,11 @@ const quotes = testimonials.filter((t) => !t.draft);
           </a>
         ))}
       </div>
+      {studies.length > featured.length && (
+        <a class="work__all reveal" href="/work/">
+          See all work <span aria-hidden="true">→</span>
+        </a>
+      )}
     </div>
   </section>
 

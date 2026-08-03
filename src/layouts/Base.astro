@@ -23,7 +23,7 @@ const personSchema = {
   email: `mailto:${site.email}`,
   address: { '@type': 'PostalAddress', addressLocality: 'Halifax', addressRegion: 'NS', addressCountry: 'CA' },
   sameAs: [site.linkedin],
-  knowsAbout: ['PHP', 'Symfony', 'Drupal', 'System integration', 'Web development', 'Automation', 'TypeScript'],
+  knowsAbout: ['AI agents', 'System integration', 'Automation', 'PHP', 'Symfony', 'Drupal', 'Web development', 'TypeScript'],
 };
 
 const year = new Date().getFullYear(); // build-time: site is fully static
@@ -69,12 +69,17 @@ const year = new Date().getFullYear(); // build-time: site is fully static
         <span class="brand__mark">RM</span>
         <span class="brand__name nav__hideable">{site.name}</span>
       </a>
-      <nav class="nav__links">
-        <a href="/#work" class="nav__link nav__hideable">Work</a>
-        <a href="/#services" class="nav__link nav__hideable">Services</a>
-        <a href="/#background" class="nav__link nav__hideable">Background</a>
-        <a href="/lab/" class="nav__link nav__hideable">Lab</a>
-        <a href="/#audit" class="nav__link nav__hideable">Audit</a>
+      <nav class="nav__links" aria-label="Primary">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+          <span class="nav__toggle-box" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <div class="nav__menu" id="nav-menu">
+          <a href="/#work" class="nav__link">Work</a>
+          <a href="/#services" class="nav__link">Services</a>
+          <a href="/#background" class="nav__link">Background</a>
+          <a href="/lab/" class="nav__link">Lab</a>
+          <a href="/#audit" class="nav__link">Audit</a>
+        </div>
         <a href="/#contact" class="nav__cta">Get in touch</a>
       </nav>
     </div>
@@ -130,6 +135,29 @@ const year = new Date().getFullYear(); // build-time: site is fully static
       measure();
       window.addEventListener('scroll', sync, { passive: true });
       window.addEventListener('resize', measure);
+    }
+
+    // Mobile disclosure menu
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu = document.getElementById('nav-menu');
+    if (nav && navToggle && navMenu) {
+      const setOpen = (open: boolean) => {
+        nav.classList.toggle('nav--open', open);
+        navToggle.setAttribute('aria-expanded', String(open));
+        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      };
+      navToggle.addEventListener('click', () =>
+        setOpen(!nav.classList.contains('nav--open'))
+      );
+      navMenu.querySelectorAll('a').forEach((a) =>
+        a.addEventListener('click', () => setOpen(false))
+      );
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOpen(false);
+      });
+      document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target as Node)) setOpen(false);
+      });
     }
   </script>
 </body>
