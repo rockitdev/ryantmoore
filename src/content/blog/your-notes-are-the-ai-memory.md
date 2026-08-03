@@ -1,9 +1,9 @@
 ---
-title: Your notes are the AI's memory
+title: Your notes are the AI’s memory
 description: Everyone argues about which AI model is best. For getting real work out of one, the bigger lever is boring. It is how well your own information is organized for the AI to read.
 date: 2026-07-30
 tags: ['Practical AI', 'Small business']
-draft: true
+draft: false
 ---
 
 > A brilliant assistant who cannot find anything is not much use. A lot of the disappointment people have with AI at work is not the model being weak. It is the model being handed a mess.
@@ -14,7 +14,7 @@ Two threads landed on this recently. Google's [Agent Development Kit](https://de
 
 ## Why the mess is the real problem
 
-Ask an AI a question about your business and it can only be as good as what it can see. If your pricing lives in one person's head, your process is scattered across email threads, and your customer notes are in three tools, no model can give you a good answer. It will guess, confidently, and you will call the AI dumb when the real problem was that nothing was written down where it could be read.
+Ask an AI a question about your business and it can only be as good as what it can see. If your pricing lives in one person's head, your process is scattered across email threads, and your customer notes are in three tools, no model can reliably give you an answer grounded in your business. It may guess confidently instead, and you will call the AI dumb when the real problem was that nothing was written down where it could be read.
 
 ## Organized notes are not automatic memory
 

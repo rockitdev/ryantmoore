@@ -1,9 +1,9 @@
 ---
 title: Show it once and it remembers
-description: The newest AI tools let you demonstrate a task one time and hand back a reusable skill. The bar to automate just dropped. The part that decides whether it helps or hurts did not.
+description: The newest AI tools let you demonstrate a task once, then turn that demonstration into a reusable skill. The bar to automate just dropped. The part that decides whether it helps or hurts did not.
 date: 2026-07-28
 tags: ['Automation', 'AI agents']
-draft: true
+draft: false
 ---
 
 > When copying a human is this easy, the hard part is no longer building the automation. It is deciding what is safe to hand over, and noticing that a recording captures what you did, not why you did it.
@@ -36,7 +36,7 @@ Before you record a task and lean on it, sort it into one of two piles.
 - Exceptions are common.
 - It touches customers, money, or anything you cannot take back.
 
-The mistake is treating the second pile like the first because the tool made recording feel easy. A skill that files a document can be a recording. A skill that sends money should not be.
+The mistake is treating the second pile like the first because the tool made recording feel easy. A skill that files a document can be a recording. A workflow that sends money should never rely on a recording alone.
 
 ## The takeaway
 
