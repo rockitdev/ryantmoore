@@ -195,7 +195,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 .brand { display: inline-flex; align-items: center; gap: 0.18rem; transition: color .2s; }
 .brand__name {
   font-family: var(--display); font-weight: 600;
-  font-size: calc(var(--text-base) + 1px); letter-spacing: -0.02em;
+  font-size: calc(var(--text-base) + 3px); letter-spacing: -0.02em;
   color: var(--paper);
 }
 .brand__dot {
