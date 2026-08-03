@@ -1365,7 +1365,7 @@ body:has(.hero) .nav:not(.nav--ghost) .nav__link { color: rgba(255, 255, 255, 0.
   min-width: max-content;
   padding-inline: clamp(1.15rem, 2.2vw, 2rem);
   border-right: 1px solid rgba(245, 77, 38, .14);
-  opacity: .7;
+  opacity: .85;
   transition: opacity .2s, background .2s;
 }
 .integration-rail__item:hover {
@@ -1376,7 +1376,13 @@ body:has(.hero) .nav:not(.nav--ghost) .nav__link { color: rgba(255, 255, 255, 0.
   width: 28px;
   height: 28px;
   flex: 0 0 28px;
+  /* Logos are monochrome SVGs with no fill (default black); render them as a
+     uniform off-white so contrast is even across every brand on the dark rail. */
+  filter: brightness(0) invert(1);
+  opacity: .82;
+  transition: opacity .2s;
 }
+.integration-rail__item:hover img { opacity: 1; }
 .integration-rail__item strong {
   font-family: var(--label);
   font-size: var(--text-xs);
