@@ -765,6 +765,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 .cform__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .cform__send { justify-self: center; margin-top: 0.4rem; }
 .cform__status { font-size: var(--text-sm); line-height: 1.5; color: var(--paper-dim); text-align: center; }
+.cform__err { display: block; margin-top: .4rem; font-family: var(--label); font-size: var(--text-xs); letter-spacing: .02em; color: #b32218; }
+.cform input[aria-invalid="true"], .cform textarea[aria-invalid="true"] { border-color: #b32218; }
 .cform__status--ok { color: var(--accent-2); }
 .cform__alt { color: var(--paper-dim); font-size: var(--text-base); }
 @media (max-width: 560px) { .cform__row { grid-template-columns: 1fr; } }
@@ -1525,7 +1527,7 @@ body:has(.hero) .footer :is(.footer__meta, .footer__links a) { color: rgba(236, 
 /* ============================================================
    SCROLL REVEAL
    ============================================================ */
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition:

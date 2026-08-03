@@ -33,6 +33,7 @@ const year = new Date().getFullYear(); // build-time: site is fully static
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script is:inline>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -64,7 +65,7 @@ const year = new Date().getFullYear(); // build-time: site is fully static
   <a href="#main" class="skip-link">Skip to content</a>
   <header class="nav">
     <div class="wrap nav__in">
-      <a href="/" class="brand" aria-label={`${site.name} home`}>
+      <a href="/" class="brand" aria-label={`RM, ${site.name} home`}>
         <span class="brand__mark">RM</span>
         <span class="brand__name nav__hideable">{site.name}</span>
       </a>
