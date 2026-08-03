@@ -10,6 +10,12 @@ const studies = (await getCollection('caseStudies'))
   .filter((s) => !s.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
 const featured = studies.slice(0, 3);
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const fmtDate = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+const firstLine = (t: string) => { const f = t.split('. ')[0].trim(); return f.endsWith('.') ? f : f + '.'; };
 
 // only show the testimonials band once a real (non-draft) quote exists
 const quotes = testimonials.filter((t) => !t.draft);
@@ -142,12 +148,63 @@ const quotes = testimonials.filter((t) => !t.draft);
     </div>
   </section>
 
+  <!-- FROM THE LAB — latest writing, editorial rows -->
+  <section class="section section--raise" id="lab">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div>
+          <span class="kicker">02 · From the Lab</span>
+          <h2 class="section__title serif">Notes from <em>the work</em>.</h2>
+        </div>
+      </div>
+
+      <div class="lab-rows">
+        {posts.map((p) => (
+          <a class="lab-row reveal" href={`/lab/${p.id}/`}>
+            <span class="lab-row__meta">{fmtDate(p.data.date)} · {p.data.tags[0]}</span>
+            <span class="lab-row__body">
+              <span class="lab-row__title serif">{p.data.title}</span>
+              <span class="lab-row__sum">{firstLine(p.data.description)}</span>
+            </span>
+            <span class="lab-row__go" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+
+      <a class="lab-feature__all reveal" href="/lab/">View everything in the Lab <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div>
+          <span class="kicker">03 · How I help</span>
+          <h2 class="section__title serif">Four <em>problems I solve</em>.</h2>
+        </div>
+      </div>
+
+      <div class="problems">
+        {services.map((s, i) => (
+          <div class="problem reveal">
+            <span class="problem__no">{String(i + 1).padStart(2, '0')}</span>
+            <div class="problem__text">
+              <h3 class="problem__title">{s.title}</h3>
+              <p class="problem__body">{s.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- AUDIT — fixed-price entry offer for buyers who can't scope a project yet -->
   <section class="section" id="audit">
     <div class="wrap">
       <div class="section__head reveal">
         <div>
-          <span class="kicker">02 · Where to start</span>
+          <span class="kicker">04 · Where to start</span>
           <h2 class="section__title serif">Not sure what you need? Start with a <em>systems audit</em>.</h2>
           <p class="section__lede">
             One week, one flat fee. I map how information moves through your business.
@@ -178,61 +235,6 @@ const quotes = testimonials.filter((t) => !t.draft);
             Book an audit <span class="arr">↗</span>
           </a>
         </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="section section--raise" id="projects">
-    <div class="wrap">
-      <div class="section__head reveal">
-        <div>
-          <span class="kicker">03 · More work</span>
-          <h2 class="section__title serif">Smaller jobs, <em>same care</em>.</h2>
-        </div>
-      </div>
-
-      <div class="proj-grid">
-        {projects.map((p, i) => (
-          <article class="proj reveal">
-            <div class="proj__top">
-              <span class="proj__ix">P/{String(i + 1).padStart(2, '0')}</span>
-              <span class="proj__tags">
-                {'status' in p && p.status && (
-                  <span class="proj__status"><span class="led"></span>{p.status}</span>
-                )}
-                <span class="proj__kind">{p.kind}</span>
-              </span>
-            </div>
-            <h3 class="proj__name">{p.name}</h3>
-            <p class="proj__desc">{p.desc}</p>
-            <span class="proj__foot">{p.foot}</span>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="section" id="services">
-    <div class="wrap">
-      <div class="section__head reveal">
-        <div>
-          <span class="kicker">04 · How I help</span>
-          <h2 class="section__title serif">Four <em>problems I solve</em>.</h2>
-        </div>
-      </div>
-
-      <div class="problems">
-        {services.map((s, i) => (
-          <div class="problem reveal">
-            <span class="problem__no">{String(i + 1).padStart(2, '0')}</span>
-            <div class="problem__text">
-              <h3 class="problem__title">{s.title}</h3>
-              <p class="problem__body">{s.body}</p>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   </section>
