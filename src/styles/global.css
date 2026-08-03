@@ -212,6 +212,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
   display: inline-flex; align-items: center; min-height: 44px;
 }
 .nav__link:hover { color: var(--paper); }
+.nav__link--active { color: var(--accent); }
+.nav__link--active:hover { color: var(--accent-2); }
 .nav__cta {
   font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.03em;
   color: var(--paper); border: 1px solid var(--line-2);
