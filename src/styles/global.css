@@ -901,7 +901,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 .prose pre code { background: none; padding: 0; color: var(--paper-dim); }
 .prose hr { border: none; border-top: 1px solid var(--line); margin: 3rem 0; }
 
-.cs-next { border-top: 1px solid var(--line); padding: clamp(3rem,6vw,5rem) 0; }
+.cs-next { display: block; border-top: 1px solid var(--line); margin-top: clamp(3rem,6vw,4.5rem); padding: clamp(2.5rem,5vw,4rem) 0; }
 .cs-next__lab { font-family: var(--label); font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper-faint); margin-bottom: 1rem; }
 .cs-next__title { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); font-weight: 700; letter-spacing: -0.035em; transition: color 0.2s; }
 .cs-next:hover .cs-next__title { color: var(--accent); }
