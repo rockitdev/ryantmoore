@@ -3,7 +3,7 @@
 
 export const site = {
   name: 'Ryan Moore',
-  role: 'Software Engineer',
+  role: 'Senior Software Engineer',
   location: 'Halifax, NS',
   since: '2005',
   email: 'ryan@rockitdevelopment.com',
@@ -15,9 +15,9 @@ export const site = {
 // "Drupal", and "Halifax" appear nowhere else in machine-readable text, and this
 // is what search engines and link previews read first.
 export const seo = {
-  title: 'Ryan Moore, Software Engineer · Symfony, Drupal & Integrations',
+  title: 'Ryan Moore — AI agents & integrations · Senior software engineer',
   description:
-    'Software engineer in Halifax, NS. Twenty-five years building websites, web apps, and the links between business systems. Symfony, Drupal, and practical automation. Open for contract projects.',
+    'AI agents and integrations that keep your business moving. Senior software engineer in Halifax, NS with 25 years building automation, connected systems, and high-stakes web platforms. Symfony, Drupal, and practical AI. Open for contract work.',
   ogImageAlt:
     'Diagram of business tools (HubSpot, Stripe, Drupal, Twilio and more) all connected through one core system',
 };
@@ -108,7 +108,7 @@ export const projects = [
 ];
 
 export const background = [
-  { period: '2005 to present', role: 'Founder, Rockit Development', link: 'https://www.rockitdevelopment.com', detail: 'My own company. I take on consulting work and build products. Right now my focus is automation for heating and cooling service businesses.' },
+  { period: '2005 to present', role: 'Founder, Rockit Development', link: 'https://www.rockitdevelopment.com', detail: 'My own company. I take on consulting work and build products. Right now my focus is AI agents and systems integration for growing businesses.' },
   { period: '2022 to present', role: 'Staff Engineer', detail: 'I lead the team building a platform that ties hotel and travel software together. I take on the hardest connection work, and I help other developers grow.' },
   { period: '2018 to 2022', role: 'Senior Integration Engineer', detail: 'I built the core system that links many travel services. It lets them share data through one common connection.' },
   { period: '2015 to 2018', role: 'Senior Developer / Team Lead', detail: 'I led the design and the team on large booking sites, and set the standards the whole team built by.' },
