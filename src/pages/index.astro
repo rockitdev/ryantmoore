@@ -142,12 +142,52 @@ const quotes = testimonials.filter((t) => !t.draft);
     </div>
   </section>
 
+  <!-- AUDIT — fixed-price entry offer for buyers who can't scope a project yet -->
+  <section class="section" id="audit">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div>
+          <span class="kicker">02 · Where to start</span>
+          <h2 class="section__title serif">Not sure what you need? Start with a <em>systems audit</em>.</h2>
+          <p class="section__lede">
+            One week, one flat fee. I map how information moves through your business.
+            I find where it leaks. Then I hand you a ranked fix list. It's yours whether
+            or not we work together after.
+          </p>
+        </div>
+      </div>
+
+      <div class="audit">
+        <ol class="audit__steps">
+          {audit.steps.map((s, i) => (
+            <li class="audit__step reveal">
+              <span class="audit__no">{String(i + 1).padStart(2, '0')} /</span>
+              <h3 class="audit__title">{s.title}</h3>
+              <p class="audit__body">{s.body}</p>
+            </li>
+          ))}
+        </ol>
+
+        <aside class="audit__card reveal">
+          <span class="audit__price serif">{audit.price}</span>
+          <span class="audit__meta">{audit.priceNote} · {audit.duration}</span>
+          <ul class="audit__perks">
+            {audit.perks.map((p) => <li class="audit__perk">{p}</li>)}
+          </ul>
+          <a href="#contact" class="btn btn--primary" data-prefill-audit>
+            Book an audit <span class="arr">↗</span>
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section class="section section--raise" id="projects">
     <div class="wrap">
       <div class="section__head reveal">
         <div>
-          <span class="kicker">02 · More work</span>
+          <span class="kicker">03 · More work</span>
           <h2 class="section__title serif">Smaller jobs, <em>same care</em>.</h2>
         </div>
       </div>
@@ -178,7 +218,7 @@ const quotes = testimonials.filter((t) => !t.draft);
     <div class="wrap">
       <div class="section__head reveal">
         <div>
-          <span class="kicker">03 · What I do</span>
+          <span class="kicker">04 · What I do</span>
           <h2 class="section__title serif">Four kinds of <em>problem I solve</em>.</h2>
         </div>
       </div>
@@ -200,7 +240,7 @@ const quotes = testimonials.filter((t) => !t.draft);
     <div class="wrap">
       <div class="section__head reveal">
         <div>
-          <span class="kicker">04 · Experience</span>
+          <span class="kicker">05 · Experience</span>
           <h2 class="section__title serif">Twenty-five years, <em>one focus</em>.</h2>
           <p class="section__lede">
             The same engineer travel platforms and hospitals trust with their hardest
@@ -240,46 +280,6 @@ const quotes = testimonials.filter((t) => !t.draft);
             </li>
           ))}
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- AUDIT — fixed-price entry offer for buyers who can't scope a project yet -->
-  <section class="section" id="audit">
-    <div class="wrap">
-      <div class="section__head reveal">
-        <div>
-          <span class="kicker">05 · Where to start</span>
-          <h2 class="section__title serif">Not sure what you need? Start with a <em>systems audit</em>.</h2>
-          <p class="section__lede">
-            One week, one flat fee. I map how information moves through your business.
-            I find where it leaks. Then I hand you a ranked fix list. It's yours whether
-            or not we work together after.
-          </p>
-        </div>
-      </div>
-
-      <div class="audit">
-        <ol class="audit__steps">
-          {audit.steps.map((s, i) => (
-            <li class="audit__step reveal">
-              <span class="audit__no">{String(i + 1).padStart(2, '0')} /</span>
-              <h3 class="audit__title">{s.title}</h3>
-              <p class="audit__body">{s.body}</p>
-            </li>
-          ))}
-        </ol>
-
-        <aside class="audit__card reveal">
-          <span class="audit__price serif">{audit.price}</span>
-          <span class="audit__meta">{audit.priceNote} · {audit.duration}</span>
-          <ul class="audit__perks">
-            {audit.perks.map((p) => <li class="audit__perk">{p}</li>)}
-          </ul>
-          <a href="#contact" class="btn btn--primary" data-prefill-audit>
-            Book an audit <span class="arr">↗</span>
-          </a>
-        </aside>
       </div>
     </div>
   </section>
