@@ -1,39 +1,41 @@
 ---
 title: The job that quietly loses money
-description: A tradesman thought he cleared three quarters of a million. After the books were finally straightened out, the real number was thirty grand. The gap was not the work. It was the paperwork nobody kept up with.
+description: A contractor was sure he had a great year. When the books were finally reconciled, most of the profit he thought he had made turned out to have never been there.
 date: 2026-07-16
 tags: ['Automation', 'Integration']
 draft: true
 ---
 
-> The most expensive job in a lot of small businesses is the one nobody is actually doing: keeping the numbers straight. It does not feel urgent, so it slides, and the cost hides until it is huge.
+> The most expensive job in a lot of small businesses is the one nobody is doing: keeping the numbers current. It never feels urgent, so it slides, and the cost stays invisible until it is huge.
 
-A tradie I read about thought he had a great year. Somewhere around three quarters of a million in his pocket. Then someone actually reconciled the books, the ones that had gone a full year with one account nobody kept up with, and the real profit was about thirty thousand dollars.
+On the Profitable Tradie podcast there is a story about an owner who believed he had a strong year, only to find, once the books were properly reconciled, that his real profit was a small fraction of what he thought. A year had passed with an account nobody kept current, and the gap between the number in his head and the number on the page was enormous.
 
-He did not do bad work. He did the same good work he always did. The money leaked out through the part of the business that never feels urgent: the paperwork, the tracking, the boring reconciliation that always loses to an actual job on an actual site.
+I want to be careful with the figures, because this is where these stories get slippery. "I made three quarters of a million" usually means money that came in, not money kept. Revenue, gross profit, and what actually lands in your pocket are three different numbers, and blurring them is exactly how an owner ends up stunned at year end. He did good work all year. What he did not do was keep the scoreboard current enough to see the leak while it was small.
 
-## Why the boring stuff slides
+## Why the back office slides
 
-Back-office work has a nasty quality. Skipping it once costs you nothing you can feel. The roof still goes on. The customer still pays. The day still ends.
+Bookkeeping has a nasty quality: skipping it once costs you nothing you can feel. The roof still goes on. The customer still pays. The day still ends. So it slides behind the work that feels real, and it keeps sliding, until a year of small gaps adds up to a number that can swallow your profit.
 
-So it slides, and it keeps sliding, because there is always something in front of you that feels more real than reconciling an account. A year of that and the gap between what you think you made and what you actually made can swallow your whole profit.
+## What software can and cannot take off your plate
 
-## This is exactly what software is good at
+Here is the honest version, because "automate your books" oversells it. Software is very good at the routine matches: pairing a payment to the right invoice, flagging what is overdue, totalling direct costs. It is not a bookkeeper. The judgment calls, how to categorize an odd expense, how to handle an exception, still need a person.
 
-Here is the good news. The work that quietly loses money is almost always the same shape every time, and that is the easy stuff to hand off.
+So the right shape is not "let the computer do the books." It is: let the computer do the routine matching and put the exceptions in front of a human. That combination keeps the scoreboard current without pretending judgment went away.
 
-An invoice that should land in the books the moment a job closes. A payment that should match itself against the right customer without anyone typing it in. A weekly number that tells you your real margin while there is still time to do something about it. None of that needs judgment. It needs to happen every time, and it needs to not depend on a tired person at the end of a long day.
+## The one number to surface every week
 
-That is the sweet spot for automation. Not the flashy stuff. The steady, boring, every-time stuff that a human will always, understandably, put off.
+The deeper problem was not the leak. It was that he did not see it for a year. The fix is to make the scoreboard show up on its own, every week, whether or not anyone remembers to look. Something as plain as:
 
-## Know your number before it is a surprise
+- Cash that came in this week
+- Invoices still outstanding, and how old they are
+- Direct costs against the jobs you ran
+- A rough margin off those two
+- Anything odd that needs a person to look at
 
-The tradie's problem was not only the leak. It was that he did not see it for a year. By the time the books told the truth, the year was gone.
-
-The fix is to make the number show up on its own, often, whether or not anyone remembers to look. A simple weekly line that says here is what came in, here is what went out, here is your margin. When that lands in front of you every Monday, a bad trend is something you catch in week two, not something you discover twelve months later.
+When that lands in front of you every Monday, a bad trend is something you catch in week two, not something you discover twelve months later when the year is already gone.
 
 ## The move
 
-Find the one back-office task you are most behind on right now. For most owners it is the money side: invoicing, matching payments, or just knowing the real margin. Get that running on its own so it happens every time and reports back without being asked.
+Pick the one back-office task you are furthest behind on. For most owners it is the money side: matching payments, chasing invoices, or just knowing the real margin. Get the routine part running on its own, route the exceptions to you, and have a simple weekly number land whether you ask for it or not.
 
-The work was never the problem. The stuff around the work was. And the stuff around the work is exactly what you can hand to something that never gets too busy to do it.
+The work was never the problem. The scoreboard around the work was, and the scoreboard is exactly the kind of thing you can hand off, as long as you keep the judgment calls for yourself.

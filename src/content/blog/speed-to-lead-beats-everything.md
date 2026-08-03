@@ -1,39 +1,35 @@
 ---
-title: Speed to lead beats everything
-description: Two trades that will never meet run the same playbook. Answer fast, follow up without fail, and let software do both. It is the least glamorous edge in business and one of the biggest.
+title: Why speed to lead is an unfair advantage
+description: Two contractors who will never meet run the same playbook. Answer in seconds, follow up until you get a yes or a no, and let software do both. Here is how the wiring actually holds.
 date: 2026-07-09
 tags: ['Automation', 'Integration']
 draft: true
 ---
 
-> The business that answers first usually wins the job, even when it is not the best one. Speed is a feature you can buy, and most of your competitors have not.
+> Answering first does not make you the best contractor. It makes you the one who gets to have the conversation. On a cold lead that is most of the battle, and it is a battle you can win with software instead of willpower.
 
-Talk to operators who have grown fast in the trades and you hear the same boring secret. They answer leads in seconds, they follow up seven or ten times, and they do not rely on a person to remember to do either.
+When Richie Colletti talked about his roofing business on The Trade Talks, the part that stuck was not a marketing trick. It was speed. He leaned on getting a quote in front of a customer within about a minute of them asking, then following up seven to ten times after. Concrete Designs told a similar story about growing fast: quick responses and steady follow-up, wired into Jobber so nothing slipped. Different trades, same unglamorous edge.
 
-One roofer stopped leaning on ads and started sending a quote inside a minute of someone asking. One concrete company went from a quarter million to a million in a year on the back of fast follow-up and automation wired into the tools they already used. Different trades, same move.
+## Why first beats best on a cold lead
 
-## Why speed wins
+Someone with a leaking roof or a cracked driveway is not loyal yet. They filled out three forms. Whoever answers first gets the conversation, and the conversation is where the job is decided. By the time the second and third contractor call back, the work is often already promised.
 
-A customer with a leaking roof or a cracked driveway is not loyal yet. They filled out three forms. The first business to answer gets to have the conversation, and the conversation is where the job is won. By the time the second and third call back, the work is often already spoken for.
+Being first is not a hustle problem. Nobody can watch the inbox at nine on a Saturday night. It is a coverage problem, and coverage is what software is for.
 
-Being first is not about hustle. Nobody can watch the inbox at 9pm on a Saturday. Being first is about having something that answers when you cannot.
+## Follow-up is where most of the money leaks
 
-## Follow-up is where the money hides
+Set aside the tidy sales statistics and the pattern still holds: many leads never answer the first message, and most businesses stop after it. Not from laziness. Follow-up is the first thing a busy week eats. You meant to circle back Wednesday, Wednesday got away from you, the lead went cold. Repeat weekly and you can watch real revenue drain out through a gap nobody is minding.
 
-Here is the number that should bother you. Most jobs are not won on the first touch. They are won on the fourth, fifth, or seventh. And most businesses quit after one.
+Follow-up that runs on its own does not have a busy week. It sends the second message on schedule, and the third, and it stops the moment the customer replies or books. You are not asking a person to remember. You are asking a system not to forget.
 
-Not because they are lazy. Because follow-up is exactly the kind of thing a busy human forgets. You meant to call back Wednesday. Wednesday got away from you. The lead went cold. Multiply that by every week and you can see the leak.
+## The wiring is the actual work
 
-A follow-up that runs on its own does not forget. It does not get busy. It sends the second message when it is supposed to, and the third, and it stops the moment the customer replies or books.
+This is the part I care about, because it is where these things quietly fail. Speed to lead is not one clever tool. It is a chain that has to hold: the form triggers the quote, the quote reaches the customer, the reply reaches you, the booking lands in your calendar, and the job shows up in your books, with nobody retyping anything in the middle.
 
-## The wiring is the whole thing
-
-None of this works if the tools do not talk. The quote has to reach the customer, the reply has to reach you, and the booking has to land in your calendar and your books without anyone copying it across by hand.
-
-That is the unglamorous part, and it is the part that actually matters. Speed to lead is not one clever tool. It is a chain: a form, a message, a follow-up, a calendar, an invoice, all handing off to each other with no person in the middle retyping things.
+Every hand-off in that chain is a place it can break. A lead that drops into an inbox nobody watches. A booking that never reaches the calendar. A quote that goes out while the reply gets lost. Getting speed to lead right is mostly getting those hand-offs to hold, every time, so a fast first answer is not wasted by a slow, leaky follow-through.
 
 ## Where to start
 
-You do not need to automate your whole business this week. Pick the single leak that costs you most, which for most trades is the follow-up nobody has time for. Get that running on its own, first message to last, and stop worrying about whether someone remembered.
+You do not need to wire the whole business this week. Take the single worst leak, which for most contractors is the follow-up nobody has time for, and make it run on its own from first message to last. Prove that one link holds. Then add the next.
 
-Fast answers win the first conversation. Relentless follow-up wins the ones you would otherwise lose. Software is happy to do both, all day, without a single reminder.
+Speed wins the first conversation. Follow-up wins the ones you would otherwise lose. The wiring is what lets you do both without hiring someone whose whole job is to remember.

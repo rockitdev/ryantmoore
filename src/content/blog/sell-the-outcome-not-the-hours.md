@@ -3,7 +3,7 @@ title: Sell the outcome, not the hours
 description: The old pitch was that it saves you time. Now everything saves you time, so it means nothing. What people actually buy is money, stability, and one less thing to worry about.
 date: 2026-07-23
 tags: ['Small business', 'AI agents']
-draft: true
+draft: false
 ---
 
 > Nobody wakes up wanting automation. They want the follow-ups to stop slipping, the books to be right, and to stop lying awake over the thing that keeps getting missed. Sell that, because that is what they are actually buying.

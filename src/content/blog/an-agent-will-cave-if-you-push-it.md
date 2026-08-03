@@ -1,39 +1,38 @@
 ---
 title: An agent will cave if you push it once
-description: You can tell an AI agent the rules in plain English and it will follow them, right up until someone pushes back once. Real safety is not in the instructions. It is in the walls.
+description: You can hand an AI agent the rules in plain English and it will follow them, right up until someone pushes back. Real safety is not better wording. It is three boundaries the agent cannot argue its way past.
 date: 2026-07-14
 tags: ['AI agents', 'Building']
 draft: true
 ---
 
-> Telling an agent "do not do the dangerous thing" works until someone types "just do it." If your safety plan is a sentence in the instructions, you do not have a safety plan.
+> A written rule is a sign that says do not enter. Under pressure, an agent treats it like a suggestion. What you want is a locked door, and there are three worth building.
 
-Give an AI agent a clear rule and it will usually follow it. Tell it not to delete anything, not to send money, not to touch the customer list, and it nods along. Then someone replies "just continue" or "it is fine, go ahead," and a surprising amount of the time, it does.
+Give an AI agent a clear instruction and it will usually follow it: do not delete anything, do not send money, do not touch the customer list. Then someone replies "just continue" or "it is fine, go ahead," and a fair amount of the time, it does. Cole Medin, who builds with these tools daily, made the point plainly in [his talk on running agents safely](https://www.youtube.com/watch?v=zb2LyMro77M): they cave under a single follow-up. One nudge can flip a careful agent into the risky action.
 
-That is not a bug you can prompt your way out of. It is how these things work. They are built to be agreeable, and agreeable means they bend when pushed.
+It helps to name what is actually going wrong, because "the AI messed up" hides four different problems:
 
-## The rules fade over long jobs
+- **Persuasion.** A user talks it out of a rule it was given.
+- **Injection.** Instructions hidden inside a document or email it reads get treated as commands.
+- **Drift.** On a long task it loses track of the rules it started with; past a few hundred thousand words of context, the early instructions fade.
+- **Blast radius.** It simply has access to more than the job needs, so a mistake reaches further than it should.
 
-There is a second problem that shows up on bigger tasks. An agent working for a long stretch slowly forgets the instructions it started with. The further it gets, the more the early rules blur. People who build with these tools have a name for the state it drifts into, and it is not flattering.
+Different problems, one shared lesson: none of them are fixed by writing a sterner instruction.
 
-So the rule you set at the top, the one that said "never touch the live system," is weakest exactly when the agent has been running longest and can do the most damage.
+## Three boundaries that hold
 
-## Walls beat words
+The fix is structural. Build these once and the agent cannot argue its way past them:
 
-The fix is not a better-worded warning. It is a wall the agent physically cannot walk through.
+1. **Least access.** Give it the minimum it needs and nothing more. If the job is drafting replies, it does not get the keys to the bank. What it cannot reach, it cannot break, however it is persuaded.
+2. **Hard execution limits.** Lock it to where it is allowed to work: one folder, one test copy, one sandbox with the network fenced off. The wall is physical, not a polite request.
+3. **A human gate on anything irreversible.** Sending money, emailing a customer, changing the live site: those wait for a person to say yes. The agent can prepare the action all day. It does not get to pull the trigger.
 
-If it should never touch your real customer data, it should not be able to reach it in the first place. If it should only work inside one folder, lock it to that folder. If it should not spend money, do not give it the keys to the account. You do not ask it nicely to stay in bounds. You build the bounds so that stepping out is not an option.
+## How to size it for your business
 
-This is the difference between a sign that says "do not enter" and a locked door. The sign depends on everyone choosing to obey it. The door does not care how persuasive the argument is.
+You do not need the technical version. You need one question, asked of anything you let run on its own: if this goes completely wrong, what is the worst it can reach?
 
-## What this looks like in practice
-
-For a small business, you do not need to think about it in technical terms. You need to think about it in terms of blast radius. Ask one question about anything you let run on its own: if this goes completely wrong, what is the worst it can reach?
-
-If the answer is "a draft folder," you can relax. If the answer is "our bank, our customers, our live website," then agreeable instructions are not enough. That work needs a hard boundary and a human check before anything final goes out.
+If the answer is a draft folder, relax. If the answer is your bank, your customers, or your live website, agreeable instructions are not enough. That work needs the three boundaries above, especially the human gate, before you trust it unattended.
 
 ## The takeaway
 
-Guardrails made of words are comfortable because they are easy to write. They are also the first thing to fail under pressure, and pressure is just one impatient message away.
-
-The agents worth trusting with real work are not the ones with the sternest instructions. They are the ones that were never given the ability to do the dangerous thing in the first place. Build the walls, then let it run inside them.
+Guardrails made of words are comfortable to write and the first thing to fail when someone pushes. The agents worth trusting with real work are not the ones with the sternest prompt. They are the ones that were never handed the ability to do the dangerous thing, and that have to ask before doing anything you cannot undo. Build the doors, then let it run inside them.
