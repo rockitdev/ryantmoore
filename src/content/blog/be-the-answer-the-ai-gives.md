@@ -1,38 +1,53 @@
 ---
 title: Be the answer the AI gives
-description: For years, getting found meant ranking on a page of search results. More and more, customers skip the page and ask an AI directly. Showing up in that answer is a different game.
+description: Getting found is shifting from where you rank to whether the answer even mentions you. The interface is changing. The work that gets you into it is more familiar than the hype suggests.
 date: 2026-08-04
 tags: ['Small business', 'Practical AI']
 draft: false
 ---
 
-> The question is quietly changing from "where does my business rank" to "does the AI mention my business at all." One is a list you climb. The other is an answer you either make it into or you do not.
+> AI answers change how results are presented. They do not erase the foundations that decide whether your business can be found, understood, and trusted. Same groundwork, new front door.
 
-More of your customers are starting their search by asking an AI instead of scrolling a page of blue links. They type a plain question, get a plain answer, and often never see the ten results underneath. Dan Martell, in his [rundown of skills that still make money](https://www.youtube.com/watch?v=W3qOS2h_MBM), calls this the new version of getting found: make your business the answer the AI gives, not the fourth link it buries.
+The question is expanding from "where does my business rank?" to "does the answer even mention my business?" Ranking still matters, because AI search features lean on many of the same indexes and quality signals as regular search. But the result may now arrive as a written answer, with a few names in it, before the customer ever sees a traditional list of links.
 
-That is a real shift, and it changes what "getting found" means for a small business.
+That is worth understanding, because most of the hype around it is wrong. This is not a new game that replaces search. It is search wearing a new face, and the work that gets you into the answer is more familiar than the noise suggests.
 
-## Why this is different from old search
+## It is an evolution, not a replacement
 
-The old game was ranking. Ten spots on a page, and you fought to be near the top. You could win by being a little better than the next result.
+Some customers are starting to ask an AI instead of scrolling results. They may get a synthesized answer before they visit any of the supporting links. It can feel like a different world.
 
-The new game is inclusion. When someone asks an AI "who does good HVAC work in my town" or "what should I look for in a bookkeeper," the AI gives a short answer with a few names, or none. You are either in that short answer or you are invisible. There is no page two to settle for.
+Under the hood, it mostly is not. Google says plainly that its AI search features use the same core ranking and quality systems as regular Search, and that [there is no special AI optimization to chase](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide). The usual fundamentals still apply. OpenAI says much the same about [ChatGPT Search](https://help.openai.com/en/articles/9237897-chatgpt-search): it weighs relevance and reliability, it has to be able to crawl your site to include you, and it promises no one a spot. No tricks, no secret markup. The groundwork is still the groundwork.
 
-## What actually gets you into the answer
+So the useful way to think about it is three plain questions.
 
-The AI builds its answer from what it can find written about you, in plain language, that clearly matches the question. That points to a few concrete moves.
+## Can it find you?
 
-- **Answer real questions in plain words.** The questions your customers actually ask, answered simply on your own site. Not marketing fluff. The plain answer.
-- **Be specific about what you do and where.** "Emergency furnace repair in Halifax" is something an AI can match to a question. "Solutions for your comfort needs" is not.
-- **Get named in trustworthy places.** Reviews, local listings, real mentions. The AI trusts what other sources say about you, not just what you say about yourself.
-- **Keep your basic facts consistent.** Same name, service, and area everywhere. Mixed signals make you easy to leave out.
+If a system cannot reach your pages, it cannot mention you.
 
-None of that is a trick. It is being clear, specific, and consistent enough that a machine reading about you can confidently put you in the answer.
+- Let Google's and OpenAI's crawlers reach your site (Googlebot, OAI-SearchBot), and make sure nothing is accidentally blocking them.
+- Keep your important pages reachable and indexable.
+- Set up and maintain your Google Business Profile and other real listings.
 
-## The part that has not changed
+## Can it understand you?
 
-Here is the reassuring bit. The businesses that will win the AI answer are mostly the ones doing honest, clear work and describing it plainly. The AI is not rewarding the loudest marketer. It is rewarding the clearest, most trustworthy match to a real question.
+Once it can read you, it has to know what you do.
 
-So the move is not to chase another algorithm. It is to write down, plainly and specifically, what you do, who you do it for, and where, and to earn real mentions from real people. Do that and you give the AI every reason to hand your name to the person asking.
+- Say exactly what you do and where, in plain words. "Emergency furnace repair in Halifax," not "solutions for your comfort needs."
+- Answer the real questions your customers ask, in plain language, on your own site.
+- Keep the important information in visible text, not locked inside an image or a video.
 
-Getting found used to mean climbing a list. Now it means being the answer. The work that gets you there is clearer than the old game, not harder.
+## Can it verify you?
+
+Finally, it looks for reasons to trust the match.
+
+- Keep your name, services, location, and contact details consistent everywhere. Mixed signals make you easy to leave out.
+- Earn genuine reviews and real mentions. What other sources say about you carries weight.
+- If you use structured data, make sure it matches what a visitor actually sees.
+
+None of that is an AI trick. It is giving these systems clear, consistent, well-supported evidence that your business is a good answer to a real question.
+
+## The honest version
+
+There is no guaranteed route into an AI answer. A good, honest business can still be left out, and these systems can still get things wrong. But the reassuring part is that the fundamentals are familiar: be reachable, describe your work clearly, keep your facts current, and give people real reasons to mention you.
+
+Getting found used to mean climbing a list. Now the list sometimes arrives as an answer. The interface is changing. The durable work underneath it is not.
