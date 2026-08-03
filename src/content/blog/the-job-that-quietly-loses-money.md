@@ -8,7 +8,7 @@ draft: true
 
 > The most expensive job in a lot of small businesses is the one nobody is doing: keeping the numbers current. It never feels urgent, so it slides, and the cost stays invisible until it is huge.
 
-On the Profitable Tradie podcast there is a story about an owner who believed he had a strong year, only to find, once the books were properly reconciled, that his real profit was a small fraction of what he thought. A year had passed with an account nobody kept current, and the gap between the number in his head and the number on the page was enormous.
+On [the Profitable Tradie podcast](https://www.youtube.com/watch?v=Ycynb__tRt4) there is a story about an owner who believed he had a strong year, only to find, once the books were properly reconciled, that his real profit was a small fraction of what he thought. A year had passed with an account nobody kept current, and the gap between the number in his head and the number on the page was enormous.
 
 I want to be careful with the figures, because this is where these stories get slippery. "I made three quarters of a million" usually means money that came in, not money kept. Revenue, gross profit, and what actually lands in your pocket are three different numbers, and blurring them is exactly how an owner ends up stunned at year end. He did good work all year. What he did not do was keep the scoreboard current enough to see the leak while it was small.
 
@@ -28,11 +28,12 @@ The deeper problem was not the leak. It was that he did not see it for a year. T
 
 - Cash that came in this week
 - Invoices still outstanding, and how old they are
-- Direct costs against the jobs you ran
-- A rough margin off those two
-- Anything odd that needs a person to look at
+- Revenue recognized on the jobs you actually completed
+- Direct costs assigned to those jobs
+- An estimated gross margin off those two
+- Any unmatched or unusual transactions that need a person to look at
 
-When that lands in front of you every Monday, a bad trend is something you catch in week two, not something you discover twelve months later when the year is already gone.
+Keep the cash line and the margin line separate in your head: money in this week is not the same as profit on this week's work, because payments and costs land in different weeks. But even a rough version of both, in front of you every Monday, means a bad trend is something you catch in week two, not something you discover twelve months later when the year is already gone.
 
 ## The move
 

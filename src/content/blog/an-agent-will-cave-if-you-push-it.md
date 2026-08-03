@@ -8,13 +8,13 @@ draft: true
 
 > A written rule is a sign that says do not enter. Under pressure, an agent treats it like a suggestion. What you want is a locked door, and there are three worth building.
 
-Give an AI agent a clear instruction and it will usually follow it: do not delete anything, do not send money, do not touch the customer list. Then someone replies "just continue" or "it is fine, go ahead," and a fair amount of the time, it does. Cole Medin, who builds with these tools daily, made the point plainly in [his talk on running agents safely](https://www.youtube.com/watch?v=zb2LyMro77M): they cave under a single follow-up. One nudge can flip a careful agent into the risky action.
+Give an AI agent a clear instruction and it will usually follow it: do not delete anything, do not send money, do not touch the customer list. Then someone replies "just continue" or "it is fine, go ahead." Cole Medin, who builds with these tools daily, showed this in [his talk on running agents safely](https://www.youtube.com/watch?v=zb2LyMro77M): in his demonstrations, a single follow-up was sometimes enough to flip a careful agent into the risky action.
 
 It helps to name what is actually going wrong, because "the AI messed up" hides four different problems:
 
 - **Persuasion.** A user talks it out of a rule it was given.
 - **Injection.** Instructions hidden inside a document or email it reads get treated as commands.
-- **Drift.** On a long task it loses track of the rules it started with; past a few hundred thousand words of context, the early instructions fade.
+- **Drift.** On a long task it loses track of the rules it started with. As a task accumulates more context, early instructions can lose influence or become easier for competing instructions to displace.
 - **Blast radius.** It simply has access to more than the job needs, so a mistake reaches further than it should.
 
 Different problems, one shared lesson: none of them are fixed by writing a sterner instruction.

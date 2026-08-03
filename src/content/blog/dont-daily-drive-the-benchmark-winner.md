@@ -33,7 +33,7 @@ The cheaper model that needs less checking and fails softly often beats the flas
 
 ## Two habits that save money
 
-A pattern worth stealing, with the caveat that it is a default and not a law: use the big, expensive model for the thinking, the planning and the genuinely new problems, and hand the repetitive doing to a smaller, cheaper one. Small models are steadier at routine work than people expect, and they cost a fraction.
+A pattern worth stealing, with the caveat that it is a default and not a law: use the big, expensive model for the thinking, the planning and the genuinely new problems, and hand the repetitive doing to a smaller, cheaper one. Small models are often capable enough for routine work, and they cost a fraction.
 
 And where a model exposes a setting for how hard it tries, test whether the top setting actually beats the middle one on your work before you pay for it. Often it does not, and you were buying horsepower you could not feel. Measure it rather than assume, in either direction.
 
