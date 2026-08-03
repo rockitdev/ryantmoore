@@ -219,16 +219,18 @@ const quotes = testimonials.filter((t) => !t.draft);
       <div class="section__head reveal">
         <div>
           <span class="kicker">04 · What I do</span>
-          <h2 class="section__title serif">Four kinds of <em>problem I solve</em>.</h2>
+          <h2 class="section__title serif">Four <em>problems I solve</em>.</h2>
         </div>
       </div>
 
-      <div class="svc-grid">
+      <div class="problems">
         {services.map((s, i) => (
-          <div class="svc reveal">
-            <div class="svc__no">{String(i + 1).padStart(2, '0')} /</div>
-            <h3 class="svc__title">{s.title}</h3>
-            <p class="svc__body">{s.body}</p>
+          <div class="problem reveal">
+            <span class="problem__no">{String(i + 1).padStart(2, '0')}</span>
+            <div class="problem__text">
+              <h3 class="problem__title">{s.title}</h3>
+              <p class="problem__body">{s.body}</p>
+            </div>
           </div>
         ))}
       </div>
