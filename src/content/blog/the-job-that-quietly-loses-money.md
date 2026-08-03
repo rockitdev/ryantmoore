@@ -3,7 +3,7 @@ title: The job that quietly loses money
 description: A contractor was sure he had a great year. When the books were finally reconciled, most of the profit he thought he had made turned out to have never been there.
 date: 2026-07-16
 tags: ['Automation', 'Integration']
-draft: true
+draft: false
 ---
 
 > The most expensive job in a lot of small businesses is the one nobody is doing: keeping the numbers current. It never feels urgent, so it slides, and the cost stays invisible until it is huge.
@@ -24,7 +24,7 @@ So the right shape is not "let the computer do the books." It is: let the comput
 
 ## The one number to surface every week
 
-The deeper problem was not the leak. It was that he did not see it for a year. The fix is to make the scoreboard show up on its own, every week, whether or not anyone remembers to look. Something as plain as:
+The deeper problem was not the leak. It was that he did not see it for a year. The fix is to make the scoreboard show up on its own, every week, whether or not anyone remembers to compile it. Something as plain as:
 
 - Cash that came in this week
 - Invoices still outstanding, and how old they are
@@ -37,6 +37,6 @@ Keep the cash line and the margin line separate in your head: money in this week
 
 ## The move
 
-Pick the one back-office task you are furthest behind on. For most owners it is the money side: matching payments, chasing invoices, or just knowing the real margin. Get the routine part running on its own, route the exceptions to you, and have a simple weekly number land whether you ask for it or not.
+Pick the one back-office task you are furthest behind on. For most owners it is the money side: matching payments, chasing invoices, or just knowing the real margin. Get the routine part running on its own, route the exceptions to you, and have a simple weekly snapshot land whether you ask for it or not.
 
 The work was never the problem. The scoreboard around the work was, and the scoreboard is exactly the kind of thing you can hand off, as long as you keep the judgment calls for yourself.

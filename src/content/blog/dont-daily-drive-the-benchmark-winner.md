@@ -3,7 +3,7 @@ title: The benchmark winner might be the wrong model for you
 description: Every few weeks a new AI model tops the charts and the internet calls the last one obsolete. The leaderboard measures something real. It just does not measure whether the thing will do your job the same way every time.
 date: 2026-07-21
 tags: ['Practical AI', 'Building']
-draft: true
+draft: false
 ---
 
 > A benchmark tells you a model did well on someone else's test. That is worth something. It is not the same as knowing it will do your job, on your messy inputs, without surprising you, and only one of those questions pays your bills.
@@ -14,7 +14,7 @@ The leaderboard is not useless. A model that scores well is probably capable. Wh
 
 ## Test it on your own work
 
-The only benchmark that matters for your business is your business. Before you trust a model with something that counts, run your real task through it a handful of times and watch. Does it do the same thing each time, or drift? Does it hold on the messy inputs, not just the clean demo?
+The benchmark that matters most for your business is your business. Before you trust a model with something that counts, run your real task through it a handful of times and watch. Does it do the same thing each time, or drift? Does it hold on the messy inputs, not just the clean demo?
 
 A few runs is a smoke test, not proof. It will not tell you the thing is reliable. It will tell you fast if it is obviously not, which is most of what you need early.
 
@@ -29,7 +29,7 @@ When you are choosing between two models for a real job, score them on more than
 - **Review time:** how long you spend checking its work
 - **Failure cost:** when it is wrong, how bad is wrong
 
-The cheaper model that needs less checking and fails softly often beats the flashy one on the only line that matters, which is cost per good result.
+The cheaper model that needs less checking and fails softly often beats the flashy one on one of the most useful lines: cost per good result.
 
 ## Two habits that save money
 

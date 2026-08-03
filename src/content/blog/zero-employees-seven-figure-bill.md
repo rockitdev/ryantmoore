@@ -3,7 +3,7 @@ title: Zero employees, a seven-figure bill
 description: A company reportedly reached an eight-figure run rate with nobody on payroll and an agent picking the next move. The number that didn't make the headline was the monthly bill.
 date: 2026-07-07
 tags: ['AI agents', 'Small business']
-draft: true
+draft: false
 ---
 
 > Before you hand your work to an agent, run one sum: the value of the outcome, minus what the model costs to produce it, minus the expected cost of the ones it gets wrong and the time you spend checking. If that is not comfortably positive, the agent is a luxury, not a saving.
@@ -20,7 +20,7 @@ Skip the technology and do one piece of arithmetic before you automate anything:
 
 > value of the outcome − model cost to produce it − expected cost of errors and review
 
-If that comes out comfortably positive, hand it over. If it is thin, or you are unsure, keep it manual a while longer. Polsia's approach only works while a night of agent decisions produces more value than the night's bill. Plenty of tasks are not, and the only way to know is to price both sides.
+If that comes out comfortably positive, hand it over. If it is thin, or you are unsure, keep it manual a while longer. Polsia's approach only works while a night of agent decisions produces more value than the night's bill. For plenty of tasks, the value will not clear the bill, and the only way to know is to price both sides.
 
 ## Not everything that repeats needs an agent
 

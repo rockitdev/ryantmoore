@@ -1,12 +1,12 @@
 ---
-title: An agent will cave if you push it once
+title: An agent can cave if you push it once
 description: You can hand an AI agent the rules in plain English and it will follow them, right up until someone pushes back. Real safety is not better wording. It is three boundaries the agent cannot argue its way past.
 date: 2026-07-14
 tags: ['AI agents', 'Building']
-draft: true
+draft: false
 ---
 
-> A written rule is a sign that says do not enter. Under pressure, an agent treats it like a suggestion. What you want is a locked door, and there are three worth building.
+> A written rule is a sign that says do not enter. Under pressure, an agent can treat it like a suggestion. What you want is a locked door, and there are three worth building.
 
 Give an AI agent a clear instruction and it will usually follow it: do not delete anything, do not send money, do not touch the customer list. Then someone replies "just continue" or "it is fine, go ahead." Cole Medin, who builds with these tools daily, showed this in [his talk on running agents safely](https://www.youtube.com/watch?v=zb2LyMro77M): in his demonstrations, a single follow-up was sometimes enough to flip a careful agent into the risky action.
 

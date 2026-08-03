@@ -3,7 +3,7 @@ title: Why speed to lead is an unfair advantage
 description: Two contractors who will never meet run the same playbook. Answer in seconds, follow up until you get a yes or a no, and let software do both. Here is how the wiring actually holds.
 date: 2026-07-09
 tags: ['Automation', 'Integration']
-draft: true
+draft: false
 ---
 
 > Answering first does not make you the best contractor. It makes you the one who gets to have the conversation. On a cold lead that is most of the battle, and it is a battle you can win with software instead of willpower.
@@ -12,7 +12,7 @@ When Richie Colletti talked about his roofing business [on The Trade Talks](http
 
 ## Why first beats best on a cold lead
 
-Someone with a leaking roof or a cracked driveway is not loyal yet. They filled out three forms. Whoever answers first often gets the first real conversation, and the conversation is where the job is decided. By the time the second and third contractor call back, the work is often already promised.
+Someone with a leaking roof or a cracked driveway is not loyal yet. They filled out three forms. Whoever answers first often gets the first real conversation, and the conversation is where the job is decided. By the time the second and third contractors call back, the work is often already promised.
 
 Being first is not a hustle problem. Nobody can watch the inbox at nine on a Saturday night. It is a coverage problem, and coverage is what software is for.
 
