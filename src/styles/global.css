@@ -1037,7 +1037,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
   max-width: 9.5ch;
   font-size: clamp(3.7rem, 6.5vw, 7rem);
   font-weight: 820;
-  line-height: .84;
+  line-height: .90;
   letter-spacing: -.07em;
   text-wrap: balance;
   animation: hero-title-in 1s .12s both cubic-bezier(.16,1,.3,1);
