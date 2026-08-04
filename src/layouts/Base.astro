@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { site, seo } from '../data/site';
+import Wordmark from '../components/Wordmark.astro';
 
 interface Props {
   title?: string;
@@ -67,8 +68,7 @@ const isLab = Astro.url.pathname.startsWith('/lab');
   <header class="nav">
     <div class="wrap nav__in">
       <a href="/" class="brand" aria-label={`${site.name} home`}>
-        <span class="brand__name">{site.name}</span>
-        <span class="brand__dot" aria-hidden="true"></span>
+        <Wordmark />
       </a>
       <nav class="nav__links" aria-label="Primary">
         <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
