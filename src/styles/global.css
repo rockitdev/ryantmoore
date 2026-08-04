@@ -193,7 +193,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
   height: 68px;
 }
 .brand { display: inline-flex; align-items: center; color: var(--paper); transition: color .2s; }
-.wordmark { height: 32px; width: auto; display: block; }
+.wordmark { height: 28px; width: auto; display: block; }
 .brand__name {
   font-family: var(--display); font-weight: 600;
   font-size: calc(var(--text-base) + 3px); letter-spacing: -0.02em;
