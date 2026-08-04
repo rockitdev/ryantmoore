@@ -234,6 +234,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; l
 .nav--ghost .nav__link:hover { color: #fff; }
 .nav--ghost .nav__cta { color: #fff; border-color: rgba(255, 255, 255, 0.34); }
 .nav--ghost .nav__cta:hover { color: #fff; border-color: #fff; background: rgba(255, 255, 255, 0.1); }
+.nav--ghost .nav__toggle { color: #fff; }
 .nav__toggle { display: none; }
 .nav__menu { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.25rem); }
 @media (max-width: 640px) {
@@ -1363,6 +1364,7 @@ body:has(.hero) .nav:not(.nav--ghost) .nav__cta { color: #fff; }
 body:has(.hero) .nav:not(.nav--ghost) .brand { color: #f4f1e9; }
 body:has(.hero) .nav:not(.nav--ghost) .nav__cta { border-color: rgba(255, 255, 255, 0.28); }
 body:has(.hero) .nav:not(.nav--ghost) .nav__link { color: rgba(255, 255, 255, 0.72); }
+body:has(.hero) .nav:not(.nav--ghost) .nav__toggle { color: #fff; }
 
 .scroll-progress {
   position: fixed;
