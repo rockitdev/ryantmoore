@@ -5,7 +5,6 @@ export const site = {
   name: 'Ryan Moore',
   role: 'Senior Software Engineer',
   location: 'Halifax, NS',
-  since: '2005',
   email: 'ryan@rockitdevelopment.com',
   linkedin: 'https://www.linkedin.com/in/ryantmoore4',
   url: 'https://www.ryantmoore.ca',
