@@ -8,6 +8,8 @@ draft: false
 
 > Answering first does not make you the best contractor. It makes you the one who gets to have the conversation. On a cold lead that is most of the battle, and it is a battle you can win with software instead of willpower.
 
+![A five-step pipeline. Lead comes in, quote out in about a minute, follow up until yes or no, booking lands in the calendar, job flows into the books. Each hand-off is a place it can drop.](/lab/speed-to-lead.svg)
+
 When Richie Colletti talked about his roofing business [on The Trade Talks](https://www.youtube.com/watch?v=RIx-b2WKzu0), the part that stuck was not a marketing trick. It was speed. He leaned on getting a quote in front of a customer within about a minute of them asking, then following up seven to ten times after. [Concrete Designs](https://www.youtube.com/watch?v=Q-E_Fsua-8E) told a similar story about growing fast: quick responses and steady follow-up, wired into Jobber so nothing slipped. Different trades, same unglamorous edge.
 
 ## Why first beats best on a cold lead
@@ -20,7 +22,7 @@ Being first is not a hustle problem. Nobody can watch the inbox at nine on a Sat
 
 Set aside the tidy sales statistics and the pattern still holds: many leads never answer the first message, and most businesses stop after it. Not from laziness. Follow-up is the first thing a busy week eats. You meant to circle back Wednesday, Wednesday got away from you, the lead went cold. Repeat weekly and you can watch real revenue drain out through a gap nobody is minding.
 
-Follow-up that runs on its own does not have a busy week. It sends the second message on schedule, and the third, and it stops the moment the customer replies, books, or asks you to stop. Seven to ten touches only helps if they are spaced sensibly and end the instant someone responds or opts out; otherwise it is just noise. You are not asking a person to remember. You are asking a system not to forget, and to know when to quit.
+Follow-up that runs on its own does not have a busy week. It sends the second message on schedule, and the third, and it stops the moment the customer replies, books, or asks you to stop. Seven to ten touches only help if they are spaced sensibly and end the instant someone responds or opts out; otherwise it is just noise. You are not asking a person to remember. You are asking a system not to forget, and to know when to quit.
 
 ## The wiring is the actual work
 

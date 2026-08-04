@@ -8,13 +8,15 @@ draft: false
 
 > A benchmark tells you a model did well on someone else's test. That is worth something. It is not the same as knowing it will do your job, on your messy inputs, without surprising you, and only one of those questions pays your bills.
 
+![Two boxes. The benchmark winner (tops someone else's test) is not equal to your daily driver (does your job the same way daily). What actually pays: cost per good result, consistency, review time, failure cost.](/lab/benchmark.svg)
+
 There is a rhythm to AI news now. A new model lands, tops the leaderboard, everyone calls the old one obsolete, and a week later something else takes the crown. Chase every crown and you will never get any work done.
 
 The leaderboard is not useless. A model that scores well is probably capable. What the score does not tell you is whether it suits your particular workflow, and people who build with these tools all day keep landing on the same quiet point: the model that wins the benchmark is often not the one that does a real, repeated job without wandering. Capable and dependable are related, not identical.
 
 ## Test it on your own work
 
-The benchmark that matters most for your business is your business. Before you trust a model with something that counts, run your real task through it a handful of times and watch. Does it do the same thing each time, or drift? Does it hold on the messy inputs, not just the clean demo?
+The benchmark that matters most for your business is your business. Before you trust a model with something that counts, run your real task through it several times and watch. Does it do the same thing each time, or drift? Does it hold on the messy inputs, not just the clean demo?
 
 A few runs is a smoke test, not proof. It will not tell you the thing is reliable. It will tell you fast if it is obviously not, which is most of what you need early.
 
@@ -29,7 +31,7 @@ When you are choosing between two models for a real job, score them on more than
 - **Review time:** how long you spend checking its work
 - **Failure cost:** when it is wrong, how bad is wrong
 
-The cheaper model that needs less checking and fails softly often beats the flashy one on one of the most useful lines: cost per good result.
+The cheaper model that needs less checking and fails softly often beats the flashy one by the metric that matters most: cost per good result.
 
 ## Two habits that save money
 

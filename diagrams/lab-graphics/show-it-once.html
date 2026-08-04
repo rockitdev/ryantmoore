@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Virgil';src:url(https://excalidraw.com/Virgil.woff2) format('woff2');font-display:block;}
+html,body{margin:0;padding:0;} svg text{font-family:'Virgil',sans-serif;}
+</style></head><body>
+<svg id="scene" xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"></svg>
+<script type="module">
+import rough from "https://esm.sh/roughjs@4.6.6";
+const svg=document.getElementById("scene"), NS="http://www.w3.org/2000/svg";
+const LIGHT="#f4f2ec", ORANGE="#F54D26", FAINT="#a5a29a", DIM="#77746e";
+const W=+svg.getAttribute("width"), H=+svg.getAttribute("height");
+const bg=document.createElementNS(NS,"rect");bg.setAttribute("width",W);bg.setAttribute("height",H);bg.setAttribute("fill","#0c0c10");svg.appendChild(bg);
+const rc=rough.svg(svg);
+function txt(x,y,s,size,color,anchor){const t=document.createElementNS(NS,"text");t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("font-size",size);t.setAttribute("fill",color);t.setAttribute("text-anchor",anchor||"middle");t.textContent=s;svg.appendChild(t);return t;}
+function rect(x,y,w,h,stroke,sw){svg.appendChild(rc.rectangle(x,y,w,h,{stroke,strokeWidth:sw||2.4,roughness:1.4,bowing:1.1}));}
+function circle(cx,cy,d,stroke,sw){svg.appendChild(rc.circle(cx,cy,d,{stroke,strokeWidth:sw||2.4,roughness:1.4}));}
+function arrow(x1,y1,x2,y2,color,sw){color=color||ORANGE;sw=sw||2.4;
+  svg.appendChild(rc.line(x1,y1,x2,y2,{stroke:color,strokeWidth:sw,roughness:1.5}));
+  const ang=Math.atan2(y2-y1,x2-x1),L=15,a=0.5;
+  svg.appendChild(rc.line(x2,y2,x2-L*Math.cos(ang-a),y2-L*Math.sin(ang-a),{stroke:color,strokeWidth:sw,roughness:1}));
+  svg.appendChild(rc.line(x2,y2,x2-L*Math.cos(ang+a),y2-L*Math.sin(ang+a),{stroke:color,strokeWidth:sw,roughness:1}));}
+function arrowBetween(ax,ay,bx,by,offA,offB,color){const dx=bx-ax,dy=by-ay,d=Math.hypot(dx,dy),ux=dx/d,uy=dy/d;arrow(ax+ux*offA,ay+uy*offA,bx-ux*offB,by-uy*offB,color);}
+function boxIn(cx,cy,t,sub,color){if(sub){txt(cx,cy-6,t,25,color);txt(cx,cy+23,sub,18,FAINT);}else{txt(cx,cy+9,t,26,color);}}
+
+txt(W/2,80,"Show it once, then earn the trust",34,LIGHT);
+const cx=500,cy=520;
+const nodes=[{x:500,y:250,t:["Demonstrate","it once"],col:LIGHT},
+ {x:770,y:520,t:["It drafts","a skill"],col:LIGHT},
+ {x:500,y:788,t:["Test the","exceptions"],col:ORANGE,sub:"the part the demo hides"},
+ {x:230,y:520,t:["Reuse it"],col:LIGHT}];
+for(let i=0;i<4;i++){const a=nodes[i],b=nodes[(i+1)%4];arrowBetween(a.x,a.y,b.x,b.y,122,122,ORANGE);}
+txt(cx,cy+8,"record & replay",20,DIM);
+nodes.forEach(n=>{const bw=214,bh=96;rect(n.x-bw/2,n.y-bh/2,bw,bh,n.col);
+  if(n.t.length===2){txt(n.x,n.y-6,n.t[0],25,n.col);txt(n.x,n.y+24,n.t[1],25,n.col);}else{txt(n.x,n.y+9,n.t[0],26,n.col);}
+  if(n.sub)txt(n.x,n.y+bh/2+28,n.sub,17,FAINT);});
+txt(W/2,H-30,"It copied what you did, not why. Test before you trust.",20,FAINT);
+
+window.__ready=true;
+</script></body></html>

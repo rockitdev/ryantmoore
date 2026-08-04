@@ -8,6 +8,8 @@ draft: false
 
 > Nobody wants automation. They want the follow-ups to stop slipping, the books to be right, and to stop worrying about the thing that keeps getting missed. That is what is for sale, so that is what to shop for.
 
+![The pitch 'it automates your workflow' points down to what you actually want: money, stability, and peace.](/lab/buy-the-outcome.svg)
+
 For a while, "this will save you time" was enough. Not anymore. Every tool and every pitch now promises time back, and when everyone says the same thing, it stops meaning anything. It was a weak promise to begin with. Saved for what? You do not want a vague hour. You want a specific problem to stop happening.
 
 ## What you are actually buying
@@ -28,7 +30,7 @@ The better conversation stays on the problem longer than feels comfortable. What
 
 ## Ask what happens when it breaks
 
-One more, because it is where cheap automation turns expensive. Anything you turn loose on real work, your money, your customers, your live systems, should come with clear boundaries and a human check where it counts. Ask whoever builds it: what can this touch, and what does it have to ask permission for? If the answer is "it just runs," that is not confidence; it is a gap. The outcome you are paying for includes not blowing up on a bad day.
+One more, because it is where cheap automation turns expensive. Anything you turn loose on your money, customers, or live systems should come with clear boundaries and a human check where it counts. Ask whoever builds it: what can this touch, and what does it have to ask permission for? If the answer is "it just runs," that is not confidence; it is a gap. The outcome you are paying for includes not blowing up on a bad day.
 
 ## The short version
 

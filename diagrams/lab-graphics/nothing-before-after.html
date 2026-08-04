@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>@font-face{font-family:'Virgil';src:url(https://excalidraw.com/Virgil.woff2) format('woff2');font-display:block;}
+html,body{margin:0;padding:0;} svg text{font-family:'Virgil',sans-serif;}</style></head><body>
+<svg id="scene" xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"></svg>
+<script type="module">
+import rough from "https://esm.sh/roughjs@4.6.6";
+const svg=document.getElementById("scene"),NS="http://www.w3.org/2000/svg";
+const LIGHT="#f4f2ec",ORANGE="#F54D26",FAINT="#a5a29a",RED="#e0402a";
+const bg=document.createElementNS(NS,"rect");bg.setAttribute("width",1200);bg.setAttribute("height",800);bg.setAttribute("fill","#0c0c10");svg.appendChild(bg);
+const rc=rough.svg(svg);
+function txt(x,y,s,size,c,a){const t=document.createElementNS(NS,"text");t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("font-size",Math.max(size,20));t.setAttribute("fill",c);t.setAttribute("text-anchor",a||"middle");t.setAttribute("font-family","Virgil, sans-serif");t.textContent=s;svg.appendChild(t);}
+function rct(x,y,w,h,c,sw){svg.appendChild(rc.rectangle(x,y,w,h,{stroke:c,strokeWidth:sw||2.6,roughness:1.4}));}
+function boxc(cx,cy,w,h,t,c){rct(cx-w/2,cy-h/2,w,h,c);txt(cx,cy+8,t,22,c);}
+function arrow(x1,y1,x2,y2,c,dashed){const opt={stroke:c,strokeWidth:2.6,roughness:1.4};svg.appendChild(rc.line(x1,y1,x2,y2,opt));const a=Math.atan2(y2-y1,x2-x1),L=13;svg.appendChild(rc.line(x2,y2,x2-L*Math.cos(a-0.5),y2-L*Math.sin(a-0.5),{stroke:c,strokeWidth:2.6,roughness:1}));svg.appendChild(rc.line(x2,y2,x2-L*Math.cos(a+0.5),y2-L*Math.sin(a+0.5),{stroke:c,strokeWidth:2.6,roughness:1}));}
+function xmark(cx,cy,c){ln(cx-13,cy-13,cx+13,cy+13,c);ln(cx+13,cy-13,cx-13,cy+13,c);}
+function ln(x1,y1,x2,y2,c){svg.appendChild(rc.line(x1,y1,x2,y2,{stroke:c,strokeWidth:3.4,roughness:1.2}));}
+txt(600,68,"Enter it once, not in every tool",30,LIGHT);
+svg.appendChild(rc.line(600,120,600,720,{stroke:"#333",strokeWidth:2,roughness:1}));
+// LEFT: by hand
+txt(300,150,"By hand, today",22,FAINT);
+boxc(300,210,220,58,"Jane's new number",LIGHT);
+const lt=[[210,360,"Calendar"],[210,470,"The books"],[210,580,"CRM"]];
+lt.forEach((t,i)=>{boxc(t[0],t[1],200,56,t[2],LIGHT); arrow(300,240,t[0]+40,t[1]-28,i===2?RED:FAINT,i===2);});
+xmark(300,560,RED); txt(360,568,"never copied",20,RED,"start");
+txt(300,700,"Retyped every time. One slips through.",20,FAINT);
+// RIGHT: connected
+txt(900,150,"Connected",22,FAINT);
+boxc(900,210,200,58,"Enter it once",ORANGE);
+const rt=[[1000,360,"Calendar"],[1000,470,"The books"],[1000,580,"CRM"]];
+rt.forEach(t=>{boxc(t[0],t[1],200,56,t[2],LIGHT); arrow(900,240,t[0]-40,t[1]-28,ORANGE);});
+txt(900,700,"Typed once. Everywhere it belongs.",20,FAINT);
+window.__ready=true;
+</script></body></html>

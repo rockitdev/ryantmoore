@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>@font-face{font-family:'Virgil';src:url(https://excalidraw.com/Virgil.woff2) format('woff2');font-display:block;}
+html,body{margin:0;padding:0;} svg text{font-family:'Virgil',sans-serif;}</style></head><body>
+<svg id="scene" xmlns="http://www.w3.org/2000/svg" width="1000" height="780" viewBox="0 0 1000 780"></svg>
+<script type="module">
+import rough from "https://esm.sh/roughjs@4.6.6";
+const svg=document.getElementById("scene"),NS="http://www.w3.org/2000/svg";
+const LIGHT="#f4f2ec",ORANGE="#F54D26",FAINT="#a5a29a";
+const bg=document.createElementNS(NS,"rect");bg.setAttribute("width",1000);bg.setAttribute("height",780);bg.setAttribute("fill","#0c0c10");svg.appendChild(bg);
+const rc=rough.svg(svg);
+function txt(x,y,s,size,color,anchor){const t=document.createElementNS(NS,"text");t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("font-size",Math.max(size,20));t.setAttribute("fill",color);t.setAttribute("text-anchor",anchor||"middle");t.setAttribute("font-family","Virgil, sans-serif");t.textContent=s;svg.appendChild(t);}
+function circ(x,y,d,c,sw){svg.appendChild(rc.circle(x,y,d,{stroke:c,strokeWidth:sw||3,roughness:1.3}));}
+function ln(x1,y1,x2,y2,c,sw){svg.appendChild(rc.line(x1,y1,x2,y2,{stroke:c,strokeWidth:sw||3,roughness:1.3}));}
+function rct(x,y,w,h,c){svg.appendChild(rc.rectangle(x,y,w,h,{stroke:c,strokeWidth:2.6,roughness:1.4}));}
+function dot(x,y,r,c){const e=rc.circle(x,y,r*2,{stroke:c,fill:c,fillStyle:"solid",strokeWidth:1.5,roughness:1});svg.appendChild(e);}
+txt(500,80,"Answer first. It's not about being best.",30,LIGHT);
+const cx=470,cy=320,R=150;
+circ(cx,cy,R*2,LIGHT,3.4);                       // dial
+rct(cx-20,cy-R-32,40,26,LIGHT);                  // crown
+ln(cx,cy-R-6,cx,cy-R+4,LIGHT);                   // stem
+ln(cx-52,cy-R-20,cx-30,cy-R+2,LIGHT); ln(cx+52,cy-R-20,cx+30,cy-R+2,LIGHT); // side buttons
+// ticks
+for(let i=0;i<12;i++){const a=i*Math.PI/6, x1=cx+Math.sin(a)*(R-4), y1=cy-Math.cos(a)*(R-4), x2=cx+Math.sin(a)*(R-18), y2=cy-Math.cos(a)*(R-18); ln(x1,y1,x2,y2,FAINT,1.6);}
+ln(cx,cy,cx+Math.sin(0.5)*(R-40),cy-Math.cos(0.5)*(R-40),ORANGE,4); // hand just past 12
+dot(cx,cy,7,ORANGE);
+txt(cx,cy+58,"~1 min",26,ORANGE);
+// right-side message
+txt(760,300,"First to reply",26,LIGHT); txt(760,338,"gets the",26,LIGHT); txt(760,376,"conversation.",26,LIGHT);
+ln(640,320,690,320,ORANGE,3); ln(690,320,678,312,ORANGE,3); ln(690,320,678,328,ORANGE,3); // little arrow watch->msg
+// follow-up strip
+txt(500,600,"Then follow up until yes or no",24,LIGHT);
+let x=330; for(let i=0;i<6;i++){dot(x,650,9,i<5?ORANGE:LIGHT); x+=52;}
+txt(x+6,658,"yes / no",20,FAINT,"start");
+txt(500,720,"Speed wins the first call. Follow-up wins the rest.",20,FAINT);
+window.__ready=true;
+</script></body></html>

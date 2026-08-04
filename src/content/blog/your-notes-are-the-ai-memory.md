@@ -8,6 +8,8 @@ draft: false
 
 > A brilliant assistant who cannot find anything is not much use. A lot of the disappointment people have with AI at work is not the model being weak. It is the model being handed a mess.
 
+![The model is a thin swappable layer on top. Below it, a large foundation labelled 'your notes = the memory' with habits: one topic per note, one canonical home per answer, clear names and dates, kept current.](/lab/your-notes.svg)
+
 Choosing a model matters. But once you have one that is capable enough, the next constraint is usually not a smarter model. It is what the model can actually find out about your business. I already made [the case against chasing the benchmark winner](/lab/dont-daily-drive-the-benchmark-winner/); this is the other side of it. The higher-leverage work is the layer around the model: the notes, files, and records it reads from.
 
 Two threads landed on this recently. Google's [Agent Development Kit](https://developers.googleblog.com/en/developers-guide-to-building-adk-agents-with-skills/) added file-based skills that use progressive disclosure: the agent sees a short description first, then loads the full instructions or reference files only when the task needs them. And Dan Martell's [second-brain approach](https://www.youtube.com/watch?v=b4d32pBa3UY) is really about organizing your own knowledge so an assistant can use it. Different worlds, same lesson: for many business tasks, improving the knowledge you give the model beats switching to the latest one.
@@ -28,7 +30,7 @@ You do not need special software. You need your important information written do
 - **One canonical home for each answer,** so there is no guessing which copy is right.
 - **Clear names, dates, and owners.** "2026 pricing, updated March" beats "final-final-v3."
 - **Update the note when the answer changes.** Stale pricing is worse than missing pricing.
-- **Give the assistant access only to what it needs,** and nothing sensitive it does not.
+- **Give the assistant access only to what it needs,** and nothing sensitive it does not need.
 
 That is unglamorous, and it is some of the highest-leverage AI work most small businesses could do.
 
@@ -36,4 +38,4 @@ That is unglamorous, and it is some of the highest-leverage AI work most small b
 
 Do this and any assistant you point at your business gets noticeably better, because it can actually find the answer. And you stop being the bottleneck, because the knowledge is no longer trapped in your head.
 
-Models will keep changing, and getting better, without you doing anything. Organized, current knowledge stays useful across all of them. That is the part worth your time. Fix the notes first.
+Models will keep changing and improving without you doing anything. Organized, current knowledge stays useful across all of them. That is the part worth your time. Fix the notes first.

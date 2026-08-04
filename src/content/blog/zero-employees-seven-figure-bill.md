@@ -8,9 +8,11 @@ draft: false
 
 > Before you hand your work to an agent, run one sum: the value of the outcome, minus what the model costs to produce it, minus the expected cost of the ones it gets wrong and the time you spend checking. If that is not comfortably positive, the agent is a luxury, not a saving.
 
+![A subtraction. Value of the outcome, minus the model cost to run it, minus the cost of errors and your review. If it is still comfortably positive, hand it over.](/lab/zero-employees.svg)
+
 Ben Cera's company Polsia has become the poster child for the zero-employee business. [By his own account](https://www.youtube.com/watch?v=T991Qdc3lJM) it scaled to an eight-figure annual run rate with no staff, run by an agent that wakes each night and picks the next thing to do.
 
-Here is the figure that belongs next to it. In a single month, Polsia's model bill reportedly ran into seven figures, somewhere around a million and a half dollars. Tasks Ben priced at a dollar sometimes cost thirty to fifty in model fees behind the scenes. The work ran while he slept, and it spent real money every time it woke up, enough that in a heavy month the bill can rival the revenue it is chasing.
+Here is the figure that belongs next to it. In a single month, Polsia's model bill reportedly ran into seven figures, roughly $1.5 million. Tasks Ben priced at $1 sometimes cost $30 to $50 in model fees behind the scenes. The work ran while he slept, and it spent real money every time it woke up, enough that in a heavy month the bill can rival the revenue it is chasing.
 
 That is the part worth sitting with. This is not a machine that quietly saves money in the background. It is a very capable worker you rent by usage, and the meter is most of the story.
 
@@ -30,7 +32,7 @@ Save the agent for work that genuinely needs a decision, and use dumb, reliable 
 
 ## Where the agent earns it
 
-The jobs worth a real agent share two traits: they need a judgment call, and getting that call wrong costs real money. Qualifying a lead and deciding where to route it. Reading a messy support request and deciding whether it can be answered or needs a person. Work where the thinking is worth paying for, and where a mistake is expensive enough to justify the review step you will want around it.
+The jobs worth a real agent require judgment and produce enough value to justify the model cost, review time, and the safeguards around mistakes. Qualifying a lead and deciding where to route it. Reading a messy support request and deciding whether it can be answered or needs a person. Work where the thinking is worth paying for, and where the payoff covers the model cost and the review step you will want around it.
 
 ## The honest read
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Virgil';src:url(https://excalidraw.com/Virgil.woff2) format('woff2');font-display:block;}
+html,body{margin:0;padding:0;} svg text{font-family:'Virgil',sans-serif;}
+</style></head><body>
+<svg id="scene" xmlns="http://www.w3.org/2000/svg" width="900" height="1000" viewBox="0 0 900 1000"></svg>
+<script type="module">
+import rough from "https://esm.sh/roughjs@4.6.6";
+const svg=document.getElementById("scene"), NS="http://www.w3.org/2000/svg";
+const LIGHT="#f4f2ec", ORANGE="#F54D26", FAINT="#a5a29a", DIM="#77746e";
+const W=+svg.getAttribute("width"), H=+svg.getAttribute("height");
+const bg=document.createElementNS(NS,"rect");bg.setAttribute("width",W);bg.setAttribute("height",H);bg.setAttribute("fill","#0c0c10");svg.appendChild(bg);
+const rc=rough.svg(svg);
+function txt(x,y,s,size,color,anchor){const t=document.createElementNS(NS,"text");t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("font-size",size);t.setAttribute("fill",color);t.setAttribute("text-anchor",anchor||"middle");t.textContent=s;svg.appendChild(t);return t;}
+function rect(x,y,w,h,stroke,sw){svg.appendChild(rc.rectangle(x,y,w,h,{stroke,strokeWidth:sw||2.4,roughness:1.4,bowing:1.1}));}
+function circle(cx,cy,d,stroke,sw){svg.appendChild(rc.circle(cx,cy,d,{stroke,strokeWidth:sw||2.4,roughness:1.4}));}
+function arrow(x1,y1,x2,y2,color,sw){color=color||ORANGE;sw=sw||2.4;
+  svg.appendChild(rc.line(x1,y1,x2,y2,{stroke:color,strokeWidth:sw,roughness:1.5}));
+  const ang=Math.atan2(y2-y1,x2-x1),L=15,a=0.5;
+  svg.appendChild(rc.line(x2,y2,x2-L*Math.cos(ang-a),y2-L*Math.sin(ang-a),{stroke:color,strokeWidth:sw,roughness:1}));
+  svg.appendChild(rc.line(x2,y2,x2-L*Math.cos(ang+a),y2-L*Math.sin(ang+a),{stroke:color,strokeWidth:sw,roughness:1}));}
+function arrowBetween(ax,ay,bx,by,offA,offB,color){const dx=bx-ax,dy=by-ay,d=Math.hypot(dx,dy),ux=dx/d,uy=dy/d;arrow(ax+ux*offA,ay+uy*offA,bx-ux*offB,by-uy*offB,color);}
+function boxIn(cx,cy,t,sub,color){if(sub){txt(cx,cy-6,t,25,color);txt(cx,cy+23,sub,18,FAINT);}else{txt(cx,cy+9,t,26,color);}}
+
+txt(W/2,76,"Do the sum before you automate",34,LIGHT);
+const bx=130,bw=640,cxc=W/2;
+function eqbox(y,h,t,col){rect(bx,y,bw,h,col);txt(cxc,y+h/2+9,t,26,col);}
+eqbox(140,92,"Value of the outcome",LIGHT);
+txt(cxc,272,"−",46,ORANGE);
+eqbox(292,92,"Model cost to run it",ORANGE);
+txt(cxc,424,"−",46,ORANGE);
+eqbox(444,92,"Cost of errors + your review",ORANGE);
+svg.appendChild(rc.line(bx,586,bx+bw,586,{stroke:FAINT,strokeWidth:2,roughness:1.2}));
+rect(bx,612,bw,112,LIGHT,2.8);
+txt(cxc,652,"Still comfortably positive?",25,LIGHT);
+txt(cxc,690,"hand it over",25,ORANGE);
+txt(W/2,H-64,"If it's thin, or you're unsure, keep it manual a while longer.",20,FAINT);
+
+window.__ready=true;
+</script></body></html>

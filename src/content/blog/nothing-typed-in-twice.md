@@ -7,6 +7,8 @@ tags: ['Connecting systems', 'Automation']
 
 > If someone on your team retypes the same information into a second tool, that's not a task. That's a leak.
 
+![Hub-and-spoke diagram. 'Enter it once' at the center, with arrows out to Booking, Calendar, The books, CRM, and Phone. One entry updates them all.](/lab/nothing-typed-in-twice.svg)
+
 Most businesses I talk to don't have a software problem. They have plenty of software: a booking tool, an accounting tool, a calendar, a CRM, a phone system. Each one works fine on its own.
 
 The problem is the space *between* them.
@@ -23,19 +25,19 @@ Each copy takes a minute or two. Nobody complains, because it's always been done
 
 ## Why it happens
 
-Software companies build tools, not connections. Your booking tool's job is bookings. Your accounting tool's job is the books. Neither company gets paid to make sure the two agree with each other, so out of the box they usually don't.
+Software companies build tools, not connections. Your booking tool's job is bookings. Your accounting tool's job is the books. Most tool makers are not paid to make sure two different products agree, so out of the box they often don't.
 
 That gap is left for someone in your business to fill. Usually with copy-and-paste.
 
 ## What "connected" actually means
 
-When two tools are properly connected, information moves on its own, the moment it exists:
+When two tools are properly connected, routine information moves on its own the moment it exists:
 
 - A booking lands, and it's already in your calendar.
 - A job is marked done, and the invoice is already in your books.
 - A customer updates their details once, and every system agrees.
 
-No one does anything. That's the point. The connection isn't a feature you use. It's a leak that stopped existing.
+Almost no one touches it, and the exceptions get surfaced for a person to check. That's the point. The connection isn't a feature you use. It's a leak that stopped existing.
 
 ## Where to start
 
