@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Virgil';src:url(https://excalidraw.com/Virgil.woff2) format('woff2');font-display:block;}
+html,body{margin:0;padding:0;}
+svg text{font-family:'Virgil',sans-serif;}
+</style></head>
+<body>
+<svg id="scene" xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440"></svg>
+<script type="module">
+import rough from "https://esm.sh/roughjs@4.6.6";
+const svg=document.getElementById("scene");
+const NS="http://www.w3.org/2000/svg";
+const LIGHT="#f4f2ec", ORANGE="#F54D26", FAINT="#9a978f";
+const bg=document.createElementNS(NS,"rect");
+bg.setAttribute("width",1080);bg.setAttribute("height",1440);bg.setAttribute("fill","#0c0c10");svg.appendChild(bg);
+const rc=rough.svg(svg);
+function txt(x,y,s,size,color,anchor="middle"){
+  const t=document.createElementNS(NS,"text");
+  t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("font-size",size);
+  t.setAttribute("fill",color);t.setAttribute("text-anchor",anchor);
+  t.textContent=s;svg.appendChild(t);
+}
+function rect(x,y,w,h,stroke){svg.appendChild(rc.rectangle(x,y,w,h,{stroke,strokeWidth:2.4,roughness:1.4,bowing:1.2}));}
+function arrowDown(cx,y1,y2){
+  svg.appendChild(rc.line(cx,y1,cx,y2,{stroke:ORANGE,strokeWidth:2.4,roughness:1.6}));
+  svg.appendChild(rc.line(cx,y2,cx-8,y2-12,{stroke:ORANGE,strokeWidth:2.4,roughness:1}));
+  svg.appendChild(rc.line(cx,y2,cx+8,y2-12,{stroke:ORANGE,strokeWidth:2.4,roughness:1}));
+}
+const CX=540, BW=580, BH=118, BX=CX-BW/2;
+// title
+txt(CX,110,"How you get into the AI answer",40,LIGHT);
+const steps=[
+  {t:"Someone asks an AI", c:null, col:LIGHT},
+  {t:"Can it FIND you?", c:"crawlable · indexed · listed", col:ORANGE},
+  {t:"Can it UNDERSTAND you?", c:"what you do · where you serve · plainly", col:ORANGE},
+  {t:"Can it VERIFY you?", c:"consistent · reviewed · mentioned", col:ORANGE},
+  {t:"You're the answer", c:null, col:LIGHT},
+];
+let y=190;
+steps.forEach((s,i)=>{
+  rect(BX,y,BW,BH,s.col);
+  txt(CX,y+BH/2+9,s.t,28,s.col);
+  let after=y+BH;
+  if(s.c){ txt(CX,after+34,s.c,19,FAINT); after+=34; }
+  if(i<steps.length-1){ arrowDown(CX,after+18,after+64); y=after+64+22; }
+});
+// footer
+txt(CX,1360,"Same groundwork. New front door.",24,LIGHT);
+txt(CX,1400,"ryantmoore.ca",20,FAINT);
+window.__ready=true;
+</script></body></html>
