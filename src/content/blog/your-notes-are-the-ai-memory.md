@@ -30,7 +30,7 @@ You do not need special software. You need your important information written do
 - **One canonical home for each answer,** so there is no guessing which copy is right.
 - **Clear names, dates, and owners.** "2026 pricing, updated March" beats "final-final-v3."
 - **Update the note when the answer changes.** Stale pricing is worse than missing pricing.
-- **Give the assistant access only to what it needs,** and nothing sensitive it does not.
+- **Give the assistant access only to what it needs,** and nothing sensitive it does not need.
 
 That is unglamorous, and it is some of the highest-leverage AI work most small businesses could do.
 
@@ -38,4 +38,4 @@ That is unglamorous, and it is some of the highest-leverage AI work most small b
 
 Do this and any assistant you point at your business gets noticeably better, because it can actually find the answer. And you stop being the bottleneck, because the knowledge is no longer trapped in your head.
 
-Models will keep changing, and getting better, without you doing anything. Organized, current knowledge stays useful across all of them. That is the part worth your time. Fix the notes first.
+Models will keep changing and improving without you doing anything. Organized, current knowledge stays useful across all of them. That is the part worth your time. Fix the notes first.

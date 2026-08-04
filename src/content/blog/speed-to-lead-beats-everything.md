@@ -22,7 +22,7 @@ Being first is not a hustle problem. Nobody can watch the inbox at nine on a Sat
 
 Set aside the tidy sales statistics and the pattern still holds: many leads never answer the first message, and most businesses stop after it. Not from laziness. Follow-up is the first thing a busy week eats. You meant to circle back Wednesday, Wednesday got away from you, the lead went cold. Repeat weekly and you can watch real revenue drain out through a gap nobody is minding.
 
-Follow-up that runs on its own does not have a busy week. It sends the second message on schedule, and the third, and it stops the moment the customer replies, books, or asks you to stop. Seven to ten touches only helps if they are spaced sensibly and end the instant someone responds or opts out; otherwise it is just noise. You are not asking a person to remember. You are asking a system not to forget, and to know when to quit.
+Follow-up that runs on its own does not have a busy week. It sends the second message on schedule, and the third, and it stops the moment the customer replies, books, or asks you to stop. Seven to ten touches only help if they are spaced sensibly and end the instant someone responds or opts out; otherwise it is just noise. You are not asking a person to remember. You are asking a system not to forget, and to know when to quit.
 
 ## The wiring is the actual work
 

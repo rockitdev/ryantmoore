@@ -12,7 +12,7 @@ draft: false
 
 The question is shifting from "where does my business rank?" to "does the answer even mention my business?" Ranking still matters. Google's AI features build on its Search index and quality systems, while other answer engines use their own retrieval and ranking signals. But the result can now arrive as a written answer with a few names in it, before the customer ever sees a list of links.
 
-A lot of the hype frames this as a completely new game. It is not a new game that replaces search. It is search wearing a new face, and the work that gets you into the answer is more familiar than the noise suggests.
+A lot of the hype frames this as a completely new game. It is not a new game that replaces search. It is search wearing a new face, a new answer layer built over the same foundations, and the work that gets you into the answer is more familiar than the noise suggests.
 
 ## It is an evolution, not a replacement
 
@@ -32,9 +32,9 @@ Finally, it looks for reasons to trust the match. Keep your name, services, loca
 
 ## Reddit is doing a lot of the answering
 
-One example surprises people: Reddit has become one of the most-cited sources in AI answers. Across late 2024 into 2025 it was the most-cited domain in Google's AI Overviews and in Perplexity, and second in ChatGPT ([Columbia Journalism Review](https://www.cjr.org/analysis/reddit-winning-ai-licensing-deals-openai-google-gemini-answers-rsl.php)). Google reportedly pays it around sixty million dollars a year for access to those conversations ([Tom's Guide](https://www.tomsguide.com/ai/google-strikes-dollar60m-deal-with-reddit-for-ai-training-data-what-you-need-to-know)).
+One example surprises people: Reddit has become one of the most-cited sources in AI answers. Across late 2024 into 2025 it was the most-cited domain in Google's AI Overviews and in Perplexity, and second in ChatGPT ([Columbia Journalism Review](https://www.cjr.org/analysis/reddit-winning-ai-licensing-deals-openai-google-gemini-answers-rsl.php)). That is a recent snapshot, not a permanent ranking. Google reportedly pays it around sixty million dollars a year for access to those conversations ([Tom's Guide](https://www.tomsguide.com/ai/google-strikes-dollar60m-deal-with-reddit-for-ai-training-data-what-you-need-to-know)).
 
-So when someone asks an AI "who is good at this near me," Reddit can shape some of those answers, especially for recommendation and experience-driven questions. How much it matters varies by platform, topic, and location. You cannot fake your way in. Communities punish self-promotion and astroturfing backfires. The move is to be genuinely useful in the subreddit where your customers are, and let the mentions happen. This is a right-now picture, too. Reporting says Reddit is preparing to revisit the terms of its Google deal, so the platform picture may shift. The move under it will not.
+So when someone asks an AI "who is good at this near me," Reddit can shape some of those answers, especially for recommendation and experience-driven questions. How much it matters varies by platform, topic, and location. You cannot fake your way in. Communities punish self-promotion and astroturfing backfires. The move is to be genuinely useful in the subreddit where your customers are, and let the mentions happen. This is a right-now picture, too. Reporting says Reddit is preparing to revisit the terms of its Google deal, so the platform picture may shift. The underlying lesson will not.
 
 ## The systems view, for the builders
 

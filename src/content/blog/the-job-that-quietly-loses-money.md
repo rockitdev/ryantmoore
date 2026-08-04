@@ -10,9 +10,9 @@ draft: false
 
 ![A weekly scoreboard: cash that came in, invoices still out and how old, revenue on completed jobs, direct costs, gross margin (highlighted), and anything unusual to check.](/lab/the-job.svg)
 
-On [the Profitable Tradie podcast](https://www.youtube.com/watch?v=Ycynb__tRt4) there is a story about an owner who believed he had a strong year, only to find, once the books were properly reconciled, that his real profit was a small fraction of what he thought. A year had passed with an account nobody kept current, and the gap between the number in his head and the number on the page was enormous.
+On [the Profitable Tradie podcast](https://www.youtube.com/watch?v=Ycynb__tRt4) there is a story about an owner who believed he had a strong year, only to find, once the books were properly reconciled, that his real profit was a small fraction of what he thought. A year had passed with books nobody had kept current, and the gap between the number in his head and the number on the page was enormous.
 
-I want to be careful with the figures, because this is where these stories get slippery. "I made three quarters of a million" usually means money that came in, not money kept. Revenue, gross profit, and what actually lands in your pocket are three different numbers, and blurring them is exactly how an owner ends up stunned at year end. He did good work all year. What he did not do was keep the scoreboard current enough to see the leak while it was small.
+I want to be careful with the figures, because this is where these stories get slippery. "I made three quarters of a million" usually means money that came in, not money kept. Revenue, gross profit, and what actually lands in your pocket are three different numbers, and blurring them is exactly how an owner ends up stunned at year-end. He did good work all year. What he did not do was keep the scoreboard current enough to see the leak while it was small.
 
 ## Why the back office slides
 
@@ -32,7 +32,7 @@ The deeper problem was not the leak. It was that he did not see it for a year. T
 - Invoices still outstanding, and how old they are
 - Revenue recognized on the jobs you actually completed
 - Direct costs assigned to those jobs
-- An estimated gross margin off those two
+- Estimated gross margin calculated from completed-job revenue and direct costs
 - Any unmatched or unusual transactions that need a person to look at
 
 Keep the cash line and the margin line separate in your head: money in this week is not the same as profit on this week's work, because payments and costs land in different weeks. But even a rough version of both, in front of you every Monday, means a bad trend is something you catch in week two, not something you discover twelve months later when the year is already gone.

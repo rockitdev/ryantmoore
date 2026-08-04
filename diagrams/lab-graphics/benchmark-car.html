@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>@font-face{font-family:'Virgil';src:url(https://excalidraw.com/Virgil.woff2) format('woff2');font-display:block;}
+html,body{margin:0;padding:0;} svg text{font-family:'Virgil',sans-serif;}</style></head><body>
+<svg id="scene" xmlns="http://www.w3.org/2000/svg" width="1120" height="760" viewBox="0 0 1120 760"></svg>
+<script type="module">
+import rough from "https://esm.sh/roughjs@4.6.6";
+const svg=document.getElementById("scene"),NS="http://www.w3.org/2000/svg";
+const LIGHT="#f4f2ec",ORANGE="#F54D26",FAINT="#a5a29a";
+const bg=document.createElementNS(NS,"rect");bg.setAttribute("width",1120);bg.setAttribute("height",760);bg.setAttribute("fill","#0c0c10");svg.appendChild(bg);
+const rc=rough.svg(svg);
+function txt(x,y,s,size,color,anchor){const t=document.createElementNS(NS,"text");t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("font-size",Math.max(size,20));t.setAttribute("fill",color);t.setAttribute("text-anchor",anchor||"middle");t.setAttribute("font-family","Virgil, sans-serif");t.textContent=s;svg.appendChild(t);}
+function rct(x,y,w,h,c,sw){svg.appendChild(rc.rectangle(x,y,w,h,{stroke:c,strokeWidth:sw||3,roughness:1.5,bowing:1.3}));}
+function circ(x,y,d,c){svg.appendChild(rc.circle(x,y,d,{stroke:c,strokeWidth:3,roughness:1.3}));}
+function ln(x1,y1,x2,y2,c){svg.appendChild(rc.line(x1,y1,x2,y2,{stroke:c,strokeWidth:3,roughness:1.4}));}
+function poly(pts,c,sw){svg.appendChild(rc.polygon(pts,{stroke:c,strokeWidth:sw||2.6,roughness:1.5,bowing:1.2}));}
+function racecar(cx,gy,c){ // open-wheel: low body, nose cone, wing, helmet
+  rct(cx-120,gy-24,250,22,c,2.6);                        // low body
+  poly([[cx-120,gy-24],[cx-192,gy-6],[cx-120,gy-2]],c);  // nose cone
+  ln(cx-196,gy-1,cx-150,gy-1,c);                         // front wing
+  rct(cx-34,gy-46,74,24,c,2.4);                          // cockpit hump
+  circ(cx+2,gy-52,24,c);                                 // helmet
+  ln(cx+130,gy-24,cx+130,gy-70,c);                       // wing strut
+  ln(cx+104,gy-68,cx+164,gy-62,c); ln(cx+104,gy-54,cx+164,gy-48,c); // rear wing planes
+  circ(cx-86,gy,60,c); circ(cx+96,gy,60,c);              // open wheels
+}
+function suv(cx,gy,c){ // tall boxy, big greenhouse
+  rct(cx-120,gy-46,250,44,c);            // body
+  rct(cx-98,gy-94,196,52,c,2.6);         // tall cabin
+  ln(cx-30,gy-94,cx-30,gy-44,c);         // pillar
+  circ(cx-72,gy,66,c); circ(cx+82,gy,66,c);
+}
+txt(560,84,"Don't daily-drive the benchmark winner",32,LIGHT);
+racecar(280,430,LIGHT); suv(830,420,ORANGE);
+txt(280,540,"Benchmark winner",26,LIGHT); txt(280,578,"fast, fragile, needs a pit crew",18,FAINT);
+txt(830,540,"Your daily driver",26,ORANGE); txt(830,578,"starts every morning, does the job",18,FAINT);
+txt(560,430,"≠",60,ORANGE);
+txt(560,690,"Capable and dependable are related, not identical.",20,FAINT);
+window.__ready=true;
+</script></body></html>

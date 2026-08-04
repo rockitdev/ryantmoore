@@ -30,7 +30,7 @@ The better conversation stays on the problem longer than feels comfortable. What
 
 ## Ask what happens when it breaks
 
-One more, because it is where cheap automation turns expensive. Anything you turn loose on real work, your money, your customers, your live systems, should come with clear boundaries and a human check where it counts. Ask whoever builds it: what can this touch, and what does it have to ask permission for? If the answer is "it just runs," that is not confidence; it is a gap. The outcome you are paying for includes not blowing up on a bad day.
+One more, because it is where cheap automation turns expensive. Anything you turn loose on your money, customers, or live systems should come with clear boundaries and a human check where it counts. Ask whoever builds it: what can this touch, and what does it have to ask permission for? If the answer is "it just runs," that is not confidence; it is a gap. The outcome you are paying for includes not blowing up on a bad day.
 
 ## The short version
 

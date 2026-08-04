@@ -16,7 +16,7 @@ The leaderboard is not useless. A model that scores well is probably capable. Wh
 
 ## Test it on your own work
 
-The benchmark that matters most for your business is your business. Before you trust a model with something that counts, run your real task through it a handful of times and watch. Does it do the same thing each time, or drift? Does it hold on the messy inputs, not just the clean demo?
+The benchmark that matters most for your business is your business. Before you trust a model with something that counts, run your real task through it several times and watch. Does it do the same thing each time, or drift? Does it hold on the messy inputs, not just the clean demo?
 
 A few runs is a smoke test, not proof. It will not tell you the thing is reliable. It will tell you fast if it is obviously not, which is most of what you need early.
 
@@ -31,7 +31,7 @@ When you are choosing between two models for a real job, score them on more than
 - **Review time:** how long you spend checking its work
 - **Failure cost:** when it is wrong, how bad is wrong
 
-The cheaper model that needs less checking and fails softly often beats the flashy one on one of the most useful lines: cost per good result.
+The cheaper model that needs less checking and fails softly often beats the flashy one by the metric that matters most: cost per good result.
 
 ## Two habits that save money
 

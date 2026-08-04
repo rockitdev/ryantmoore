@@ -25,7 +25,7 @@ Different problems, one shared lesson: none of them are fixed by writing a stern
 
 The fix is structural. Build these once and the agent cannot argue its way past them:
 
-1. **Least access.** Give it the minimum it needs and nothing more. If the job is drafting replies, it does not get the keys to the bank. What it cannot reach, it cannot break, however it is persuaded.
+1. **Least access.** Give it the minimum it needs and nothing more. If the job is drafting replies, it does not get the keys to the bank. What it cannot reach, it cannot break, no matter how it is persuaded.
 2. **Hard execution limits.** Lock it to where it is allowed to work: one folder, one test copy, one sandbox with the network fenced off. The wall is physical, not a polite request.
 3. **A human gate on anything irreversible.** Sending money, emailing a customer, changing the live site: those wait for a person to say yes. The agent can prepare the action all day. It does not get to pull the trigger.
 
