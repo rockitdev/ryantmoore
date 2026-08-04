@@ -8,6 +8,8 @@ draft: false
 
 > Answering first does not make you the best contractor. It makes you the one who gets to have the conversation. On a cold lead that is most of the battle, and it is a battle you can win with software instead of willpower.
 
+![A five-step pipeline. Lead comes in, quote out in about a minute, follow up until yes or no, booking lands in the calendar, job flows into the books. Each hand-off is a place it can drop.](/lab/speed-to-lead.svg)
+
 When Richie Colletti talked about his roofing business [on The Trade Talks](https://www.youtube.com/watch?v=RIx-b2WKzu0), the part that stuck was not a marketing trick. It was speed. He leaned on getting a quote in front of a customer within about a minute of them asking, then following up seven to ten times after. [Concrete Designs](https://www.youtube.com/watch?v=Q-E_Fsua-8E) told a similar story about growing fast: quick responses and steady follow-up, wired into Jobber so nothing slipped. Different trades, same unglamorous edge.
 
 ## Why first beats best on a cold lead

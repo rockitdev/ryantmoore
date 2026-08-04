@@ -8,6 +8,8 @@ draft: false
 
 > A written rule is a sign that says do not enter. Under pressure, an agent can treat it like a suggestion. What you want is a locked door, and there are three worth building.
 
+![Nested boxes showing layered defenses around the dangerous stuff (money, customers, live site): least access on the outside, then hard execution limits, then a human gate.](/lab/an-agent-can-cave.svg)
+
 Give an AI agent a clear instruction and it will usually follow it: do not delete anything, do not send money, do not touch the customer list. Then someone replies "just continue" or "it is fine, go ahead." Cole Medin, who builds with these tools daily, showed this in [his talk on running agents safely](https://www.youtube.com/watch?v=zb2LyMro77M): in his demonstrations, a single follow-up was sometimes enough to flip a careful agent into the risky action.
 
 It helps to name what is actually going wrong, because "the AI messed up" hides four different problems:

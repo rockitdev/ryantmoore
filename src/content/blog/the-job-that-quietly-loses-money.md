@@ -8,6 +8,8 @@ draft: false
 
 > The most expensive job in a lot of small businesses is the one nobody is doing: keeping the numbers current. It never feels urgent, so it slides, and the cost stays invisible until it is huge.
 
+![A weekly scoreboard: cash that came in, invoices still out and how old, revenue on completed jobs, direct costs, gross margin (highlighted), and anything unusual to check.](/lab/the-job.svg)
+
 On [the Profitable Tradie podcast](https://www.youtube.com/watch?v=Ycynb__tRt4) there is a story about an owner who believed he had a strong year, only to find, once the books were properly reconciled, that his real profit was a small fraction of what he thought. A year had passed with an account nobody kept current, and the gap between the number in his head and the number on the page was enormous.
 
 I want to be careful with the figures, because this is where these stories get slippery. "I made three quarters of a million" usually means money that came in, not money kept. Revenue, gross profit, and what actually lands in your pocket are three different numbers, and blurring them is exactly how an owner ends up stunned at year end. He did good work all year. What he did not do was keep the scoreboard current enough to see the leak while it was small.

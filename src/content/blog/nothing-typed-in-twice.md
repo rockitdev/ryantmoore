@@ -7,6 +7,8 @@ tags: ['Connecting systems', 'Automation']
 
 > If someone on your team retypes the same information into a second tool, that's not a task. That's a leak.
 
+![Hub-and-spoke diagram. 'Enter it once' at the center, with arrows out to Booking, Calendar, The books, CRM, and Phone. One entry updates them all.](/lab/nothing-typed-in-twice.svg)
+
 Most businesses I talk to don't have a software problem. They have plenty of software: a booking tool, an accounting tool, a calendar, a CRM, a phone system. Each one works fine on its own.
 
 The problem is the space *between* them.

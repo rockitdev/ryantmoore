@@ -8,6 +8,8 @@ draft: false
 
 > When copying a human is this easy, the hard part is no longer building the automation. It is deciding what is safe to hand over, and noticing that a recording captures what you did, not why you did it.
 
+![A four-step cycle. Demonstrate it once, it drafts a skill, test the exceptions (the part the demo hides), reuse it, then back to the start.](/lab/show-it-once.svg)
+
 A new class of AI feature landed this month, and it is worth understanding even if you never touch it. You do a task once, on screen, while the tool watches, and it drafts a reusable skill from what it saw. Claude's [record-a-skill feature](https://www.youtube.com/watch?v=cBdFhHyEW4Y) does this. OpenAI's [Record & Replay](https://learn.chatgpt.com/docs/extend/record-and-replay) follows the same pattern in ChatGPT and Codex: demonstrate a workflow, review the skill it drafts, refine the important decisions, and reuse it.
 
 The pitch is that anyone can now automate a task without being technical. That is mostly true, and it is a real shift. But it moves the hard part rather than removing it.

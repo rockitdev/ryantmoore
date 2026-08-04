@@ -8,7 +8,7 @@ draft: false
 
 > AI answers change how results are presented. They do not erase the foundations that decide whether your business gets found, understood, and trusted. Same groundwork, new front door.
 
-![Flow diagram. Someone asks an AI, then three gates: can it find you (crawlable, indexed, listed), can it understand you (what you do, where you serve, plainly), can it verify you (consistent, reviewed, mentioned). The outcome: you can be the answer.](/lab/aeo-flow.png)
+![Flow diagram. Someone asks an AI, then three gates: can it find you (crawlable, indexed, listed), can it understand you (what you do, where you serve, plainly), can it verify you (consistent, reviewed, mentioned). The outcome: you can be the answer.](/lab/aeo-flow.svg)
 
 The question is shifting from "where does my business rank?" to "does the answer even mention my business?" Ranking still matters. Google's AI features build on its Search index and quality systems, while other answer engines use their own retrieval and ranking signals. But the result can now arrive as a written answer with a few names in it, before the customer ever sees a list of links.
 
