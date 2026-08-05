@@ -1,6 +1,6 @@
 ---
 title: Your notes are the AI’s memory
-description: Everyone argues about which AI model is best. For getting real work out of one, the bigger lever is boring: how well your own information is organized for the AI to read.
+description: Everyone argues about which AI model is best. For getting real work out of one, the bigger lever is boring. It's how well your own information is organized for the AI to read.
 date: 2026-07-30
 tags: ['Practical AI', 'Small business']
 draft: false
