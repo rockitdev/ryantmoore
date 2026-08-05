@@ -6,7 +6,7 @@ tags: ['Small business', 'Automation']
 draft: false
 ---
 
-> Nobody wants automation. They want the follow-ups to stop slipping, the books to be right, and to stop worrying about the thing that keeps getting missed. That is what is for sale, so that is what to shop for.
+> Nobody actually wants automation. They want the follow-ups to stop slipping, the books to be right, and to quit worrying about the thing that keeps getting missed. That is what is for sale. Shop for that.
 
 ![The pitch 'it automates your workflow' points down to what you actually want: money, stability, and peace.](/lab/buy-the-outcome.svg)
 
@@ -32,6 +32,6 @@ The better conversation stays on the problem longer than feels comfortable. What
 
 One more, because it is where cheap automation turns expensive. Anything you turn loose on your money, customers, or live systems should come with clear boundaries and a human check where it counts. Ask whoever builds it: what can this touch, and what does it have to ask permission for? If the answer is "it just runs," that is not confidence; it is a gap. The outcome you are paying for includes not blowing up on a bad day.
 
-## The short version
+## So, before you buy
 
-Buy the result, not the machinery. Money that stops leaking, a business that holds steady, a night's sleep. If you cannot see which of those a project moves, you are being sold the automation instead of the outcome, and the automation was never the part you wanted.
+Buy the result, not the machinery. If you cannot say which thing a project actually fixes, and by how much, you are being sold the automation instead of the outcome. And the automation was never the part you wanted.

@@ -6,7 +6,7 @@ tags: ['AI agents', 'Building']
 draft: false
 ---
 
-> A written rule is a sign that says do not enter. Under pressure, an agent can treat it like a suggestion. What you want is a locked door, and there are three worth building.
+> You can hand an agent the rules in plain English and it will follow them, right up until someone pushes back. Real safety is not better wording. It is a few things the agent simply cannot do, no matter what you say to it.
 
 ![Nested boxes showing layered defenses around the dangerous stuff (money, customers, live site): least access on the outside, then hard execution limits, then a human gate.](/lab/an-agent-can-cave.svg)
 
@@ -35,6 +35,6 @@ You do not need the technical version. You need one question, asked of anything 
 
 If the answer is a draft folder, relax. If the answer is your bank, your customers, or your live website, agreeable instructions are not enough. That work needs the three boundaries above, especially the human gate, before you trust it unattended.
 
-## The takeaway
+## What it comes down to
 
-Guardrails made of words are comfortable to write and the first thing to fail when someone pushes. The agents worth trusting with real work are not the ones with the sternest prompt. They are the ones that were never handed the ability to do the dangerous thing, and that have to ask before doing anything you cannot undo. Build the doors, then let it run inside them.
+Rules written in words are easy to type and the first thing to go when someone leans on the agent. The ones I would trust with real work are not the ones with the strictest prompt. They are the ones that were never given the ability to do the dangerous thing in the first place, and that have to ask before touching anything you cannot undo. Build the doors, then let it run inside them.
