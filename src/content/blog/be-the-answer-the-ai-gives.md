@@ -1,6 +1,6 @@
 ---
 title: Be the answer the AI gives
-description: Getting found is shifting from where you rank to whether the answer even mentions you. The interface is changing. The work that gets you into it is more familiar than the hype suggests.
+description: Search is becoming answers, and the new question is whether the AI names your business at all. The work to get named is mostly the boring stuff you already know.
 date: 2026-08-04
 tags: ['Small business', 'Practical AI']
 draft: false
@@ -14,9 +14,9 @@ For years the question was simple: where do I rank on Google? A lot of my client
 
 Ranking did not stop mattering. Google's AI features are built on the same Search index and quality systems, and other answer engines have their own retrieval and ranking. But more and more the customer gets a written answer with a few names in it and never scrolls a list of links. If you are not one of those names, for that search you may as well not exist.
 
-The hype frames this as a brand-new game you have to relearn. It is not. It is search wearing a new face, an answer layer built on the same foundations, and the work that gets you into the answer is more familiar than the noise makes it sound.
+A lot of people are selling this as some brand-new game you have to relearn. I don't buy it. It's still search underneath, with an answer laid over the top, and most of what gets your name into that answer is stuff you've heard a hundred times.
 
-## It is an evolution, not a replacement
+## The same game, new front end
 
 Google says it directly: its AI search features use the same core ranking and quality systems as regular Search, and there is [no special AI optimization to chase](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide). OpenAI says roughly the same about [ChatGPT Search](https://help.openai.com/en/articles/9237897-chatgpt-search): it weighs relevance and reliability, it has to be able to crawl your site to include you, and it promises nobody a spot. No tricks, no secret markup. The groundwork is still the groundwork, and it comes down to three plain questions.
 
@@ -30,7 +30,7 @@ Once it can read you, it has to know what you actually do. Say it in plain words
 
 ## Can it verify you?
 
-Then it looks for reasons to trust the match. Keep your name, services, location, and contact details the same everywhere, because mixed signals make you easy to leave out. Get real reviews and real mentions, because what other sources say about you carries weight. None of this is a trick. It is clear, consistent evidence that you are a good answer to a real question.
+Last, it wants a reason to trust it has the right business. That mostly comes down to being consistent. If your name, services, location, and phone number say different things on different sites, you are easy to skip. Reviews and real mentions help too, since the machine leans on what other people say about you, not just what you say about yourself. There is no trick to it. You are just handing it solid, boring evidence that you are the right answer.
 
 ## Reddit is doing a lot of the answering
 
