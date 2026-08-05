@@ -10,7 +10,7 @@ draft: false
 
 ![Flow diagram. Someone asks an AI, then three gates: can it find you (crawlable, indexed, listed), can it understand you (what you do, where you serve, plainly), can it verify you (consistent, reviewed, mentioned). The outcome: you can be the answer.](/lab/aeo-flow.svg)
 
-For years the question was simple: where do I rank on Google? A lot of my clients are asking a different one now without realizing it. They ask ChatGPT something, get a paragraph back with two or three companies named in it, and wonder why they are not one of them.
+Open ChatGPT and ask it for the best plumber in your city. You'll get a short answer naming two or three businesses, not a list of ten links. The question used to be "where do I rank on Google." Now it's whether the answer names you at all. If your business isn't one of those names, for that search you don't exist.
 
 Ranking did not stop mattering. Google's AI features are built on the same Search index and quality systems, and other answer engines have their own retrieval and ranking. But more and more the customer gets a written answer with a few names in it and never scrolls a list of links. If you are not one of those names, for that search you may as well not exist.
 
