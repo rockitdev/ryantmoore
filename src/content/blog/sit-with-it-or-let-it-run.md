@@ -8,7 +8,7 @@ draft: true
 
 > Most AI mistakes I see in small businesses aren't about the tool being weak. They're about using the sit-with-it kind for a job that needed the runs-on-its-own kind, or the other way around.
 
-There are really only two kinds of AI helper worth caring about in a business. Once you can tell them apart, most of the confusing choices get simple.
+There are two kinds of AI helper worth caring about in a business. Tell them apart and most of the confusing choices get simple.
 
 ## The one you sit with
 
