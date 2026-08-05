@@ -50,4 +50,4 @@ The pattern I keep coming back to: **prove it while you're sitting with it, then
 
 Start a new task with the assistant you steer. Get it right while you can watch and correct. Once it's boring and repeatable, that's your signal to hand it to the kind that runs on its own, with a guardrail or two so it stays safe. You keep the judgment. It takes the repetition.
 
-Most businesses don't need more AI. They need the right kind pointed at the right job.
+Truth is, most businesses don't need more AI. They need to quit using the sit-with-it kind for work that should just run itself, and quit trusting the runs-on-its-own kind with the calls that need a human. That's the whole fix.

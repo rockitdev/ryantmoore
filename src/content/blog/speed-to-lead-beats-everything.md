@@ -32,6 +32,6 @@ Every hand-off in that chain is a place it can break. A lead that drops into an 
 
 ## Where to start
 
-You do not need to wire the whole business this week. Take the single worst leak, which for most contractors is the follow-up nobody has time for, and make it run on its own from first message to last. Prove that one link holds. Then add the next.
+You don't need to wire the whole business this week. Take the single worst leak, which for most contractors is the follow-up nobody has time for, and make it run on its own from first message to last. Prove that one link holds. Then add the next.
 
-Speed wins the first conversation. Follow-up wins the ones you would otherwise lose. The wiring is what lets you do both without hiring someone whose whole job is to remember.
+Being first gets you the conversation. Following up is what saves the jobs you'd otherwise lose because a busy week ate the reminder. Wire both so they run on their own, and you get that edge without paying someone whose only job is to not forget.
