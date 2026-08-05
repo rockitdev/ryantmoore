@@ -12,7 +12,7 @@ draft: false
 
 Open ChatGPT and ask it for the best plumber in your city. You'll get a short answer naming two or three businesses, not a list of ten links. The question used to be "where do I rank on Google." Now it's whether the answer names you at all. If your business isn't one of those names, for that search you don't exist.
 
-Ranking did not stop mattering. Google's AI features are built on the same Search index and quality systems, and other answer engines have their own retrieval and ranking. But more and more the customer gets a written answer with a few names in it and never scrolls a list of links. If you are not one of those names, for that search you may as well not exist.
+Ranking didn't stop mattering. Google's AI features are built on the same Search index and quality systems, and other answer engines have their own retrieval and ranking on top of that.
 
 A lot of people are selling this as some brand-new game you have to relearn. I don't buy it. It's still search underneath, with an answer laid over the top, and most of what gets your name into that answer is stuff you've heard a hundred times.
 
@@ -43,6 +43,18 @@ So when someone asks an AI "who is good at this near me," Reddit can shape the a
 One layer down. The old ranking layer is still there. AI search adds retrieval and synthesis on top: it finds supporting pages, then writes an answer across them. Your pages might get summarized or blended with other sources before a customer ever lands on them.
 
 Two things follow. Measurement gets worse, because an answer with no click and no referrer breaks the rank-to-click-to-analytics loop, so you fall back to fuzzier signals like brand mentions and direct traffic. And a new way to lose shows up next to ranking low: the model can just say something wrong about you. You cannot fully control that. All you can do is be the clearest, most consistent source out there, so there is less to get wrong.
+
+## Start with the basics
+
+None of this is full answer-engine optimization — that's a deeper craft, and a post for another day. These are just the table stakes, the things that have to be right before any of the fancier work matters. Roughly in order:
+
+1. Make sure you can be found. Confirm your site isn't blocking Googlebot or OAI-SearchBot, your key pages are indexable, and your Google Business Profile is claimed and current. If a machine can't reach you, nothing else matters.
+2. Say plainly what you do and where. One clear line per service, in real text: "emergency furnace repair in Halifax," not "comfort solutions."
+3. Line up your facts everywhere. Same name, address, phone, and services across your site, your Profile, and every directory. Then chase a few honest reviews.
+
+To see if it's working, don't wait for a dashboard. Once a month, open ChatGPT, Perplexity, and Google and ask what a customer would ask: "best [what you do] in [your city]." Note whether you're named, and who is if you're not. That five-minute check beats most tools, and it's free.
+
+One caveat: this matters most if you're a business people actually ask an AI to recommend — local and service work especially. If nobody queries an assistant for what you sell, it matters less, though being findable never hurts.
 
 ## The honest version
 
