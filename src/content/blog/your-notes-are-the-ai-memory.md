@@ -6,36 +6,38 @@ tags: ['Practical AI', 'Small business']
 draft: false
 ---
 
-> A brilliant assistant who can't find anything is not much use. A lot of the disappointment people have with AI at work is not the model being weak. It's the model being handed a mess.
+> Your AI isn't dumb. It's working blind. The letdown usually isn't the model, it's the junk drawer you handed it.
 
 ![The model is a thin swappable layer on top. Below it, a large foundation labelled 'your notes = the memory' with habits: one topic per note, one canonical home per answer, clear names and dates, kept current.](/lab/your-notes.svg)
 
-Choosing a model matters. But once you've got one that's capable enough, the next constraint is usually not a smarter model. It's what the model can actually find out about your business. I already made [the case against chasing the benchmark winner](/lab/dont-daily-drive-the-benchmark-winner/); this is the other side of it. The higher-leverage work is the layer around the model: the notes, files, and records it reads from.
+Your AI isn't dumb. It's working blind. Most of the letdown people feel with AI at work has nothing to do with the model. You hired a sharp assistant, handed it a junk drawer, and asked it to find the stapler. Then you blamed the assistant. A better model won't fix that. The bottleneck isn't brains, it's what the thing can actually see about your business.
 
-Two threads landed on this recently. Google's [Agent Development Kit](https://developers.googleblog.com/en/developers-guide-to-building-adk-agents-with-skills/) added file-based skills that use progressive disclosure: the agent sees a short description first, then loads the full instructions or reference files only when the task needs them. And Dan Martell's [second-brain approach](https://www.youtube.com/watch?v=b4d32pBa3UY) is really about organizing your own knowledge so an assistant can use it. Different worlds, same lesson: for many business tasks, improving the knowledge you give the model beats switching to the latest one.
+So pick a capable model, sure. But once it's good enough, a smarter one stops being the lever. What it can find out about your business is.
+
+Two people landed on this same point from opposite ends. Google's [Agent Development Kit](https://developers.googleblog.com/en/developers-guide-to-building-adk-agents-with-skills/) added file-based skills with progressive disclosure: the agent reads a short description first, then loads the full instructions only when the task needs them. Dan Martell's [second-brain approach](https://www.youtube.com/watch?v=b4d32pBa3UY) is the same idea in plain clothes: organize your own knowledge so an assistant can actually use it. One's a dev framework, one's a productivity guy on YouTube. Same lesson: for most business tasks, fixing what you feed the model beats chasing a newer one.
 
 ## Why the mess is the real problem
 
-Ask an AI a question about your business and it can only be as good as what it can see. If your pricing lives in one person's head, your process is scattered across email threads, and your customer notes are in three tools, no model can reliably answer you about your own business. It'll guess confidently instead, and you'll call the AI dumb when the real problem was that nothing was written down where it could be read.
+Ask an AI about your business and it's only as good as what it can see. If your pricing lives in one guy's head, your process is scattered across old email threads, and your customer notes sit in three different tools, no model can give you a straight answer. It'll guess, confidently, and you'll call it dumb. It wasn't dumb. You never wrote anything down where it could read it.
 
-## Organized notes are not automatic memory
+## Organized notes aren't automatic memory
 
-One caveat before the habits, because it trips people up. Organized notes don't become AI memory by magic. The assistant still needs a safe way to reach them, a reliable way to find the right one, and a way to tell the current version from an old one. Organization is what makes that connection useful once it exists. It's necessary, not sufficient.
+One catch before the habits, because people trip on it. Tidy notes don't become AI memory by magic. The assistant still needs a safe way to reach them, a reliable way to find the right one, and a way to tell this year's pricing from last year's. Organizing is what makes that connection worth having once it exists. Necessary, not sufficient.
 
 ## What good looks like
 
-You don't need special software. You need your important information written down, current, and organized so the right answer is easy to find. A few habits do most of the work:
+No special software required. You need your important stuff written down, current, and easy to find. A few habits do most of the work:
 
-- **One topic per note.** Pricing in one place, your process in another, not one giant document.
-- **One canonical home for each answer,** so there is no guessing which copy is right.
-- **Clear names, dates, and owners.** "2026 pricing, updated March" beats "final-final-v3."
-- **Update the note when the answer changes.** Stale pricing is worse than missing pricing.
-- **Give the assistant access only to what it needs,** and nothing sensitive it doesn't need.
+- **One topic per note.** Pricing here, your process there. Not one giant doc.
+- **One home for each answer,** so nobody's guessing which copy is right.
+- **Clear names and dates.** "2026 pricing, updated March" beats "final-final-v3."
+- **Fix the note when the answer changes.** Stale pricing is worse than none.
+- **Give the assistant only what it needs,** and nothing sensitive it doesn't.
 
-That's unglamorous, and it's some of the highest-leverage AI work most small businesses could do.
+Dull as dishwater. Also some of the highest-leverage AI work a small business can do.
 
-## Why this is worth your time
+## Fix the notes first
 
-Do this and any assistant you point at your business gets noticeably better, because it can finally find the answer. And you stop being the bottleneck, because the knowledge isn't trapped in your head anymore.
+Do this and any assistant you point at your business gets better overnight, because it can finally find the answer. And you stop being the bottleneck, because the answer isn't locked in your head anymore.
 
-Models will keep changing on their own, without you lifting a finger. Organized, current notes stay useful across all of them. That's where your time actually pays off. Fix the notes first.
+Models keep changing on their own, no effort from you. Organized, current notes stay useful across all of them. That's where your time actually pays off. Fix the notes first.
