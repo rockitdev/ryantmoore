@@ -3,7 +3,7 @@ title: The job that quietly loses money
 description: A contractor was sure he had a great year. When the books were finally reconciled, most of the profit he thought he had made turned out to have never been there.
 date: 2026-07-16
 tags: ['Automation', 'Integration']
-draft: false
+draft: true
 ---
 
 > The most expensive job in a lot of small businesses is the one nobody's doing: keeping the numbers current. It never feels urgent, so it slides, and the cost stays invisible until it's huge.
