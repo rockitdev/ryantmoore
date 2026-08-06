@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Virgil';src:url(https://excalidraw.com/Virgil.woff2) format('woff2');font-display:block;}
+html,body{margin:0;padding:0;} svg text{font-family:'Virgil',sans-serif;}
+</style></head><body>
+<svg id="scene" xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600"></svg>
+<script type="module">
+import rough from "https://esm.sh/roughjs@4.6.6";
+const svg=document.getElementById("scene"), NS="http://www.w3.org/2000/svg";
+const LIGHT="#f4f2ec", ORANGE="#F54D26", FAINT="#a5a29a", DIM="#77746e";
+const W=+svg.getAttribute("width"), H=+svg.getAttribute("height");
+const bg=document.createElementNS(NS,"rect");bg.setAttribute("width",W);bg.setAttribute("height",H);bg.setAttribute("fill","#0c0c10");svg.appendChild(bg);
+const rc=rough.svg(svg);
+function txt(x,y,s,size,color,anchor){const t=document.createElementNS(NS,"text");t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("font-size",size);t.setAttribute("fill",color);t.setAttribute("text-anchor",anchor||"middle");t.textContent=s;svg.appendChild(t);return t;}
+function rect(x,y,w,h,stroke,sw){svg.appendChild(rc.rectangle(x,y,w,h,{stroke,strokeWidth:sw||2.4,roughness:1.4,bowing:1.1}));}
+function circle(cx,cy,d,stroke,sw){svg.appendChild(rc.circle(cx,cy,d,{stroke,strokeWidth:sw||2.4,roughness:1.4}));}
+function line(x1,y1,x2,y2,color,sw){svg.appendChild(rc.line(x1,y1,x2,y2,{stroke:color,strokeWidth:sw||2.4,roughness:1.4}));}
+function arrow(x1,y1,x2,y2,color,sw){color=color||ORANGE;sw=sw||2.4;
+  svg.appendChild(rc.line(x1,y1,x2,y2,{stroke:color,strokeWidth:sw,roughness:1.5}));
+  const ang=Math.atan2(y2-y1,x2-x1),L=13,a=0.5;
+  svg.appendChild(rc.line(x2,y2,x2-L*Math.cos(ang-a),y2-L*Math.sin(ang-a),{stroke:color,strokeWidth:sw,roughness:1}));
+  svg.appendChild(rc.line(x2,y2,x2-L*Math.cos(ang+a),y2-L*Math.sin(ang+a),{stroke:color,strokeWidth:sw,roughness:1}));}
+
+// a tiny robot face inside a box
+function robot(cx,cy,color){
+  circle(cx-24,cy,16,color,2.2); circle(cx+24,cy,16,color,2.2); // eyes
+  line(cx-38,cy-40,cx+38,cy-40,color,2.2);                       // antenna bar
+  line(cx,cy-40,cx,cy-54,color,2.2); circle(cx,cy-58,8,color,2); // antenna
+  line(cx-16,cy+30,cx+16,cy+30,color,2.4);                       // mouth
+}
+
+txt(W/2,64,"An algorithm to detect an algorithm",34,LIGHT);
+
+// left box: the model
+rect(120,150,250,190,LIGHT,2.6);
+robot(245,225,LIGHT);
+txt(245,318,"THE MODEL — writes it",18,FAINT);
+
+// right box: the detector (same robot, orange, with a magnifier)
+rect(530,150,250,190,ORANGE,2.6);
+robot(655,225,ORANGE);
+// magnifying glass
+circle(726,196,30,ORANGE,2.2); line(742,214,766,238,ORANGE,3);
+txt(655,318,"THE DETECTOR — flags it",18,FAINT);
+
+// arrows between: same stuff, both ways
+arrow(378,205,522,205,FAINT,2.2);
+arrow(522,270,378,270,FAINT,2.2);
+txt(450,190,"same transformer",15,DIM);
+txt(450,292,"trained on the same stuff",15,DIM);
+
+// punchline block
+txt(W/2,420,"One got fine-tuned to point at the other.",24,LIGHT);
+txt(W/2,458,"A transformer, trained partly on GPT-4, hunting for transformers.",17,FAINT);
+txt(W/2,528,"It takes one to know one.",27,ORANGE);
+
+window.__ready=true;
+</script></body></html>
