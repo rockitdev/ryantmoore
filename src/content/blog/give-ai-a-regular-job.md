@@ -28,7 +28,7 @@ For meeting follow-up, you could save an instruction like this:
 
 Give it the notes, the project details, and the team list. Connect the ticket system if you want it to create the tickets. Next meeting, use the same instructions with the new notes.
 
-ChatGPT Work is another place to try it, using the notes and whichever connected tools support the actions you need. OpenAI has a [meeting follow-up example](https://learn.chatgpt.com/use-cases/zoom-meeting-follow-ups) covering emails and CRM updates.
+ChatGPT is another place to try it, using the notes and whichever connected tools support the actions you need. OpenAI has a [meeting follow-up example](https://learn.chatgpt.com/use-cases/zoom-meeting-follow-ups) covering emails and CRM updates.
 
 I handed my notes over manually. Automating that handoff could come later. First, check the tickets and the email. Did it capture what was agreed? Did the work end up with the right people?
 
