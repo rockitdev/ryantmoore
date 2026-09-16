@@ -3,7 +3,7 @@ title: 'Give AI a regular job'
 description: 'An agent does the same meeting follow-up every time you hand it notes. Same instructions, new notes, zero extra effort.'
 date: 2026-09-16
 tags: ['Automation', 'Integration']
-draft: false
+draft: true
 ---
 
 > An agent doing a recurring, well-defined job is buying back your time. Not once. Every time that job comes around.
