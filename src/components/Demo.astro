@@ -1,0 +1,166 @@
+---
+/**
+ * Demo section — ryantmoore.ca
+ *
+ * Embeds a short product/demo video.
+ *
+ * TODO (Ryan): replace VIDEO_URL with your real Loom share URL or a hosted MP4.
+ *   Loom embed URL format:  https://www.loom.com/embed/<video-id>
+ *   Self-hosted MP4:        use the <video> element variant below instead.
+ *
+ * TODO (Ryan): replace THUMBNAIL_URL with a static thumbnail image path
+ *              (e.g. /images/demo-thumb.jpg) or remove the poster attribute.
+ *
+ * The section heading and body copy are intentionally neutral — swap in your
+ * own messaging once the video is set.
+ */
+
+const VIDEO_URL     = 'TODO_REPLACE_WITH_LOOM_EMBED_OR_MP4_URL';
+const THUMBNAIL_URL = 'TODO_REPLACE_WITH_THUMBNAIL_IMAGE_PATH_OR_REMOVE';
+const IS_PLACEHOLDER = VIDEO_URL.startsWith('TODO');
+---
+
+<section class="section demo-section" id="demo">
+  <div class="wrap wrap--narrow">
+
+    <div class="section__head reveal">
+      <div>
+        <span class="kicker">See it in action</span>
+        <h2 class="section__title serif">Watch how the <em>system works</em>.</h2>
+        <p class="section__lede">
+          A quick walkthrough of how the agent fleet handles a real task — from
+          intake through to a finished, reviewed result — without a person in
+          the loop for the routine parts.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-player reveal">
+      {IS_PLACEHOLDER ? (
+        /* ── Placeholder shown until Ryan fills in the real URL ── */
+        <div class="demo-placeholder" role="img" aria-label="Demo video placeholder">
+          <div class="demo-placeholder__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="56" height="56" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+              <polygon points="19,15 37,24 19,33" fill="currentColor" opacity="0.6"/>
+            </svg>
+          </div>
+          <p class="demo-placeholder__label">
+            Video coming soon —&nbsp;
+            <code class="demo-placeholder__code">TODO: set VIDEO_URL in Demo.astro</code>
+          </p>
+        </div>
+      ) : (
+        /* ── Real embed — Loom iframe or MP4 fallback ── */
+        <div class="demo-frame">
+          <iframe
+            src={VIDEO_URL}
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+            title="Product demo walkthrough"
+            aria-label="Product demo walkthrough video"
+          ></iframe>
+        </div>
+      )}
+    </div>
+
+    <p class="demo-caption reveal">
+      No audio required — captions available in the video.
+    </p>
+
+  </div>
+</section>
+
+<style>
+  .demo-section {
+    background: linear-gradient(180deg, var(--ink), var(--ink-2));
+  }
+
+  /* ── Player shell — 16:9 aspect ratio ── */
+  .demo-player {
+    position: relative;
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+      0 40px 80px rgba(0, 0, 0, 0.55),
+      0 0 60px rgba(245, 77, 38, 0.04);
+    background: #0d0d0d;
+  }
+
+  /* ── Real iframe embed ── */
+  .demo-frame {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+  }
+  .demo-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  /* ── Placeholder (shown until Ryan fills VIDEO_URL) ── */
+  .demo-placeholder {
+    aspect-ratio: 16 / 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    background:
+      repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.02) 0px,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+    color: rgba(245, 242, 236, 0.35);
+    text-align: center;
+    padding: 2rem;
+  }
+  .demo-placeholder__icon {
+    color: var(--accent);
+    opacity: 0.6;
+  }
+  .demo-placeholder__label {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    max-width: 36ch;
+  }
+  .demo-placeholder__code {
+    font-family: var(--mono);
+    font-size: 0.75em;
+    color: var(--accent);
+    background: rgba(245, 77, 38, 0.1);
+    border: 1px solid rgba(245, 77, 38, 0.25);
+    border-radius: 4px;
+    padding: 0.15em 0.45em;
+    white-space: nowrap;
+  }
+
+  /* ── Caption below player ── */
+  .demo-caption {
+    margin-top: 1.1rem;
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--paper-faint);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .demo-player {
+      border-radius: 8px;
+    }
+  }
+</style>
