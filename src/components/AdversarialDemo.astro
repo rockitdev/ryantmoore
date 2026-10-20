@@ -1,0 +1,424 @@
+---
+// AdversarialDemo — live transcript embed of the adversarial review demo.
+// Shows the three-step producer → reviewer → clean-rewrite loop.
+// Content is drawn from the QA-passed transcript in demos/adversarial-review/
+// (PR #32). No invented claims; all verdicts are from a real model run.
+---
+
+<section class="section demo-section" id="demo">
+  <div class="wrap">
+
+    <div class="section__head reveal">
+      <div>
+        <span class="kicker">See it work</span>
+        <h2 class="section__title serif">
+          The reviewer is told <em>to disagree</em>.
+        </h2>
+        <p class="section__lede">
+          A producer agent drafts fast. A second agent — briefed to find the flaw, not
+          confirm the draft — audits every claim before it ships. Here is a real run.
+        </p>
+      </div>
+    </div>
+
+    <!-- Three-panel terminal replay -->
+    <div class="demo-replay reveal" aria-label="Adversarial review demo replay">
+
+      <!-- ── STEP 1: Producer output ─────────────────────────────── -->
+      <div class="demo-card demo-card--producer">
+        <div class="demo-card__chrome">
+          <span class="demo-card__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="demo-card__label">STEP 1 — PRODUCER</span>
+          <span class="demo-card__badge demo-card__badge--pending">SINGLE PASS</span>
+        </div>
+        <div class="demo-card__body">
+          <p class="demo-line">Speed is table stakes. Every agency can run a prompt now.</p>
+          <p class="demo-line">The firms winning with AI aren't moving faster — they're</p>
+          <p class="demo-line">shipping cleaner, because they built the layer that catches</p>
+          <p class="demo-line">what fast models miss.</p>
+          <p class="demo-line demo-line--gap">&nbsp;</p>
+          <p class="demo-line">Here's what most agencies don't put in the pitch deck:</p>
+          <p class="demo-line demo-line--flaw">
+            <span class="demo-flaw" aria-label="Planted flaw — fabricated statistic">
+              <strong>research shows 73% of AI-generated content contains at least one</strong>
+            </span>
+          </p>
+          <p class="demo-line demo-line--flaw">
+            <span class="demo-flaw">
+              <strong>verifiable factual error before it reaches publication</strong>
+            </span>
+            <span class="demo-flaw-tag" aria-hidden="true">← no source</span>
+          </p>
+          <p class="demo-line demo-line--gap">&nbsp;</p>
+          <p class="demo-line">The moat isn't the model. It's the system sitting between</p>
+          <p class="demo-line">the model's confidence and your client's brand.</p>
+        </div>
+      </div>
+
+      <!-- ── Connector arrow ─────────────────────────────────────── -->
+      <div class="demo-connector" aria-hidden="true">
+        <span class="demo-connector__line"></span>
+        <span class="demo-connector__label">adversarial reviewer</span>
+        <span class="demo-connector__line"></span>
+        <span class="demo-connector__arrow">↓</span>
+      </div>
+
+      <!-- ── STEP 2: Reviewer verdict ────────────────────────────── -->
+      <div class="demo-card demo-card--verdict">
+        <div class="demo-card__chrome">
+          <span class="demo-card__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="demo-card__label">STEP 2 — ADVERSARIAL REVIEWER</span>
+          <span class="demo-card__badge demo-card__badge--fail">LIVE MODEL CALL</span>
+        </div>
+        <div class="demo-card__body">
+          <div class="demo-verdict">
+            <span class="demo-verdict__tag">VERDICT</span>
+            <span class="demo-verdict__result">FAIL</span>
+          </div>
+          <div class="demo-finding">
+            <span class="demo-finding__key">FLAGGED CLAIM</span>
+            <p class="demo-finding__val demo-finding__val--flaw">
+              "research shows 73% of AI-generated content contains at least one
+              verifiable factual error before it reaches publication"
+            </p>
+          </div>
+          <div class="demo-finding">
+            <span class="demo-finding__key">CATEGORY</span>
+            <p class="demo-finding__val demo-finding__val--category">FABRICATED</p>
+          </div>
+          <div class="demo-finding">
+            <span class="demo-finding__key">WHY</span>
+            <p class="demo-finding__val">
+              The precise 73% figure is credited to unnamed "research" — no study,
+              publisher, date, or method to check. An unsourced number in a piece
+              about catching unchecked AI errors undercuts its own argument.
+            </p>
+          </div>
+          <div class="demo-finding">
+            <span class="demo-finding__key">FIX</span>
+            <p class="demo-finding__val demo-finding__val--fix">
+              "AI-generated drafts can contain confident factual errors that are easy
+              to miss in a quick review"
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── RESULT banner ──────────────────────────────────────── -->
+      <div class="demo-result reveal">
+        <div class="demo-result__row">
+          <span class="demo-result__label demo-result__label--before">BEFORE</span>
+          <span class="demo-result__text">Fabricated stat shipped with confidence</span>
+        </div>
+        <div class="demo-result__row">
+          <span class="demo-result__label demo-result__label--catch">CATCH</span>
+          <span class="demo-result__text">Adversarial reviewer: FABRICATED / NEEDS SOURCE</span>
+        </div>
+        <div class="demo-result__row">
+          <span class="demo-result__label demo-result__label--after">AFTER</span>
+          <span class="demo-result__text">Directional language — same argument, defensible</span>
+        </div>
+        <p class="demo-result__moat">
+          The model wrote it confidently. The verification layer caught it.
+        </p>
+      </div>
+
+    </div><!-- /demo-replay -->
+
+    <p class="demo-note reveal">
+      The producer artifact has one planted flaw so the demo is always runnable.
+      The reviewer is a live model call — no faked verdicts.
+      <a href="https://github.com/rockitdev/ryantmoore/blob/fleet/b2c9ce70/demos/adversarial-review/transcript.md"
+         class="demo-note__link" target="_blank" rel="noopener">
+        Full transcript on GitHub ↗
+      </a>
+    </p>
+
+  </div>
+</section>
+
+<style>
+  /* ── Section positioning ─────────────────────────────────────── */
+  .demo-section { background: var(--ink-2); }
+  .demo-section .kicker { color: var(--paper-dim); }
+  .demo-section .kicker::before { background: var(--accent); }
+  .demo-section .section__title em { color: var(--accent); }
+
+  /* ── Replay layout ───────────────────────────────────────────── */
+  .demo-replay {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────── */
+  .demo-card {
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: var(--mono);
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.80);
+  }
+
+  .demo-card__chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .demo-card__dots {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .demo-card__dots i {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    list-style: none;
+  }
+
+  .demo-card__label {
+    flex: 1;
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+  }
+
+  .demo-card__badge {
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .demo-card__badge--pending {
+    background: rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .demo-card__badge--fail {
+    background: rgba(245, 77, 38, 0.22);
+    color: #ff7a55;
+    border: 1px solid rgba(245, 77, 38, 0.35);
+  }
+
+  .demo-card__body {
+    padding: 1.25rem 1.25rem 1.35rem;
+    line-height: 1.65;
+  }
+
+  /* ── Producer lines ──────────────────────────────────────────── */
+  .demo-line { line-height: 1.55; color: rgba(255, 255, 255, 0.65); }
+  .demo-line--gap { line-height: 0.75; }
+  .demo-line--flaw { position: relative; }
+
+  .demo-flaw {
+    background: rgba(245, 77, 38, 0.14);
+    color: rgba(255, 200, 180, 0.95);
+    border-bottom: 1px solid rgba(245, 77, 38, 0.50);
+    padding: 0 2px;
+    display: inline;
+  }
+  .demo-flaw strong { font-weight: 600; }
+
+  .demo-flaw-tag {
+    font-size: var(--text-xs);
+    color: var(--accent-hi);
+    opacity: 0.80;
+    margin-left: 0.5rem;
+    font-style: italic;
+    font-family: var(--sans);
+  }
+
+  /* ── Connector ───────────────────────────────────────────────── */
+  .demo-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.6rem 0;
+    color: var(--paper-faint);
+  }
+  .demo-connector__line {
+    display: block;
+    width: 1px;
+    height: 16px;
+    background: var(--line-2);
+  }
+  .demo-connector__label {
+    font-size: var(--text-xs);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .demo-connector__arrow {
+    font-size: 1.1rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  /* ── Verdict block ───────────────────────────────────────────── */
+  .demo-verdict {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .demo-verdict__tag {
+    font-size: var(--text-xs);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.40);
+  }
+  .demo-verdict__result {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--accent-hi);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Findings ────────────────────────────────────────────────── */
+  .demo-finding {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 0.5rem 1rem;
+    padding: 0.55rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .demo-finding:first-of-type { border-top: none; }
+
+  .demo-finding__key {
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.38);
+    padding-top: 0.1em;
+    font-family: var(--mono);
+  }
+
+  .demo-finding__val {
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.55;
+    font-family: var(--mono);
+    font-size: var(--text-sm);
+  }
+  .demo-finding__val--flaw {
+    color: rgba(255, 200, 180, 0.88);
+    font-style: italic;
+  }
+  .demo-finding__val--category {
+    color: var(--accent-hi);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+  .demo-finding__val--fix {
+    color: rgba(140, 230, 160, 0.88);
+    font-style: italic;
+  }
+
+  /* ── Result banner ───────────────────────────────────────────── */
+  .demo-result {
+    margin-top: 1.5rem;
+    background: var(--ink-3);
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .demo-result__row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .demo-result__row:last-of-type { border-bottom: none; }
+
+  .demo-result__label {
+    flex-shrink: 0;
+    min-width: 4.5rem;
+    font-size: var(--text-xs);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: var(--mono);
+    padding: 0.18em 0.5em;
+    border-radius: 4px;
+  }
+  .demo-result__label--before {
+    background: rgba(245, 77, 38, 0.12);
+    color: var(--accent-hi);
+    border: 1px solid rgba(245, 77, 38, 0.25);
+  }
+  .demo-result__label--catch {
+    background: rgba(245, 77, 38, 0.08);
+    color: var(--paper-dim);
+    border: 1px solid var(--line-2);
+  }
+  .demo-result__label--after {
+    background: rgba(80, 200, 100, 0.10);
+    color: #5eba6f;
+    border: 1px solid rgba(80, 200, 100, 0.22);
+  }
+
+  .demo-result__text {
+    font-size: var(--text-sm);
+    color: var(--paper-dim);
+    line-height: 1.4;
+  }
+
+  .demo-result__moat {
+    padding: 1rem 1.25rem;
+    background: rgba(0, 0, 0, 0.035);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--paper);
+    border-top: 1px solid var(--line-2);
+    font-style: italic;
+  }
+
+  /* ── Footer note ─────────────────────────────────────────────── */
+  .demo-note {
+    margin-top: 1.5rem;
+    max-width: 820px;
+    margin-inline: auto;
+    font-size: var(--text-sm);
+    color: var(--paper-faint);
+    text-align: center;
+    line-height: 1.5;
+  }
+  .demo-note__link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(245, 77, 38, 0.35);
+    padding-bottom: 1px;
+    margin-left: 0.25rem;
+  }
+  .demo-note__link:hover { border-bottom-color: var(--accent); }
+
+  /* ── Responsive ──────────────────────────────────────────────── */
+  @media (max-width: 540px) {
+    .demo-finding {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+    .demo-finding__key { padding-top: 0; }
+    .demo-result__row { flex-wrap: wrap; gap: 0.5rem; }
+    .demo-card__label { display: none; }
+  }
+</style>
